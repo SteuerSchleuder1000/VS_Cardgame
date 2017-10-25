@@ -46,6 +46,7 @@ class Card {
 
     draw() {
         this.div = createDiv('card')
+        onclick = this.toggleSelection.bind(this)
 
         var img = document.createElement('img')
         img.src = choice(CARD_IMAGES).img //'images/card2.jpg'
@@ -53,6 +54,7 @@ class Card {
         this.div.appendChild(img)
 
         var bgGradient = createDiv('bgGradient')
+        bgGradient.onclick = this.toggleSelection.bind(this)
         this.div.appendChild(bgGradient)
         
         for (var c of this.class) {
@@ -153,7 +155,7 @@ class Card {
 
 var CARDS = [
 
-    {name: 'Flame Punch', power: 2, class: 'A', attributes: ['linkA','linkD'],text:`${choice(LINKS)}Link +1 Power<br>Look at the top card of your deck. If it is a 'GOLD' card add it to your hand.`},               // Starter
+    {name: 'Flame Punch', power: 2, class: 'A', attributes: ['linkA','linkD'],text:`${choice(LINKS)}<b> Link:</b> +1 Power<br>Look at the top card of your deck. If it is a 'GOLD' card add it to your hand.`},               // Starter
     {name: 'Magma Link', power: 2, class: 'AD', attributes: ['linkD'],text:'Link: +1 Power'},      // Linker
     {name: 'Molten Core', power: 4, class: 'D', attributes: [],text:'Link: +2 Power'},                // Finisher
     {name: 'Iron Shell', power: 0, class: 'B', attributes: ['linkB','linkC','block','block','block'],text:'Block 4+ Power: Instant Link'}, // Blocker
