@@ -110,13 +110,51 @@ class Card {
         colorBox.style.backgroundColor = COLORS[this.color]
         this.div.appendChild(colorBox)
 
+        this.playDiv = createDiv('playDiv')
+        
+        this.playBtn =      createDiv('playBtn','Play')
+        this.discardBtn =   createDiv('playBtn','Discard')
+        this.sourceBtn =    createDiv('playBtn','Source')
+        this.shuffleBtn =   createDiv('playBtn','Deck')
+        this.exileBtn =     createDiv('playBtn','Exile')
 
 
-        // Interface
-        this.playBtn = createDiv('playBtn','Play')
-        this.div.appendChild(this.playBtn)
-        var play_f = function () {this.player.play(this)}
+        let arrowLeft = document.createElement('img')
+        arrowLeft.className = 'arrow left'
+        arrowLeft.id = 'left'
+        arrowLeft.src = 'images/speed_icon_white.png'
+        arrowLeft.onclick = this.updateButtons.bind(this)
+
+        let arrowRight = document.createElement('img')
+        arrowRight.className = 'arrow right'
+        arrowRight.id = 'right'
+        arrowRight.src = 'images/speed_icon_white.png'
+        arrowRight.onclick = this.updateButtons.bind(this)
+
+        this.playDiv.appendChild(arrowLeft)
+        this.playDiv.appendChild(arrowRight)
+
+        this.buttons = [this.playBtn,this.discardBtn,this.sourceBtn,this.shuffleBtn,this.exileBtn]
+        for (let b of this.buttons) { this.playDiv.appendChild(b); b.style.display = 'none' }
+        this.playBtn.style.display = 'block'
+        this.div.appendChild(this.playDiv)
+
+
+        let play_f = function () {this.player.play(this)}
+        let discard_f = function () {this.player.discard(this)}
+        let source_f = function () {this.player.sourceCard(this)}
+        let shuffle_f = function () {this.player.shuffleCard(this)}
+        let exile_f = function () {this.player.exile(this)}
+        
+
         this.playBtn.onclick = play_f.bind(this)
+        this.discardBtn.onclick = discard_f.bind(this)
+        this.sourceBtn.onclick = source_f.bind(this)
+        this.shuffleBtn.onclick = shuffle_f.bind(this)
+        this.exileBtn.onclick = exile_f.bind(this)
+
+        this.activeBtnIdx = 0
+        this.updateButtons()
 
 
         if (this.player.idx) { this.updateScale() }
@@ -139,18 +177,28 @@ class Card {
         else { this.div.classList.add('selected'); this.selected = true }
     }
 
+    updateButtons(e) {
+        let id 
+        if (e) {id = e.target.id}
+        if (id == 'left') { this.activeBtnIdx = (this.activeBtnIdx + this.buttons.length -1)%this.buttons.length }
+        if (id == 'right') { this.activeBtnIdx = (this.activeBtnIdx + this.buttons.length +1)%this.buttons.length }
+        for (let i=0;i<this.buttons.length;i++) {
+            if (i==this.activeBtnIdx) { this.buttons[i].style.display = 'block' }
+            else { this.buttons[i].style.display = 'none' }
+        }
+    }
+
     play() {
         this.playBtn.innerHTML = 'Remove'
         let f = function () { if (this.pile) {this.pile.remove(this)}; this.remove() }
         this.playBtn.onclick = f.bind(this)
-        let rng = randInt(-7,7)
+        let rng = randInt(-5,5)
         this.div.style.webkitTransform = `rotate(${rng}deg)`
         this.div.style.transform = `rotate(${rng}deg)`
     }
 
     display() { this.board.appendChild(this.div) }
     remove() { this.div.parentNode.removeChild(this.div); }
-
 }
 
 

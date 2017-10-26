@@ -38,6 +38,24 @@ class Player {
         }
     }
 
+    discard(card) {
+
+    }
+
+    shuffleCard(card) {
+
+    }
+
+    exile(card) {
+
+    }
+
+    sourceCard(card) {
+
+    }
+
+    
+
     draw(nr) { 
         if (nr>this.deck.count()) {nr = this.deck.count()}
         for (let i=0;i<nr;i++) {

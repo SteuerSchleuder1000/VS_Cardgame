@@ -112,19 +112,38 @@ body
         color white
         margin-left 0.3*_unit
         position absolute
-    .playBtn
-        color white
-        font-weight bold
-        font-size _unit
-        background #000000d6
-        padding 0.5*_unit
-        display none
-        position relative
-        &:hover
-            cursor pointer
-            background #777
-        &:active
-            background yellow
+    .playDiv
+        display: none
+        position: relative
+        .arrow
+            position absolute
+            height: 1.4*_unit
+            z-index: 10
+            top 0.4*_unit
+            opacity: 0.7
+            border-radius: 3px
+            &.left
+                left 0.5*_unit
+                transform: scaleX(-1);
+            &.right
+                right 0.5*_unit
+            &:hover
+                background-color grey
+                cursor pointer
+        .playBtn
+            color white
+            font-weight bold
+            font-size _unit
+            background #000000d6
+            padding 0.5*_unit
+            display none
+            position absolute 
+            width 100%
+            &:hover
+                cursor pointer
+                background #777
+            &:active
+                background yellow
             
     .attributeDiv
         width $cardWidth
@@ -137,16 +156,15 @@ body
             height _attributeHeight
             display inline-block
             position relative
-            //background white
             margin-left 0.2*_unit
             border-radius 4%
             opacity 0.8
-            //transform: rotate(5deg);
             img
                 height 120%
                 position relative
             .attrText
                 font-weight bold
+                font-size: 1*_unit
                 position absolute
                 left 0.25*_unit
                 top 0
@@ -217,5 +235,5 @@ body
             display block !important
     &:hover
         //border solid 0.2*_unit yellow
-        .playBtn
+        .playDiv
             display block !important
