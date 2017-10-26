@@ -1,12 +1,13 @@
 
-
-$cardWidth = 11rem
-$cardHeight = 15rem
-$zoneHeight = 1.8rem
-_attributeHeight = 0.9rem
-$powerHeight = 0.8rem
-_colorBoxWidth = 1.8rem
-_colorBoxHeight = 0.9rem
+_f = 1
+_unit = _f*1.5vw
+$cardWidth = 10.5*_unit
+$cardHeight = 15*_unit
+$zoneHeight = 1.8*_unit
+_attributeHeight = 0.9*_unit
+$powerHeight = 0.8*_unit
+_colorBoxWidth = 1.8*_unit
+_colorBoxHeight = 0.9*_unit
 
 pos1 = 0.25
 pos2 = pos1 +0.04
@@ -27,23 +28,23 @@ body
     #board
         margin-top: 0%;
         display: inline-block;
-        background white
-        width 80vw
-        height 80vh
+        background #567372
+        width 100vw
+        height 100vh
 
 .card
     height $cardHeight
     width $cardWidth
     background-color black
     position absolute
-    //border solid 0.2rem black
+    //border solid 0.2*_unit black
     overflow hidden
     border-radius 3%
     .cardImage
         height 100%
-        //width 100%
+        width 100%
         position absolute
-        bottom 1rem
+        bottom 0
         left 0
     .bgGradient
         height 100%
@@ -59,11 +60,11 @@ body
         //width $zoneHeight*0.95
         position relative
         float left
-        top 0.2rem
-        left 0.2rem
+        top 0.2*_unit
+        left 0.2*_unit
     .zone-wrapper
-        top 0.2rem
-        left 0.2rem
+        top 0.2*_unit
+        left 0.2*_unit
         background black
         height $zoneHeight
         width $zoneHeight
@@ -74,8 +75,8 @@ body
             width $zoneHeight*0.95
             //position absolute
             display inline-block
-            top 0.2rem
-            left 0.2rem
+            top 0.2*_unit
+            left 0.2*_unit
         .zoneDiv
             background white
             _factor = 0.85
@@ -92,31 +93,31 @@ body
                 color white
                 display inline-block
                 float left
-                margin-left 0.3rem
+                margin-left 0.3*_unit
                 font-weight bold
-                font-size 150%
+                font-size _unit
     .cardPower
         color white
         position absolute
-        top $zoneHeight+1.5rem
-        left 0.2rem
+        top $zoneHeight+1.5*_unit
+        left 0.2*_unit
         .block
             display block
             width $powerHeight
             height $powerHeight
             background white
-            margin-bottom 0.3rem
+            margin-bottom 0.3*_unit
             border-radius 20%
     .cardAttribute
         color white
-        margin-left 0.3rem
+        margin-left 0.3*_unit
         position absolute
     .playBtn
         color white
         font-weight bold
-        font-size 150%
+        font-size _unit
         background #000000d6
-        padding 0.5rem
+        padding 0.5*_unit
         display none
         position relative
         &:hover
@@ -137,7 +138,7 @@ body
             display inline-block
             position relative
             //background white
-            margin-left 0.2rem
+            margin-left 0.2*_unit
             border-radius 4%
             opacity 0.8
             //transform: rotate(5deg);
@@ -147,20 +148,20 @@ body
             .attrText
                 font-weight bold
                 position absolute
-                left 0.1rem
+                left 0.25*_unit
                 top 0
                 text-align center
     
     .title
         background white
-        $_margin = 0.2rem
+        $_margin = 0.2*_unit
         width $cardWidth - $_margin*2
-        height 1rem
+        height 1*_unit
         margin 0 $_margin
         position absolute
         bottom $cardHeight*pos2
         font-weight bold
-        font-size 80%
+        font-size 0.8*_unit
         clip-path: polygon(0 0, 100% 0, 98% 100%, 0 100%);
         opacity 0.9
     .colorBox
@@ -174,34 +175,36 @@ body
         
     .textBox
         background white
-        $_margin = 0.2rem
+        $_margin = 0.2*_unit
         width $cardWidth - $_margin*2
         height $cardHeight*pos1
         margin 0 $_margin
-        bottom 0.3rem
+        bottom 0.3*_unit
         position absolute
-        font-size 60%
+        font-size 0.6*_unit
         font-family Tahoma
         border-radius 3%
-        letter-spacing 0.01rem
+        letter-spacing 0.01*_unit
         opacity 0.8
         text-align left
         overflow hidden
         .text
-            margin-left 0.2rem
+            margin-left 0.2*_unit
         .linkSymbol
             display inline-block
-            height 0.75rem
+            height 0.75*_unit
             vertical-align text-bottom
         &:hover
             height $cardHeight*0.6
-            font-size 120%
+            font-size _unit
+            .linkSymbol
+                height 1.2*_unit !important
         
     
     &.selected
         .playBtn
             display block !important
     &:hover
-        //border solid 0.2rem yellow
+        //border solid 0.2*_unit yellow
         .playBtn
             display block !important

@@ -43,7 +43,6 @@ class PlayPile extends Pile {
         super(options)
         this.x = boardPositions.play[this.idx].x
         this.y = boardPositions.play[this.idx].y
-        console.log(this.x,this.y,this.idx)
     }
 
     add(card) { super.add(card); this.updatePosition() }
@@ -67,22 +66,7 @@ class Hand extends Pile {
         super(options)
     }
 
-    draw(nr) {
-        console.log('HEY!')
-        for (var i=0; i<nr; i++) {
-            let cardOptions = {
-                x: 0, 
-                y: 0,
-                z: zPositions.default,
-                game: this.game,
-                board: this.board,
-                player: this.player,
-            }
-            this.cards.push(new Card(cardOptions))
-        }
-        this.sort()
-        this.updatePosition()
-    }
+    draw(nr) { return false }
 
     add(card) { super.add(card); this.updatePosition() }
     remove(card) { var c = super.remove(card); this.updatePosition(); return c }
@@ -91,11 +75,9 @@ class Hand extends Pile {
         var count = this.count()
         for (var i=0;i<count;i++) {
             var c = this.cards[i]
-            var width = c.scale* (2+cardWidth)
+            var width = c.scale* (17)
             c.x = boardPositions.hand[this.idx].x + i*width - 0.5*count*width
             c.y = boardPositions.hand[this.idx].y
-            console.log(c.x,c.y)
-
             c.updatePosition()
         }
     }
