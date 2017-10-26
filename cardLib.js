@@ -43,7 +43,17 @@ for (var i=1;i<10;i++) {
 
 
 
-
+const DL_Thunder = [
+    {name:'Thunder Fist',nr:5},
+    {name:'Skyward Strike',nr:3},
+    {name:'Vortex Punch',nr:3},
+    {name:'Arclight Pulse',nr:4},
+    {name:'Surge',nr:2},
+    {name:'Sparkover',nr:3},
+    {name:'Whirlwinds',nr:4},
+    {name:'Storm Cell Shock',nr:2},
+    {name:'Jet Wind Strike',nr:4},
+]
 
 
 var CARDS = {
