@@ -40,6 +40,9 @@ body
     //border solid 0.2*_unit black
     overflow hidden
     border-radius 3%
+    .cardBack
+        &:hover
+            cursor pointer
     .cardImage
         height 100%
         width 100%
@@ -130,6 +133,8 @@ body
             &:hover
                 background-color grey
                 cursor pointer
+            &:active
+                background-color yellow !important
         .playBtn
             color white
             font-weight bold

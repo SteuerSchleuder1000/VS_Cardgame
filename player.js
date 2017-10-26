@@ -1,3 +1,5 @@
+
+
 class Player {
     constructor(options) {
         this.options = options
@@ -7,10 +9,15 @@ class Player {
         this.hand = new Hand(options)
         this.deck = new Deck(options)
         this.playPile = new PlayPile(options)
+        this.discardPile = new DiscardPile(options)
         this.setup()
     }
 
     setup() {
+
+        this.deck.display()
+        this.discardPile.display()
+
         this.options.x = 0
         this.options.y = 0
         this.options.player = this
@@ -18,9 +25,9 @@ class Player {
         if (this.idx == 0) {
             let count = 0
             for (let c of DL_Thunder) {
-                let cData = CARDS[c.name]
+                var cData = CARDS[c.name]
                 for (let i=0;i<c.nr;i++) {
-                    cData.id = 'p'+this.idx+'_'+count
+                    cData.idx = 'p'+this.idx+'_'+count
                     count += 1
                     let card = new Card(this.options, cData)
                     this.deck.add(card)
@@ -34,9 +41,8 @@ class Player {
                 this.deck.add(c)
         }}
 
-
-
-        console.log(this.idx,this.deck)
+        this.deck.shuffle()
+        console.log(this.deck)
         this.draw(5)
     }
 

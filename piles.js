@@ -10,9 +10,12 @@ class Pile {
         this.game = options.game
         this.player = options.player
         this.idx = options.idx
+        this.x = 0
+        this.y = 0
+        this.div = document.createElement('div')
     }
 
-    shuffle() {}
+    shuffle() { shuffle(this.cards) }
     count() {return this.cards.length}
     add(card) {this.cards.push(card); card.pile = this}
     remove(card) {
@@ -29,14 +32,35 @@ class Pile {
         this.cards = []
     }
     draw() {return this.cards.pop()}
+    display() {}
+    updatePosition() {
+        this.div.style.left = this.x+'vw'
+        this.div.style.top = this.y+'vh'
+        this.div.style.zIndex = this.z
+    }
 }
+
 
 
 class Deck extends Pile {
     constructor(options) {
         super(options)
+        this.div = document.createElement('div')
+        this.div.className = 'deck'
+        this.img = document.createElement('img')
+        this.img.className = 'deckImage'
+        this.img.src = 'images/cardBack.png'
+        this.div.appendChild(this.img)
+        this.x = 0
+        this.y = 0
+    }
+
+    display() { 
+        this.updatePosition()
+        this.board.appendChild(this.div)
     }
 }
+
 
 class PlayPile extends Pile {
     constructor(options) {
@@ -47,6 +71,7 @@ class PlayPile extends Pile {
 
     add(card) { super.add(card); this.updatePosition() }
     updatePosition() {
+        super.updatePosition()
         var i = 0
         for (var c of this.cards) {
             c.x = this.x
@@ -80,5 +105,11 @@ class Hand extends Pile {
             c.y = boardPositions.hand[this.idx].y
             c.updatePosition()
         }
+    }
+}
+
+class DiscardPile extends Pile {
+    constructor(options) {
+        super(options)
     }
 }

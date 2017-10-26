@@ -192,7 +192,7 @@ var CARDS = {
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
 
-    'Arclight Pulse':
+    'Surge':
     {
         name: 'Surge',
         power: 2, 

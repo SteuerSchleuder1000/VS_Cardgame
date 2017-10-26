@@ -6,7 +6,7 @@ class Card {
         this.game = options.game
         this.board = options.board
         this.player = options.player
-        this.id = 2//cardOptions.id
+        this.idx = cardOptions.idx
         this.pile
 
         this.selected = false
@@ -14,11 +14,12 @@ class Card {
         this.y = options.y
         this.z = options.z
         this.scale = this.player.idx ? 0.5:1
+        this.flipped = this.player.idx ? true : false
 
         if (!cardOptions) { cardOptions = keyChoice(CARDS); this.id = randInt(0,1000000) }
 
         this.name =         cardOptions.name
-        this.class =        cardOptions.zone
+        this.zones =        cardOptions.zone
         this.power =        cardOptions.power
         this.attributes =   cardOptions.attributes
         this.text =         cardOptions.text
@@ -34,9 +35,16 @@ class Card {
 
     draw() {
 
+        this.cardBack = createDiv('card')
+        this.cardBackArt = document.createElement('img')
+        this.cardBackArt.src = 'images/cardBack.png'
+        this.cardBackArt.className = 'cardImage cardBack'
+        this.cardBack.appendChild(this.cardBackArt)
+
+
 
         this.div = createDiv('card')
-        this.div.id = this.id
+        this.div.id = this.idx
         onclick = this.toggleSelection.bind(this)
 
 
@@ -47,14 +55,14 @@ class Card {
         this.div.appendChild(img)
 
         let bgGradient = createDiv('bgGradient')
-        bgGradient.id = this.id
-        bgGradient.onclick = this.toggleSelection.bind(this)
+        bgGradient.id = this.idx
+        if (MOBILE) { bgGradient.onclick = this.toggleSelection.bind(this) }
         this.div.appendChild(bgGradient)
         
 
 
         // Zones
-        for (let c of this.class) {
+        for (let c of this.zones) {
             let icon = document.createElement('img')
             icon.className = 'icon'
             if (this.img_o.zone == 'white') { icon.src = ZONES[c].img_white }
@@ -153,6 +161,8 @@ class Card {
         this.shuffleBtn.onclick = shuffle_f.bind(this)
         this.exileBtn.onclick = exile_f.bind(this)
 
+        this.cardBackArt.onclick = play_f.bind(this)
+
         this.activeBtnIdx = 0
         this.updateButtons()
 
@@ -164,12 +174,20 @@ class Card {
         this.div.style.left = this.x+'vw'
         this.div.style.top = this.y+'vh'
         this.div.style.zIndex = this.z
+
+        this.cardBack.style.left = this.x+'vw'
+        this.cardBack.style.top = this.y+'vh'
+        this.cardBack.style.zIndex = this.z
     }
 
     updateScale() {
         this.div.style.height = 22.5*this.scale + 'vw'
         this.div.style.width = 15.75*this.scale + 'vw'
         this.div.style.zoom = this.scale
+
+        this.cardBack.style.height = 22.5*this.scale + 'vw'
+        this.cardBack.style.width = 15.75*this.scale + 'vw'
+        this.cardBack.style.zoom = this.scale
     }
 
     toggleSelection() {
@@ -189,16 +207,27 @@ class Card {
     }
 
     play() {
-        this.playBtn.innerHTML = 'Remove'
-        let f = function () { if (this.pile) {this.pile.remove(this)}; this.remove() }
-        this.playBtn.onclick = f.bind(this)
+        if (this.flipped) {this.flip()}
         let rng = randInt(-5,5)
         this.div.style.webkitTransform = `rotate(${rng}deg)`
         this.div.style.transform = `rotate(${rng}deg)`
     }
 
-    display() { this.board.appendChild(this.div) }
-    remove() { this.div.parentNode.removeChild(this.div); }
+    display() { 
+        if (this.flipped) { this.board.appendChild(this.cardBack) }
+        else { this.board.appendChild(this.div) }
+    }
+
+    remove() { 
+        if (this.flipped) { this.cardBack.parentNode.removeChild(this.cardBack) }
+        else { this.div.parentNode.removeChild(this.div) }
+    }
+
+    flip() {
+        this.remove()
+        this.flipped = !this.flipped
+        this.display()
+    }
 }
 
 
