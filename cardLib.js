@@ -4,6 +4,8 @@ const COLORS = {
     Spark: '#d88811',
     Thunder: '#4989a9',
     Storm: '#3e3e3e',
+    Venom: '#222',
+    Gold: '#ccb85b',
 }
 
 const ZONES = {
@@ -35,6 +37,8 @@ const LINKS = {
     Storm:  `<div class='colorSymbol' style='background-color:${COLORS.Storm}; color: white;'>Storm</div>`,
     Iron:  `<div class='colorSymbol' style='background-color:${COLORS.Iron}; color: white;'>Iron</div>`,
     Spark:  `<div class='colorSymbol' style='background-color:${COLORS.Spark}; color: white;'>Spark</div>`,
+    Gold:  `<div class='colorSymbol' style='background-color:${COLORS.Gold}; color: black;'>Gold</div>`,
+    Venom:  `<div class='colorSymbol' style='background-color:${COLORS.Venom}; color: white;'>Venom</div>`,
 }
 
 for (var i=1;i<10;i++) {
@@ -53,6 +57,18 @@ const DL_Thunder = [
     {name:'Whirlwinds',nr:4},
     {name:'Storm Cell Shock',nr:2},
     {name:'Jet Wind Strike',nr:4},
+]
+
+const DL_Snake = [
+    {name:'Piercing Bite',nr:4},
+    {name:'Snake Spiral',nr:5},
+    {name:'Golden Fangs',nr:3},
+    {name:'Winding Strike',nr:4},
+    {name:'Sinister Ritual',nr:2},
+    {name:'Bound Down',nr:2},
+    {name:'Venom Shock',nr:4},
+    {name:'Toxic Breath',nr:3},
+    {name:'Serpent Scales',nr:4},
 ]
 
 
@@ -199,7 +215,7 @@ var CARDS = {
         color:'Thunder',
         zone: 'B', 
         attributes: [A.Speed],
-        text:`Restor 2 ${LINKS.Thunder} Cards as Energy.<br>
+        text:`Restore 2 ${LINKS.Thunder} Cards as Energy.<br>
             <b>Erased:</b> Store this card as Energy`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -257,6 +273,120 @@ var CARDS = {
         text:`${LINKS.B}<b> Link:</b> Draw 1 Card then discard 1 card.<br>
                 Show any number of ${LINKS.Storm} Cards from hand, then <b>Erase</b> that many cards.`,
         image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Piercing Bite':
+    {
+        name: 'Piercing Bite',
+        power: 1, 
+        color:'Venom',
+        zone: 'C', 
+        attributes: [A.Speed],
+        text:`${LINKS.A}<b> Link:</b> Can not be blocked by slower attacks.<br>
+                <b>Hit: Afflict 1</b>`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Snake Spiral':
+    {
+        name: 'Snake Spiral',
+        power: 3, 
+        color:'Gold',
+        zone: 'A', 
+        attributes: [],
+        text:`Look at and rearrange the top 3 cards of your deck. <b>Power up</b> with a 'Snake Spiral' amongst them.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Golden Fangs':
+    {
+        name: 'Golden Fangs',
+        power: 1, 
+        color:'Gold',
+        zone: 'A', 
+        attributes: [],
+        text:`Turn up up to 3 sources you own. Gain +1 Power for each of your ${LINKS.Gold} sources.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Winding Strike':
+    {
+        name: 'Winding Strike',
+        power: 3, 
+        color:'Gold',
+        zone: 'B', 
+        attributes: [],
+        text:`<b>VS ${LINKS.A}:</b> Gain +2 Power.<br><b>2x</b>${LINKS.Gold}: Gain ${LINKS.Speed}`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Sinister Ritual':
+    {
+        name: 'Sinister Ritual',
+        power: 1, 
+        color:'Venom',
+        zone: 'D', 
+        attributes: [A.Block3],
+        text:`Look at at and rearrange the top 3 cards of your deck. You may add 2 ${LINKS.Venom} Cards amongst them to your sources.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Bound Down':
+    {
+        name: 'Bound Down',
+        power: 1, 
+        color:'Venom',
+        zone: 'B', 
+        attributes: [],
+        text:`<b>Afflict 1</b><br>Your opponents current and next attack loose Power equal to the number of ${LINKS.Venom} sources you own.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Venom Shock':
+    {
+        name: 'Venom Shock',
+        power: 2, 
+        color:'Venom',
+        zone: 'C', 
+        attributes: [],
+        text:`${LINKS.A}<b> Link:</b> Gain ${LINKS.Speed}<br>${LINKS.B}<b> Link:</b> Gain +3${LINKS.Block}<br><b>Blocked: Afflict 3</b>`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Toxic Breath':
+    {
+        name: 'Toxic Breath',
+        power: 0, 
+        color:'Venom',
+        zone: 'D', 
+        attributes: [],
+        text:`Conceal up to 3 sources on the field.<br>Gain +1 Power for each concealed source you own.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Serpent Scales':
+    {
+        name: 'Serpent Scales',
+        power: 0, 
+        color:'Venom',
+        zone: 'D', 
+        attributes: [A.Block4],
+        text:`Block 3+ Power: <b>Afflict 1</b><br>You may cancel this into a ${LINKS.A} card.`,
+        image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
 

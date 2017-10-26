@@ -13,10 +13,21 @@ window.onload = function() {
 
 const boardPositions = {
     hand:  [{x: 50, y: 60},
-            {x: 50, y: 8}],
+            {x: 100, y: 8}],
 
     play:  [{x:60, y: 18},
             {x:30, y: 18}],
+
+    discard:    [{x:93, y:29},
+                {x:3, y:21}],
+
+    deck:       [{x:93,y:45},
+                {x:3,y:5}],
+
+    sources:       [{x:93,y:13},
+                    {x:3,y:37}],
+
+
 }
 
 const zPositions = {    

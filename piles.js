@@ -42,24 +42,7 @@ class Pile {
 
 
 
-class Deck extends Pile {
-    constructor(options) {
-        super(options)
-        this.div = document.createElement('div')
-        this.div.className = 'deck'
-        this.img = document.createElement('img')
-        this.img.className = 'deckImage'
-        this.img.src = 'images/cardBack.png'
-        this.div.appendChild(this.img)
-        this.x = 0
-        this.y = 0
-    }
 
-    display() { 
-        this.updatePosition()
-        this.board.appendChild(this.div)
-    }
-}
 
 
 class PlayPile extends Pile {
@@ -95,9 +78,10 @@ class Hand extends Pile {
 
     add(card) { super.add(card); this.updatePosition() }
     remove(card) { var c = super.remove(card); this.updatePosition(); return c }
-    sort() { this.cards.sort(function(a,b) {return (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0);} ) }
+    sort() { this.cards.sort(function(a,b) {return (a.zones > b.zones) ? 1 : ((b.zones > a.zones) ? -1 : 0);} ) }
     updatePosition() {
         var count = this.count()
+        this.sort()
         for (var i=0;i<count;i++) {
             var c = this.cards[i]
             var width = c.scale* (17)
@@ -108,8 +92,68 @@ class Hand extends Pile {
     }
 }
 
+class Deck extends Pile {
+    constructor(options) {
+        super(options)
+        this.div = document.createElement('div')
+        this.div.className = 'deck'
+        this.img = document.createElement('img')
+        this.img.className = 'deckImage'+this.idx
+        this.img.src = 'images/cardBack.png'
+        this.div.appendChild(this.img)
+        this.x = boardPositions.deck[this.idx].x
+        this.y = boardPositions.deck[this.idx].y
+    }
+
+    display() { 
+        this.updatePosition()
+        this.board.appendChild(this.div)
+    }
+}
+
 class DiscardPile extends Pile {
     constructor(options) {
         super(options)
+        this.div = document.createElement('div')
+        this.div.className = 'discardPile'
+        this.img = document.createElement('img')
+        this.img.className = 'discardImage'+this.idx
+        this.img.src = 'images/cardBack.png'
+        this.div.appendChild(this.img)
+        this.x = boardPositions.discard[this.idx].x
+        this.y = boardPositions.discard[this.idx].y
+    }
+
+    display() { 
+        this.updatePosition()
+        this.board.appendChild(this.div)
+    }
+}
+
+class SourcePile extends Pile {
+    constructor(options) {
+        super(options)
+    this.div = document.createElement('div')
+    this.div.className = 'sourcePile'
+    this.img = document.createElement('img')
+    this.img.className = 'sourceImage'+this.idx
+    this.img.src = 'images/cardBack.png'
+    this.div.appendChild(this.img)
+    this.x = boardPositions.sources[this.idx].x
+    this.y = boardPositions.sources[this.idx].y
+    }
+
+    display() { 
+        this.updatePosition()
+        this.board.appendChild(this.div)
+    }
+}
+
+class DamagePile extends Pile {
+    constructor(options) {
+        super(options)
+    }
+
+    display() { 
     }
 }

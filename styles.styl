@@ -8,6 +8,8 @@ _attributeHeight = 0.9*_unit
 $powerHeight = 0.8*_unit
 _colorBoxWidth = 1.8*_unit
 _colorBoxHeight = 0.9*_unit
+_pileHeight = 0.4*$cardHeight
+_pileWidth = 0.4*$cardWidth
 
 pos1 = 0.25
 pos2 = pos1 +0.04
@@ -31,7 +33,24 @@ body
         background #567372
         width 100vw
         height 100vh
-
+.deck
+    display inline-block
+    position absolute 
+    img
+        height _pileHeight
+        width _pileWidth
+.discardPile
+    display inline-block
+    position absolute
+    img
+        height _pileHeight
+        width _pileWidth
+.sourcePile
+    display inline-block
+    position absolute
+    img
+        height _pileHeight
+        width _pileWidth
 .card
     height $cardHeight
     width $cardWidth

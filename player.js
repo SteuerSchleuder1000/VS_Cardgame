@@ -10,6 +10,8 @@ class Player {
         this.deck = new Deck(options)
         this.playPile = new PlayPile(options)
         this.discardPile = new DiscardPile(options)
+        this.sourcePile = new SourcePile(options)
+        this.damagePile = new DamagePile(options)
         this.setup()
     }
 
@@ -17,29 +19,32 @@ class Player {
 
         this.deck.display()
         this.discardPile.display()
+        this.sourcePile.display()
 
         this.options.x = 0
         this.options.y = 0
         this.options.player = this
+        let dl = choice([DL_Thunder,DL_Snake])
 
-        if (this.idx == 0) {
-            let count = 0
-            for (let c of DL_Thunder) {
-                var cData = CARDS[c.name]
-                for (let i=0;i<c.nr;i++) {
-                    cData.idx = 'p'+this.idx+'_'+count
-                    count += 1
-                    let card = new Card(this.options, cData)
-                    this.deck.add(card)
-                }
+        
+        let count = 0
+        for (let c of dl) {
+            var cData = CARDS[c.name]
+            console.log(cData,c.name)
+            for (let i=0;i<c.nr;i++) {
+                cData.idx = 'p'+this.idx+'_'+count
+                count += 1
+                let card = new Card(this.options, cData)
+                this.deck.add(card)
             }
-        } else {
-            for (let i=0;i<50;i++) {
-                let cardData = keyChoice(CARDS)
-                cardData.id = 'p'+this.idx+'_'+i
-                let c = new Card(this.options, cardData)
-                this.deck.add(c)
-        }}
+        }
+        // } else {
+        //     for (let i=0;i<50;i++) {
+        //         let cardData = keyChoice(CARDS)
+        //         cardData.id = 'p'+this.idx+'_'+i
+        //         let c = new Card(this.options, cardData)
+        //         this.deck.add(c)
+        // }}
 
         this.deck.shuffle()
         console.log(this.deck)
@@ -57,20 +62,38 @@ class Player {
         }
     }
 
-    discard(card) {
-
+    toDiscard(card) {
+        card.remove()
+        card.pile.remove(card)
+        this.discardPile.add(card)
     }
 
-    shuffleCard(card) {
-
+    toTopDeck(card) {
+        card.remove()
+        card.pile.remove(card)
+        this.deck.add(card)
     }
 
-    exile(card) {
-
+    toExile(card) {
+        card.remove()
+        card.pile.remove(card)
     }
 
-    sourceCard(card) {
+    toHand(card) {
+        card.pile.remove(card)
+        this.hand.add(card)
+    }
 
+    toDamage(card) {
+        card.remove()
+        card.pile.remove(card)
+        this.damagePile.add(card)
+    }
+
+    toSource(card) {
+        card.remove()
+        card.pile.remove(card)
+        this.sourcePile.add(card)
     }
 
     
@@ -87,5 +110,8 @@ class Player {
     reset() {
         this.hand.reset()
         this.playPile.reset()
+        // this.deck.reset()
+        // this.sourcePile.reset()
+        // this.discardPile.reset()
     }
 }

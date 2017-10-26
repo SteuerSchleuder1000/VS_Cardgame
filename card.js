@@ -123,8 +123,10 @@ class Card {
         this.playBtn =      createDiv('playBtn','Play')
         this.discardBtn =   createDiv('playBtn','Discard')
         this.sourceBtn =    createDiv('playBtn','Source')
-        this.shuffleBtn =   createDiv('playBtn','Deck')
+        this.topDeckBtn =   createDiv('playBtn','Top Deck')
         this.exileBtn =     createDiv('playBtn','Exile')
+        this.handBtn =      createDiv('playBtn','Hand')
+        this.damageBtn =    createDiv('playBtn','Damage')
 
 
         let arrowLeft = document.createElement('img')
@@ -142,24 +144,28 @@ class Card {
         this.playDiv.appendChild(arrowLeft)
         this.playDiv.appendChild(arrowRight)
 
-        this.buttons = [this.playBtn,this.discardBtn,this.sourceBtn,this.shuffleBtn,this.exileBtn]
+        this.buttons = [this.playBtn,this.discardBtn,this.sourceBtn,this.topDeckBtn,this.handBtn,this.damageBtn,this.exileBtn]
         for (let b of this.buttons) { this.playDiv.appendChild(b); b.style.display = 'none' }
         this.playBtn.style.display = 'block'
         this.div.appendChild(this.playDiv)
 
 
         let play_f = function () {this.player.play(this)}
-        let discard_f = function () {this.player.discard(this)}
-        let source_f = function () {this.player.sourceCard(this)}
-        let shuffle_f = function () {this.player.shuffleCard(this)}
-        let exile_f = function () {this.player.exile(this)}
+        let discard_f = function () {this.player.toDiscard(this)}
+        let source_f = function () {this.player.toSource(this)}
+        let shuffle_f = function () {this.player.toTopDeck(this)}
+        let exile_f = function () {this.player.toExile(this)}
+        let hand_f = function () {this.player.toHand(this)}
+        let dmg_f = function() {this.player.toDamage(this)}
         
 
         this.playBtn.onclick = play_f.bind(this)
         this.discardBtn.onclick = discard_f.bind(this)
         this.sourceBtn.onclick = source_f.bind(this)
-        this.shuffleBtn.onclick = shuffle_f.bind(this)
+        this.topDeckBtn.onclick = shuffle_f.bind(this)
         this.exileBtn.onclick = exile_f.bind(this)
+        this.handBtn.onclick = hand_f.bind(this)
+        this.damageBtn.onclick = dmg_f.bind(this)
 
         this.cardBackArt.onclick = play_f.bind(this)
 
