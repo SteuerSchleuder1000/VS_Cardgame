@@ -6,7 +6,7 @@ class Card {
         this.game = options.game
         this.board = options.board
         this.player = options.player
-        this.id = cardOptions.id
+        this.id = 2//cardOptions.id
         this.pile
 
         this.selected = false
