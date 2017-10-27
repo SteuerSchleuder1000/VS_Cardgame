@@ -17,20 +17,16 @@ class Player {
 
     setup() {
 
-        this.deck.display()
-        this.discardPile.display()
-        this.sourcePile.display()
-
         this.options.x = 0
         this.options.y = 0
         this.options.player = this
-        let dl = choice([DL_Thunder,DL_Snake])
+        let dl = choice([DL_Thunder,DL_Snake,DL_Star,DL_Rust])
 
         
         let count = 0
         for (let c of dl) {
             var cData = CARDS[c.name]
-            console.log(cData,c.name)
+            // console.log(cData,c.name)
             for (let i=0;i<c.nr;i++) {
                 cData.idx = 'p'+this.idx+'_'+count
                 count += 1
@@ -54,12 +50,10 @@ class Player {
 
 
 
-    play(card) {
-        var c = this.hand.remove(card)
-        if (c) {
-            this.playPile.add(c)
-            c.play()
-        }
+    play(card) {        
+        card.pile.remove(card)
+        this.playPile.add(card)
+        card.play()
     }
 
     toDiscard(card) {
@@ -96,7 +90,6 @@ class Player {
         this.sourcePile.add(card)
     }
 
-    
 
     draw(nr) { 
         if (nr>this.deck.count()) {nr = this.deck.count()}

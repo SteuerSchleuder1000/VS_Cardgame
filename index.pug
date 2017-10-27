@@ -11,11 +11,20 @@ html(lang='en')
             button#drawP1 Draw P1
             button#drawP2 Draw P2
         #board
-            //- .heroPiles
-            //-     img(src='images/cardBack.png' class='deck')
-            //-     img(src='images/cardBack.png' class='discard')
-            //-     img(src='images/cardBack.png' class='sourcePile')
-            //-     img(src='images/cardBack.png' class='damagePile')
+            .overlay
+                button.close Close
+            .heroPiles.pileDiv
+                img(src='images/cardBack.png' class='deck pile')
+                img(src='images/cardBack.png' class='discardPile pile')
+                img(src='images/cardBack.png' class='sourcePile pile')
+                img(src='images/cardBack.png' class='damagePile pile')
+                button.showDeck Show Deck
+            .opPiles.pileDiv
+                img(src='images/cardBack.png' class='deck pile')
+                img(src='images/cardBack.png' class='discardPile pile')
+                img(src='images/cardBack.png' class='sourcePile pile')
+                img(src='images/cardBack.png' class='damagePile pile')
+                button.showDeck Show Deck
         
 
         script(src='script.js')

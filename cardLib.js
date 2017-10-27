@@ -6,6 +6,8 @@ const COLORS = {
     Storm: '#3e3e3e',
     Venom: '#222',
     Gold: '#ccb85b',
+    Star: 'gold',
+    Aurora: 'violet',
 }
 
 const ZONES = {
@@ -39,6 +41,8 @@ const LINKS = {
     Spark:  `<div class='colorSymbol' style='background-color:${COLORS.Spark}; color: white;'>Spark</div>`,
     Gold:  `<div class='colorSymbol' style='background-color:${COLORS.Gold}; color: black;'>Gold</div>`,
     Venom:  `<div class='colorSymbol' style='background-color:${COLORS.Venom}; color: white;'>Venom</div>`,
+    Aurora:  `<div class='colorSymbol' style='background-color:${COLORS.Aurora}; color: white;'>Aurora</div>`,
+    Star:  `<div class='colorSymbol' style='background-color:${COLORS.Star}; color: white;'>Star</div>`,
 }
 
 for (var i=1;i<10;i++) {
@@ -72,56 +76,87 @@ const DL_Snake = [
 ]
 
 
+const DL_Star = [
+    {name:'Dawn Blade',nr:5},
+    {name:'Celestial Punch',nr:4},
+    {name:'Constellation Shield',nr:2},
+    {name:'Gemini Strike',nr:4},
+    {name:'Sunrise Blast',nr:3},
+    {name:'Star Gaze',nr:2},
+    {name:'Zodiac Spear',nr:5},
+    {name:'Nebula Dash',nr:2},
+    {name:'Aurora Breath',nr:3},
+]
+
+
+const DL_Rust = [
+    {name:'Ignition Strike',nr:5},
+    {name:'Molten Link',nr:4},
+    {name:'Scorching Grasp',nr:2},
+    {name:'Foundry Wall',nr:4},
+    {name:'Shrapnel Blast',nr:3},
+    {name:'Iron Sparks',nr:2},
+    {name:'Slag Storm',nr:5},
+    {name:'Rust Kick',nr:2},
+    {name:'Combustion',nr:3},
+]
+
+
+
+
+
+
 var CARDS = {
 
-    'Flame Punch': 
+    'Ignition Strike': 
     {
-        name: 'Flame Punch',
+        name: 'Ignition Strike',
         power: 2, 
         color: 'Spark',
         zone: 'A', 
         attributes: [A.Block1],
         text:`${LINKS.A}<b> Link:</b> +1 Power<br>
              Look at the top card of your deck. If it is a ${LINKS.Spark} card add it to your sources.`,
-        image: 'images/cards/dragon.png',
+        image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
 
-    'Magma Link': 
+    'Molten Link': 
     {
-        name: 'Magma Link',
+        name: 'Molten Link',
         power: 1, 
         color: 'Spark',
         zone: 'B', 
         attributes: [],
         text:`Reveal any number of ${LINKS.Spark} cards from hand: Gain that much power.`,
-        image: 'images/cards/wl.png',
+        image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
 
-    'Molten Grasp': 
+
+    'Scorching Grasp': 
     {
-        name: 'Molten Grasp', 
+        name: 'Scorching Grasp', 
         power: 4, 
         color: 'Spark',
         zone: 'AB', 
         attributes: [],
         text:`${LINKS.Iron}<b> Link:</b> +2 Power`,
-        image: 'images/cards/missiles.png',
+        image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
 
-    'Iron Wall': 
+    'Foundry Wall': 
     {
-        name: 'Iron Wall',
+        name: 'Foundry Wall',
         power: 0, 
         color:'Iron',
         zone: 'B', 
         attributes: [A.Block5],
         text:`Block 4+ Power: Cancel this attack and play a ${LINKS.A} card.`,
-        image: 'images/cards/sea.png',
+        image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
@@ -135,7 +170,7 @@ var CARDS = {
         attributes: [A.Speed],
         text:`Put 2 Iron cards in your discard pile ontop of your deck: Gain +2 Power.<br>
                 ${LINKS.B} <b>Link:</b> Can not be dodged.`,
-        image: 'images/cards/temple.png',
+        image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },   
 
@@ -148,7 +183,46 @@ var CARDS = {
         zone: 'B', 
         attributes: [A.Speed],
         text:`If this dodges an attack: you may draw a card and cancel it into a Iron attack.`,
-        image: 'images/cards/wl.png',
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+
+    'Slag Storm':                     
+    {
+        name: 'Slag Storm',
+        power: 3, 
+        color:'Iron',
+        zone: 'B', 
+        attributes: [A.Speed],
+        text:`Discard 2 cards: If this card is in your discard pile you may add this to your current ${LINKS.Iron} attack.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+
+    'Rust Kick':                     
+    {
+        name: 'Slag Storm',
+        power: 3, 
+        color:'Iron',
+        zone: 'B', 
+        attributes: [A.Speed],
+        text:`Put 2 ${LINKS.Iron} under your deck: can not be blocked.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+
+    'Combustion':                     
+    {
+        name: 'Slag Storm',
+        power: 1, 
+        color:'Spark',
+        zone: 'B', 
+        attributes: [A.Speed],
+        text:`<b>${LINKS.Spark} Links</b>: Add this card as damage.`,
+        image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
@@ -387,6 +461,136 @@ var CARDS = {
         attributes: [A.Block4],
         text:`Block 3+ Power: <b>Afflict 1</b><br>You may cancel this into a ${LINKS.A} card.`,
         image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Dawn Blade':
+    {
+        name: 'Dawn Blade',
+        power: 2, 
+        color:'Aurora',
+        zone: 'AD', 
+        attributes: [],
+        text:`Reveal another 'Dawn Blade' from hand: +2 Power.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Celestial Punch':
+    {
+        name: 'Celestial Punch',
+        power: 3, 
+        color:'Star',
+        zone: 'AD', 
+        attributes: [],
+        text:`Reveal the top card of your deck. If it is a ${LINKS.Aurora} card put it to your sources.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Constellation Shield':
+    {
+        name: 'Constellation Shield',
+        power: 0, 
+        color:'Star',
+        zone: 'B', 
+        attributes: [A.Block1],
+        text:`Restore 1 ${LINKS.Star} source<br>Gain +1 ${LINKS.Block} for each ${LINKS.Star} source you own`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Gemini Strike':
+    {
+        name: 'Gemini Strike',
+        power: 0, 
+        color:'Star',
+        zone: 'C', 
+        attributes: [A.Block1],
+        text:`Swap 1 source you own with a card in hand.<br>${LINKS.A}<b> Link:</b> Align`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Sunrise Blast':
+    {
+        name: 'Sunrise Blast',
+        power: 1, 
+        color:'Star',
+        zone: 'CD', 
+        attributes: [A.Block1],
+        text:`Look at and rearrange the top 3 cards of your deck.<br> 
+                Put the top card of your deck to your sources and gain that much Power`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Star Gaze':
+    {
+        name: 'Star Gaze',
+        power: 1, 
+        color:'Star',
+        zone: 'CD', 
+        attributes: [A.Block1],
+        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${LINKS.Aurora} card to your sources.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Star Gaze':
+    {
+        name: 'Star Gaze',
+        power: 0, 
+        color:'Star',
+        zone: 'CD', 
+        attributes: [A.Block3],
+        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${LINKS.Aurora} card to your sources.<br>
+                Cancel this card into a ${LINKS.A} attack.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Zodiac Spear':
+    {
+        name: 'Zodiac Spear',
+        power: 2, 
+        color:'Star',
+        zone: 'C', 
+        attributes: [A.Speed],
+        text:`Blocked: Add this to your sources.<br>${LINKS.Star}<b> Link:</b> Attach a ${LINKS.Star} source to this card.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Nebula Dash':
+    {
+        name: 'Nebula Dash',
+        power: 2, 
+        color:'Aurora',
+        zone: 'C', 
+        attributes: [A.Speed],
+        text:`Discard to give your attack ${LINKS.Speed}<br>Swap 1 source you own with a card in hand.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Aurora Breath':
+    {
+        name: 'Aurora Breath',
+        power: 2, 
+        color:'Aurora',
+        zone: 'C', 
+        attributes: [A.Speed],
+        text:`Reveal ${LINKS.Aurora} cards in your hand and gain +1 Power for each.<br>If this has 5+ Power destroy 1 source on the board.`,
+        image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
 

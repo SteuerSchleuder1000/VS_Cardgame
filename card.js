@@ -10,11 +10,13 @@ class Card {
         this.pile
 
         this.selected = false
+        this.displayed = false
         this.x = options.x
         this.y = options.y
         this.z = options.z
         this.scale = this.player.idx ? 0.5:1
         this.flipped = this.player.idx ? true : false
+        this.overlayMode = false
 
         if (!cardOptions) { cardOptions = keyChoice(CARDS); this.id = randInt(0,1000000) }
 
@@ -217,16 +219,32 @@ class Card {
         let rng = randInt(-5,5)
         this.div.style.webkitTransform = `rotate(${rng}deg)`
         this.div.style.transform = `rotate(${rng}deg)`
+        this.display()
     }
 
     display() { 
+        if (this.displayed) {return}
+        this.displayed = true
         if (this.flipped) { this.board.appendChild(this.cardBack) }
         else { this.board.appendChild(this.div) }
     }
 
+    overlay(bool) {
+        if (bool && !this.overlayMode) {
+            this.div.classList.add('overlayMode')
+            this.overlayMode = true
+            this.remove()
+        } else {
+            this.div.classList.remove('overlayMode')
+            this.overlayMode = false
+        }
+    }
+
     remove() { 
-        if (this.flipped) { this.cardBack.parentNode.removeChild(this.cardBack) }
-        else { this.div.parentNode.removeChild(this.div) }
+        if (!this.displayed) {return}
+        this.displayed = false
+        if (this.flipped) { this.board.removeChild(this.cardBack) }
+        else { this.board.removeChild(this.div) }
     }
 
     flip() {

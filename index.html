@@ -11,7 +11,17 @@
       <button id="drawP1">Draw P1</button>
       <button id="drawP2">Draw P2</button>
     </div>
-    <div id="board"></div>
+    <div id="board">
+      <div class="overlay">
+        <button class="close">Close</button>
+      </div>
+      <div class="heroPiles pileDiv"><img class="deck pile" src="images/cardBack.png"><img class="discardPile pile" src="images/cardBack.png"><img class="sourcePile pile" src="images/cardBack.png"><img class="damagePile pile" src="images/cardBack.png">
+        <button class="showDeck">Show Deck</button>
+      </div>
+      <div class="opPiles pileDiv"><img class="deck pile" src="images/cardBack.png"><img class="discardPile pile" src="images/cardBack.png"><img class="sourcePile pile" src="images/cardBack.png"><img class="damagePile pile" src="images/cardBack.png">
+        <button class="showDeck">Show Deck</button>
+      </div>
+    </div>
     <script src="script.js"></script>
     <script src="game.js"></script>
     <script src="player.js"></script>

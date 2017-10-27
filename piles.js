@@ -12,13 +12,14 @@ class Pile {
         this.idx = options.idx
         this.x = 0
         this.y = 0
-        this.div = document.createElement('div')
+        this.div
     }
 
     shuffle() { shuffle(this.cards) }
     count() {return this.cards.length}
     add(card) {this.cards.push(card); card.pile = this}
     remove(card) {
+        if (this.idx < 2) {this.game.overlay.remove(card)}
         var idx = this.indexOf(card)
         if (idx > -1) { 
             var c = this.cards[idx]
@@ -38,7 +39,52 @@ class Pile {
         this.div.style.top = this.y+'vh'
         this.div.style.zIndex = this.z
     }
+    overlay() {
+        if (this.game.overlayMode) {return}
+        for (let c of this.cards) { this.game.overlay.add(c) }
+        this.game.overlay.display()
+    }
 }
+
+
+
+class Overlay extends Pile {
+    constructor(options) {
+        super(options)
+        this.div = document.querySelector('#board .overlay')
+        this.closeBtn = document.querySelector('#board .overlay .close')
+        this.closeBtn.onclick = this.close.bind(this)
+    }
+
+    add(card) { 
+        //super.add(card)
+        this.cards.push(card);
+    }
+
+    display() {
+        this.game.overlayMode = true
+        this.div.style.display = 'flex'
+        for (var c of this.cards) {
+            c.overlay(true)
+            this.div.appendChild(c.div)
+        }
+    }
+
+    close() {
+        this.game.overlayMode = false
+        this.div.style.display = 'none'
+        for (var c of this.cards) { this.remove(c) }
+        this.cards = []
+    }
+
+    remove(card) {
+        let c = super.remove(card)
+        if (!c) {return}
+        card.overlay(false)
+        this.div.removeChild(card.div)
+    }
+}
+
 
 
 
@@ -54,7 +100,7 @@ class PlayPile extends Pile {
 
     add(card) { super.add(card); this.updatePosition() }
     updatePosition() {
-        super.updatePosition()
+        //super.updatePosition()
         var i = 0
         for (var c of this.cards) {
             c.x = this.x
@@ -95,65 +141,53 @@ class Hand extends Pile {
 class Deck extends Pile {
     constructor(options) {
         super(options)
-        this.div = document.createElement('div')
-        this.div.className = 'deck'
-        this.img = document.createElement('img')
-        this.img.className = 'deckImage'+this.idx
-        this.img.src = 'images/cardBack.png'
-        this.div.appendChild(this.img)
-        this.x = boardPositions.deck[this.idx].x
-        this.y = boardPositions.deck[this.idx].y
-    }
+        if (this.idx == 1) {
+            this.div = document.querySelector('.opPiles .deck')
+            this.showDeckBtn = document.querySelector('.opPiles .showDeck')
+        }
+        if (this.idx == 0) {
+            this.div = document.querySelector('.heroPiles .deck')
+            this.showDeckBtn = document.querySelector('.heroPiles .showDeck')
+        }
 
-    display() { 
-        this.updatePosition()
-        this.board.appendChild(this.div)
+        let draw_f = function () {this.player.draw(1)}
+        this.div.onclick = draw_f.bind(this)
+        this.showDeckBtn.onclick = this.overlay.bind(this)
     }
 }
+
+
+
 
 class DiscardPile extends Pile {
     constructor(options) {
         super(options)
-        this.div = document.createElement('div')
-        this.div.className = 'discardPile'
-        this.img = document.createElement('img')
-        this.img.className = 'discardImage'+this.idx
-        this.img.src = 'images/cardBack.png'
-        this.div.appendChild(this.img)
-        this.x = boardPositions.discard[this.idx].x
-        this.y = boardPositions.discard[this.idx].y
-    }
-
-    display() { 
-        this.updatePosition()
-        this.board.appendChild(this.div)
+        if (this.idx == 1) {this.div = document.querySelector('.opPiles .discardPile')}
+        if (this.idx == 0) {this.div = document.querySelector('.heroPiles .discardPile')}
+        this.div.onclick = this.overlay.bind(this)
     }
 }
+
+
+
 
 class SourcePile extends Pile {
     constructor(options) {
         super(options)
-    this.div = document.createElement('div')
-    this.div.className = 'sourcePile'
-    this.img = document.createElement('img')
-    this.img.className = 'sourceImage'+this.idx
-    this.img.src = 'images/cardBack.png'
-    this.div.appendChild(this.img)
-    this.x = boardPositions.sources[this.idx].x
-    this.y = boardPositions.sources[this.idx].y
-    }
-
-    display() { 
-        this.updatePosition()
-        this.board.appendChild(this.div)
+        if (this.idx == 1) {this.div = document.querySelector('.opPiles .sourcePile')}
+        if (this.idx == 0) {this.div = document.querySelector('.heroPiles .sourcePile')}
+        this.div.onclick = this.overlay.bind(this)
     }
 }
+
+
+
 
 class DamagePile extends Pile {
     constructor(options) {
         super(options)
-    }
-
-    display() { 
+        if (this.idx == 1) {this.div = document.querySelector('.opPiles .damagePile')}
+        if (this.idx == 0) {this.div = document.querySelector('.heroPiles .damagePile')}
+        this.div.onclick = this.overlay.bind(this)
     }
 }
