@@ -14,16 +14,32 @@ html(lang='en')
             .overlay
                 button.close Close
             .heroPiles.pileDiv
-                img(src='images/cardBack.png' class='deck pile')
-                img(src='images/cardBack.png' class='discardPile pile')
-                img(src='images/cardBack.png' class='sourcePile pile')
-                img(src='images/cardBack.png' class='damagePile pile')
+                .deck.pile
+                    img(src='images/cardBack.png' class='deckImage')
+                    .deckText.pileText 30
+                .discardPile.pile
+                    img(src='images/cardBack.png' class='discardImage')
+                    .discardText.pileText 0
+                .sourcePile.pile
+                    img(src='images/cardBack.png' class='sourceImage')
+                    .sourceText.pileText 0
+                .damagePile.pile
+                    img(src='images/cardBack.png' class='damageImage')
+                    .damageText.pileText 0
                 button.showDeck Show Deck
             .opPiles.pileDiv
-                img(src='images/cardBack.png' class='deck pile')
-                img(src='images/cardBack.png' class='discardPile pile')
-                img(src='images/cardBack.png' class='sourcePile pile')
-                img(src='images/cardBack.png' class='damagePile pile')
+                .deck.pile
+                    img(src='images/cardBack.png' class='deckImage')
+                    .deckText.pileText 30
+                .discardPile.pile
+                    img(src='images/cardBack.png' class='discardImage')
+                    .discardText.pileText 0
+                .sourcePile.pile
+                    img(src='images/cardBack.png' class='sourceImage')
+                    .sourceText.pileText 0
+                .damagePile.pile
+                    img(src='images/cardBack.png' class='damageImage')
+                    .damageText.pileText 0
                 button.showDeck Show Deck
         
 

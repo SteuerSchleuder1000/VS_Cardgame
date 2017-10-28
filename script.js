@@ -8,7 +8,12 @@ window.onload = function() {
     GAME = new Game()
     MOBILE = mobilecheck()
     if (MOBILE) {console.log('MOBILE')}
+    document.addEventListener('keypress', (event) => {
+        const keyName = event.key;
+        console.log('keypress event\n\n' + 'key: ' + keyName);
+    });
 }
+
 
 
 const boardPositions = {

@@ -179,12 +179,7 @@ class Card {
     }
 
     updatePosition() {
-        this.div.style.left = this.x+'vw'
-        this.div.style.top = this.y+'vh'
         this.div.style.zIndex = this.z
-
-        this.cardBack.style.left = this.x+'vw'
-        this.cardBack.style.top = this.y+'vh'
         this.cardBack.style.zIndex = this.z
     }
 
