@@ -34,13 +34,7 @@ class Player {
                 this.deck.add(card)
             }
         }
-        // } else {
-        //     for (let i=0;i<50;i++) {
-        //         let cardData = keyChoice(CARDS)
-        //         cardData.id = 'p'+this.idx+'_'+i
-        //         let c = new Card(this.options, cardData)
-        //         this.deck.add(c)
-        // }}
+        
 
         this.deck.shuffle()
         console.log(this.deck)
@@ -96,7 +90,6 @@ class Player {
         for (let i=0;i<nr;i++) {
             let c = this.deck.draw()
             this.hand.add(c)
-            c.display()
         }
     }
 

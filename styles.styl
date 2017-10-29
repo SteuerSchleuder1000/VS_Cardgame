@@ -71,8 +71,13 @@ body
             .pileText
                 font-weight: bold
                 position absolute
-                font-size: 200%
+                font-size: 300%
                 color white
+                top 35%
+                left 32%
+            .sourceText
+                font-size: 200%
+                left 0
                 
         .pileDiv
             position absolute
@@ -80,7 +85,7 @@ body
             flex-direction column
             justify-content: center;
             height 100%
-            width 10*_unit
+            width _pileWidth
             z-index 0
             .showDeck
                 width _pileWidth
@@ -106,7 +111,6 @@ body
     min-width $cardWidth
     background-color black
     position absolute
-    //border solid 0.2*_unit black
     overflow hidden
     border-radius 3%
     &.playPile
@@ -118,7 +122,6 @@ body
     &.hand
         transform: rotate(0deg) !important
         position relative
-        //display inline-block
         margin-left 1rem
         &.idx0
             align-self flex-end

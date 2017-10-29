@@ -17,7 +17,8 @@ class Pile {
 
     shuffle() { shuffle(this.cards) }
     count() {return this.cards.length}
-    add(card) {this.cards.push(card); card.pile = this}
+
+    add(card) { this.cards.push(card); card.pile = this; this.updateText()}
     remove(card) {
         if (this.idx < 2) {this.game.overlay.remove(card)}
         var idx = this.indexOf(card)
@@ -33,19 +34,14 @@ class Pile {
         for (var c of this.cards) { c.remove() }
         this.cards = []
     }
-    draw() {return this.cards.pop()}
+    draw() {let c = this.cards.pop(); this.updateText(); return c}
     display() {}
-    // updatePosition() {
-    //     this.div.style.left = this.x+'vw'
-    //     this.div.style.top = this.y+'vh'
-    //     this.div.style.zIndex = this.z
-    // }
     overlay() {
         if (this.game.overlayMode) {return}
         for (let c of this.cards) { this.game.overlay.add(c) }
         this.game.overlay.display()
     }
-    updateText() {}
+    updateText() {console.log('updateText')}
 }
 
 
@@ -59,7 +55,6 @@ class Overlay extends Pile {
     }
 
     add(card) { 
-        //super.add(card)
         this.cards.push(card);
     }
 
@@ -126,9 +121,10 @@ class Hand extends Pile {
 
     draw(nr) { return false }
 
-    add(card) { super.add(card); this.updatePosition() }
+    add(card) { super.add(card); this.updatePosition(); card.display() }
     remove(card) { var c = super.remove(card); this.updatePosition(); return c }
     sort() { this.cards.sort(function(a,b) {return (a.zones > b.zones) ? 1 : ((b.zones > a.zones) ? -1 : 0);} ) }
+
     updatePosition() {
         var count = this.count()
         this.sort()
@@ -144,22 +140,17 @@ class Hand extends Pile {
 class Deck extends Pile {
     constructor(options) {
         super(options)
-        if (this.idx == 1) {
-            this.div = document.querySelector('.opPiles .deck')
-            this.showDeckBtn = document.querySelector('.opPiles .showDeck')
-            this.textDiv = document.querySelector('.opPiles .deckText')
-        }
-        if (this.idx == 0) {
-            this.div = document.querySelector('.heroPiles .deck')
-            this.showDeckBtn = document.querySelector('.heroPiles .showDeck')
-            this.textDiv = document.querySelector('.heroPiles .deckText')
-        }
+        let query = this.idx==1 ? '.opPiles':'.heroPiles'
 
-        let draw_f = function () {this.player.draw(1)}
+        this.div = document.querySelector(query+' .deck')
+        this.showDeckBtn = document.querySelector(query+' .showDeck')
+        this.textDiv = document.querySelector(query+' .deckText')
+
+        let draw_f = function () {this.player.draw(1); console.log('draw')}
         this.div.onclick = draw_f.bind(this)
         this.showDeckBtn.onclick = this.overlay.bind(this)
     }
-
+    
     updateText() { this.textDiv.innerHTML = this.count() }
 }
 
@@ -169,10 +160,12 @@ class Deck extends Pile {
 class DiscardPile extends Pile {
     constructor(options) {
         super(options)
-        if (this.idx == 1) {this.div = document.querySelector('.opPiles .discardPile')}
-        if (this.idx == 0) {this.div = document.querySelector('.heroPiles .discardPile')}
+        let query = this.idx==1 ? '.opPiles':'.heroPiles'
+        this.div = document.querySelector(query+' .discardPile')
+        this.textDiv = document.querySelector(query+' .discardText')
         this.div.onclick = this.overlay.bind(this)
     }
+    updateText() { this.textDiv.innerHTML = this.count() }
 }
 
 
@@ -181,9 +174,27 @@ class DiscardPile extends Pile {
 class SourcePile extends Pile {
     constructor(options) {
         super(options)
-        if (this.idx == 1) {this.div = document.querySelector('.opPiles .sourcePile')}
-        if (this.idx == 0) {this.div = document.querySelector('.heroPiles .sourcePile')}
+        let query = this.idx==1 ? '.opPiles':'.heroPiles'
+        this.div = document.querySelector(query+' .sourcePile')
+        this.textDiv = document.querySelector(query+' .sourceText')
         this.div.onclick = this.overlay.bind(this)
+    }
+    updateText() { 
+        let colors = []
+        let count = []
+
+        for (let c of this.cards) {
+            let idx = colors.indexOf(c.color)
+            if (idx == -1) {
+                colors.push(c.color)
+                count.push(1)
+            } else {count[idx]+=1}
+        }
+        let text = ''
+        for (let i=0;i<colors.length;i++) {
+            text += colors[i] + ': '+ count[i]+'<br>'
+        }
+        this.textDiv.innerHTML = text
     }
 }
 
@@ -193,8 +204,14 @@ class SourcePile extends Pile {
 class DamagePile extends Pile {
     constructor(options) {
         super(options)
-        if (this.idx == 1) {this.div = document.querySelector('.opPiles .damagePile')}
-        if (this.idx == 0) {this.div = document.querySelector('.heroPiles .damagePile')}
+        let query = this.idx==1 ? '.opPiles':'.heroPiles'
+        this.div = document.querySelector(query+' .damagePile')
         this.div.onclick = this.overlay.bind(this)
+        this.textDiv = document.querySelector(query+' .damageText')
+    }
+    updateText() { 
+        let damage = 0
+        for (var c of this.cards) { damage += c.power}
+        this.textDiv.innerHTML = damage
     }
 }
