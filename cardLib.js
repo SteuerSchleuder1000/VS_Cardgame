@@ -45,6 +45,10 @@ const LINKS = {
     Star:  `<div class='colorSymbol' style='background-color:${COLORS.Star}; color: white;'>Star</div>`,
 }
 
+const E = {
+    
+}
+
 for (var i=1;i<10;i++) {
     A['Block'+i] = {name:'Block',img:'images/shield_icon_black.png',img_white:'images/shield_icon_white.png',text:i}
 }

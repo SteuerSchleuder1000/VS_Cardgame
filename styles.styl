@@ -34,8 +34,8 @@ body
         position absolute
     #board
         margin-top: 0%;
-        display: flex
-        flex-direction row
+        display: grid
+        // flex-direction row
         position absolute
         left 0
         top 0
@@ -100,6 +100,8 @@ body
                     margin-left auto
             &.opPiles
                 left 0
+                height 90%
+                margin-top 5%
                 margin-left 1*_unit
                 
 
@@ -108,7 +110,7 @@ body
 
 .card
     height $cardHeight
-    min-width $cardWidth
+    width $cardWidth
     background-color black
     position absolute
     overflow hidden
@@ -125,9 +127,11 @@ body
         margin-left 1rem
         &.idx0
             align-self flex-end
+            grid-row 2
             margin-bottom: 1rem
         &.idx1
             top 0
+            grid-row 1
     &.overlayMode
         position relative
         top 0 !important
