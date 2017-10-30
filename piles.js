@@ -33,6 +33,7 @@ class Pile {
     reset() { 
         for (var c of this.cards) { c.remove() }
         this.cards = []
+        this.updateText()
     }
     draw() {let c = this.cards.pop(); this.updateText(); return c}
     display() {}
@@ -41,7 +42,8 @@ class Pile {
         for (let c of this.cards) { this.game.overlay.add(c) }
         this.game.overlay.display()
     }
-    updateText() {console.log('updateText')}
+    updateText() { }
+    switchBtn(btnIdx) { for (let c of this.cards) { c.switchBtn(btnIdx)} }
 }
 
 
@@ -91,12 +93,13 @@ class Overlay extends Pile {
 class PlayPile extends Pile {
     constructor(options) {
         super(options)
-        this.x = boardPositions.play[this.idx].x
-        this.y = boardPositions.play[this.idx].y
+        
         this.class = 'playPile idx'+this.idx
+        let query = (this.idx==0) ? '.heroPile':'.opPile'
+        this.div = document.querySelector('#board #playPile '+query)
     }
 
-    add(card) { super.add(card); this.updatePosition() }
+    add(card) { super.add(card); card.parentDiv = this.div ;this.updatePosition(); card.play() }
     updatePosition() {
         var i = 0
         for (var c of this.cards) {
@@ -117,11 +120,13 @@ class PlayPile extends Pile {
 class Hand extends Pile {
     constructor(options) {
         super(options)
+        let query = (this.idx==0) ? '#heroHand':'#opHand'
+        this.div = document.querySelector('#board '+query)
     }
 
     draw(nr) { return false }
 
-    add(card) { super.add(card); this.updatePosition(); card.display() }
+    add(card) { super.add(card); card.parentDiv = this.div; this.updatePosition(); card.display() }
     remove(card) { var c = super.remove(card); this.updatePosition(); return c }
     sort() { this.cards.sort(function(a,b) {return (a.zones > b.zones) ? 1 : ((b.zones > a.zones) ? -1 : 0);} ) }
 
@@ -192,7 +197,7 @@ class SourcePile extends Pile {
         }
         let text = ''
         for (let i=0;i<colors.length;i++) {
-            text += colors[i] + ': '+ count[i]+'<br>'
+            text += L[colors[i]+'_e'] + ': '+ count[i]+'<br>'
         }
         this.textDiv.innerHTML = text
     }

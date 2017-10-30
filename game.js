@@ -4,28 +4,63 @@ class Game {
     constructor() {
         this.board = document.querySelector('#board')
         this.resetBtn = document.querySelector('#resetBtn')
-        this.drawP1Btn = document.querySelector('#drawP1')
-        this.drawP2Btn = document.querySelector('#drawP2')
-        this.overlay = document.querySelector('#board .overlay')
 
         this.setup()
 
-        this.f_1 = function () {this.player1.draw(1)}
-        this.f_2 = function () {this.player2.draw(1)}
-        this.drawP1Btn.onclick = this.f_1.bind(this)
-        this.drawP2Btn.onclick = this.f_2.bind(this)
 
         this.overlayMode = false
 
 
         this.resetBtn.onclick = this.reset.bind(this)
+
+        document.addEventListener('keypress', (event) => {
+            const key = event.key;
+
+            switch(key) {
+
+                case '1':
+                    this.switchBtn(0);
+                    break
+
+                case '2':
+                    this.switchBtn(1)
+                    break
+
+                case '3':
+                    this.switchBtn(3)
+                    break
+
+                case '4':
+                    this.switchBtn(2)
+                    break
+
+                case '5':
+                    this.switchBtn(4)
+                    break
+
+                case '6':
+                    this.switchBtn(5)
+                    break
+
+                case '7':
+                    this.switchBtn(6)
+                    break
+            }
+        });
         
     }
 
+    switchBtn(btnIdx) {
+        this.player1.switchBtn(btnIdx)
+        this.player2.switchBtn(btnIdx)
+        this.overlay.switchBtn(btnIdx)
+    }
+
     setup() {
+        this.overlay = new Overlay({board:this.board,game:this,idx:2})
         this.player1 = new Player({board:this.board,game:this,idx:0})
         this.player2 = new Player({board:this.board,game:this,idx:1})
-        this.overlay = new Overlay({board:this.board,game:this,idx:2})
+        
     }
 
     reset() {

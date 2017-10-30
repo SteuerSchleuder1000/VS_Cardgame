@@ -1,7 +1,7 @@
 
 const COLORS = {
-    Iron: '#732f2f',
-    Spark: '#d88811',
+    Scrap: '#732f2f',
+    Furnace: '#d88811',
     Thunder: '#4989a9',
     Storm: '#3e3e3e',
     Venom: '#222',
@@ -11,34 +11,36 @@ const COLORS = {
 }
 
 const ZONES = {
-    A: {name:'Strength',img:'images/symbol1_black.png', img_white:'images/symbol1_white.png'},
-    B: {name:'Strength',img:'images/symbol2_black.png', img_white:'images/symbol2_white.png'},
-    C: {name:'Strength',img:'images/symbol3_black.png', img_white:'images/symbol3_white.png'},
-    D: {name:'Strength',img:'images/symbol4_black.png', img_white:'images/symbol4_white.png'},
+    A: {name:'Strength',img:'images/symbols/symbol1_black.png', img_white:'images/symbols/symbol1_white.png'},
+    B: {name:'Strength',img:'images/symbols/symbol5_black.png', img_white:'images/symbols/symbol5_white.png'},
+    C: {name:'Strength',img:'images/symbols/symbol6_black.png', img_white:'images/symbols/symbol6_white.png'},
+    D: {name:'Strength',img:'images/symbols/symbol9_black.png', img_white:'images/symbols/symbol9_white.png'},
 }
 
 const A = {
-    Block:      {name:'Block',  img:'images/shield_icon_black.png', img_white:'images/shield_icon_white.png',   text:''},
-    BlockX:     {name:'Block',  img:'images/shield_icon_black.png', img_white:'images/shield_icon_white.png',   text:'X'},
-    Speed:      {name:'Speed',  img:'images/speed_icon_black.png',  img_white:'images/speed_icon_white.png',    text:null},
-    LinkA:      {name:'LinkA',  img:ZONES.A.img,  img_white:ZONES.A.img_white,                                  text:null},
-    LinkB:      {name:'LinkB',  img:ZONES.B.img,  img_white:ZONES.B.img_white,                                  text:null},
-    LinkC:      {name:'LinkC',  img:ZONES.C.img,  img_white:ZONES.C.img_white,                                  text:null},
-    LinkD:      {name:'LinkD',  img:ZONES.D.img,  img_white:ZONES.D.img_white,                                  text:null}
+    Block:      {name:'Block',  img:'images/symbols/shield_icon_black.png', img_white:'images/symbols/shield_icon_white.png',   text:''},
+    BlockX:     {name:'Block',  img:'images/symbols/shield_icon_black.png', img_white:'images/symbols/shield_icon_white.png',   text:'X'},
+    Speed:      {name:'Speed',  img:'images/symbols/speed_icon_black.png',  img_white:'images/symbols/speed_icon_white.png',    text:null},
+    // LinkA:      {name:'LinkA',  img:ZONES.A.img,  img_white:ZONES.A.img_white,                                  text:null},
+    // LinkB:      {name:'LinkB',  img:ZONES.B.img,  img_white:ZONES.B.img_white,                                  text:null},
+    // LinkC:      {name:'LinkC',  img:ZONES.C.img,  img_white:ZONES.C.img_white,                                  text:null},
+    // LinkD:      {name:'LinkD',  img:ZONES.D.img,  img_white:ZONES.D.img_white,                                  text:null}
 }
 
 
-const LINKS = {
-    A: `<img class='linkSymbol s1' src='images/symbol1_black.png'></img>`,
-    B: `<img class='linkSymbol s1' src='images/symbol2_black.png'></img>`,
-    C: `<img class='linkSymbol s1' src='images/symbol3_black.png'></img>`,
-    D: `<img class='linkSymbol s1' src='images/symbol4_black.png'></img>`,
+const L = {
+    A: `<img class='linkSymbol s1' src=${ZONES.A.img}></img>`,
+    B: `<img class='linkSymbol s1' src=${ZONES.B.img}></img>`,
+    C: `<img class='linkSymbol s1' src=${ZONES.C.img}></img>`,
+    D: `<img class='linkSymbol s1' src=${ZONES.D.img}></img>`,
     Speed: `<img class='linkSymbol' src=${A.Speed.img}></img>`,
     Block: `<img class='linkSymbol' src=${A.Block.img}></img>`,
     Thunder: `<div class='colorSymbol' style='background-color:${COLORS.Thunder}; color: white;'>Thunder</div>`,
     Storm:  `<div class='colorSymbol' style='background-color:${COLORS.Storm}; color: white;'>Storm</div>`,
-    Iron:  `<div class='colorSymbol' style='background-color:${COLORS.Iron}; color: white;'>Iron</div>`,
-    Spark:  `<div class='colorSymbol' style='background-color:${COLORS.Spark}; color: white;'>Spark</div>`,
+    Scrap:  `<div class='colorSymbol' style='background-color:${COLORS.Scrap}; color: white;'>Scrap</div>`,
+    Scrap_e:  `<div class='colorSymbol' style='background-color:${COLORS.Scrap}; color: white;'>S</div>`,
+    Furnace:  `<div class='colorSymbol' style='background-color:${COLORS.Furnace}; color: white;'>Furnace</div>`,
+    Furnace_e:  `<div class='colorSymbol' style='background-color:${COLORS.Furnace}; color: white;'>F</div>`,
     Gold:  `<div class='colorSymbol' style='background-color:${COLORS.Gold}; color: black;'>Gold</div>`,
     Venom:  `<div class='colorSymbol' style='background-color:${COLORS.Venom}; color: white;'>Venom</div>`,
     Aurora:  `<div class='colorSymbol' style='background-color:${COLORS.Aurora}; color: white;'>Aurora</div>`,
@@ -50,7 +52,7 @@ const E = {
 }
 
 for (var i=1;i<10;i++) {
-    A['Block'+i] = {name:'Block',img:'images/shield_icon_black.png',img_white:'images/shield_icon_white.png',text:i}
+    A['Block'+i] = {name:'Block',img:'images/symbols/shield_icon_black.png',img_white:'images/symbols/shield_icon_white.png',text:i}
 }
 
 
@@ -94,72 +96,87 @@ const DL_Star = [
 
 
 const DL_Rust = [
-    {name:'Ignition Strike',nr:5},
-    {name:'Molten Link',nr:4},
-    {name:'Scorching Grasp',nr:2},
-    {name:'Foundry Wall',nr:4},
-    {name:'Shrapnel Blast',nr:3},
-    {name:'Iron Sparks',nr:2},
-    {name:'Slag Storm',nr:5},
-    {name:'Rust Kick',nr:2},
-    {name:'Combustion',nr:3},
+    // Level 0
+    {name:'Scorching Blow',nr:5},   // Scrap
+    {name:'Scrap Armor',nr:4},      // Scrap
+    {name:'Spark Spray',nr:4},      // Furnace
+    {name:'Shrapnel Blast',nr:4},   // Scrap
+
+    // Level 1
+    {name:'Furnace Strike',nr:4},   // Furnace
+    {name:'Searing Chains',nr:3},   // Furnace
+    {name:'Rust Kick',nr:3},        // Scrap
+
+    // Level 2
+    {name:'Slag Storm',nr:2},       // Scrap
+    {name:'Meltdown',nr:1},         // Furnace
 ]
 
 
 
-
+// ${L.A}<b> Link:</b>
+// Foundry: Molten, Forge, Rust, Slag, Molten, Iron, Searing, Ignition, Furnace, Scrap, Power, Anvil, crucible Welding
+// Shrapnel, Chains, Meltdown, SMoke, stack
+// SCRAP VS FURNACE
 
 
 var CARDS = {
 
-    'Ignition Strike': 
+
+    // SCRAP DECK ...
+
+    'Furnace Strike': 
     {
-        name: 'Ignition Strike',
-        power: 2, 
-        color: 'Spark',
+        name: 'Furnace Strike',
+        power: 3, 
+        color: 'Furnace',
+        energy: [],
         zone: 'A', 
-        attributes: [A.Block1],
-        text:`${LINKS.A}<b> Link:</b> +1 Power<br>
-             Look at the top card of your deck. If it is a ${LINKS.Spark} card add it to your sources.`,
+        attributes: [],
+        text:`Can not be evaded by ${L.Speed} moves.<br>${L.Furnace_e}: +2 Power.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
 
-    'Molten Link': 
+    'Searing Chains': 
     {
-        name: 'Molten Link',
-        power: 1, 
-        color: 'Spark',
+        name: 'Searing Chains',
+        power: 2, 
+        color: 'Furnace',
+        energy: [],
         zone: 'B', 
-        attributes: [],
-        text:`Draw 1 cards.<br>Reveal any number of ${LINKS.Spark} cards from hand: Gain that much power.`,
+        attributes: [A.Block1],
+        text:`${L.Furnace_e}: +1 Power<br>Ignore ${L.Speed} bonus on your opponents attack.<br>
+                Blocked: Look at your opponents hand and discard 1 card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
 
 
-    'Scorching Grasp': 
+    'Scorching Blow': 
     {
-        name: 'Scorching Grasp', 
-        power: 4, 
-        color: 'Spark',
-        zone: 'AB', 
+        name: 'Scorching Blow', 
+        power: 3, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
         attributes: [],
-        text:`${LINKS.Iron}<b> Link:</b> Your opponent may not play ${LINKS.C} cards`,
+        text:`Add 1 ${L.Furnace} card from your hand to your sources.<br>${L.Scrap}<b> Link:</b> Draw 1 card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
 
-    'Foundry Wall': 
+    'Scrap Armor': 
     {
-        name: 'Foundry Wall',
+        name: 'Scrap Armor',
         power: 0, 
-        color:'Iron',
+        color:'Scrap',
+        energy: [],
         zone: 'B', 
-        attributes: [A.Block5],
-        text:`Block 4+ Power: Cancel this attack and play a ${LINKS.A} card.`,
+        attributes: [A.Block4],
+        text:`Block 3+ Power: Draw 3 cards then discard 2 cards.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -169,24 +186,25 @@ var CARDS = {
     {
         name: 'Shrapnel Blast',
         power: 1, 
-        color:'Iron',
+        color:'Scrap',
+        energy: [],
         zone: 'C', 
         attributes: [A.Speed],
-        text:`Put 2 Iron cards in your discard pile ontop of your deck: Gain +2 Power.<br>
-                ${LINKS.B} <b>Link:</b> Can not be dodged.`,
+        text:`Put 2 discarded ${L.Scrap} cards under your deck: +2 Attack Power`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },   
 
 
-    'Iron Sparks':                     
+    'Spark Spray':                     
     {
-        name: 'Iron Sparks',
-        power: 1, 
-        color:'Iron',
-        zone: 'B', 
-        attributes: [A.Speed],
-        text:`If this dodges an attack: you may draw a card and cancel it into a Iron attack.`,
+        name: 'Spark Spray',
+        power: 2, 
+        color:'Furnace',
+        energy: [],
+        zone: 'C', 
+        attributes: [],
+        text:`<b>COUNTERS ${L.A}:</b> Draw 1 card<br>${L.Furnace_e} ${L.Furnace_e}: +2 Power`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -196,10 +214,11 @@ var CARDS = {
     {
         name: 'Slag Storm',
         power: 3, 
-        color:'Iron',
-        zone: 'B', 
+        color:'Scrap',
+        energy: [],
+        zone: 'AD', 
         attributes: [A.Speed],
-        text:`Discard 2 cards: If this card is in your discard pile you may add this to your current ${LINKS.Iron} attack.`,
+        text:`<b>SUPER ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}:</b> Attach 2 discarded ${L.Scrap} cards to this attack.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -207,30 +226,35 @@ var CARDS = {
 
     'Rust Kick':                     
     {
-        name: 'Slag Storm',
+        name: 'Rust Kick',
         power: 3, 
-        color:'Iron',
-        zone: 'B', 
+        color:'Scrap',
+        energy:[],
+        zone: 'C', 
         attributes: [A.Speed],
-        text:`Put 2 ${LINKS.Iron} under your deck: can not be blocked.`,
+        text:`<b>COUNTER ${L.A} and ${L.C}</b><br>Add 1 discarded ${L.Scrap} card to your hand or to your sources<br>
+            ${L.Scrap_e}: +2 Attack`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
 
-    'Combustion':                     
+    'Meltdown':                     
     {
-        name: 'Slag Storm',
-        power: 1, 
-        color:'Spark',
-        zone: 'B', 
+        name: 'Meltdown',
+        power: 5, 
+        color:'Furnace',
+        energy:[],
+        zone: 'DD', 
         attributes: [A.Speed],
-        text:`<b>${LINKS.Spark} Links</b>: Add this card as damage.`,
+        text:`<b>SUPER ${L.Furnace_e} ${L.Furnace_e} ${L.Furnace_e}:</b> Your opponent may not play ${L.A}, ${L.B} or ${L.C} attacks`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
 
+
+    // THUNDER DECK ...
 
     'Thunder Fist':
     {
@@ -254,8 +278,8 @@ var CARDS = {
         color:'Storm',
         zone: 'C', 
         attributes: [A.Speed,A.Speed],
-        text:`<b>VS ${LINKS.A}:</b> Destroy a source in the game.<br>
-                ${LINKS.A}<b> Link:</b> Gain +2 Power`,
+        text:`<b>VS ${L.A}:</b> Destroy a source in the game.<br>
+                ${L.A}<b> Link:</b> Gain +2 Power`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -268,7 +292,7 @@ var CARDS = {
         color:'Storm',
         zone: 'C', 
         attributes: [],
-        text:`Put 2 previous ${LINKS.Storm} cards in your play pile under your deck: Gain ${LINKS.Speed}`,
+        text:`Put 2 previous ${L.Storm} cards in your play pile under your deck: Gain ${L.Speed}`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -281,7 +305,7 @@ var CARDS = {
         zone: 'D', 
         attributes: [],
         text:`Reveal the top card of your deck: Erase it or add it as a source.<br>
-            ${LINKS.Thunder}<b> Link:</b> Gain +2 Power and ${LINKS.Speed}`,
+            ${L.Thunder}<b> Link:</b> Gain +2 Power and ${L.Speed}`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -293,7 +317,7 @@ var CARDS = {
         color:'Thunder',
         zone: 'B', 
         attributes: [A.Speed],
-        text:`Restore 2 ${LINKS.Thunder} Cards as Energy.<br>
+        text:`Restore 2 ${L.Thunder} Cards as Energy.<br>
             <b>Erased:</b> Store this card as Energy`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -307,7 +331,7 @@ var CARDS = {
         color:'Thunder',
         zone: 'AD', 
         attributes: [A.Speed],
-        text:`${LINKS.A}<b> Link:</b> Can not be blocked.<br>
+        text:`${L.A}<b> Link:</b> Can not be blocked.<br>
             <b>Erased:</b> Add this to your hand and add 1 card from your hand to your sources.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -321,7 +345,7 @@ var CARDS = {
         color:'Storm',
         zone: 'B', 
         attributes: [A.Speed],
-        text:`${LINKS.C}<b> Link:</b> Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
+        text:`${L.C}<b> Link:</b> Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -334,8 +358,8 @@ var CARDS = {
         color:'Storm',
         zone: 'D', 
         attributes: [A.Speed],
-        text:`${LINKS.D}<b> Link:</b> Scry 3<br>
-                Erase 1 card: If it was a ${LINKS.Storm} card, gain its Power and its attributes`,
+        text:`${L.D}<b> Link:</b> Scry 3<br>
+                Erase 1 card: If it was a ${L.Storm} card, gain its Power and its attributes`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -348,8 +372,8 @@ var CARDS = {
         color:'Storm',
         zone: 'A', 
         attributes: [A.Speed],
-        text:`${LINKS.B}<b> Link:</b> Draw 1 Card then discard 1 card.<br>
-                Show any number of ${LINKS.Storm} Cards from hand, then <b>Erase</b> that many cards.`,
+        text:`${L.B}<b> Link:</b> Draw 1 Card then discard 1 card.<br>
+                Show any number of ${L.Storm} Cards from hand, then <b>Erase</b> that many cards.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -362,7 +386,7 @@ var CARDS = {
         color:'Venom',
         zone: 'C', 
         attributes: [A.Speed],
-        text:`${LINKS.A}<b> Link:</b> Can not be blocked by slower attacks.<br>
+        text:`${L.A}<b> Link:</b> Can not be blocked by slower attacks.<br>
                 <b>Hit: Afflict 1</b>`,
         image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -389,7 +413,7 @@ var CARDS = {
         color:'Gold',
         zone: 'A', 
         attributes: [],
-        text:`Turn up up to 3 sources you own. Gain +1 Power for each of your ${LINKS.Gold} sources.`,
+        text:`Turn up up to 3 sources you own. Gain +1 Power for each of your ${L.Gold} sources.`,
         image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -402,7 +426,7 @@ var CARDS = {
         color:'Gold',
         zone: 'B', 
         attributes: [],
-        text:`<b>VS ${LINKS.A}:</b> Gain +2 Power.<br><b>2x</b>${LINKS.Gold}: Gain ${LINKS.Speed}`,
+        text:`<b>VS ${L.A}:</b> Gain +2 Power.<br><b>2x</b>${L.Gold}: Gain ${L.Speed}`,
         image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -414,7 +438,7 @@ var CARDS = {
         color:'Venom',
         zone: 'D', 
         attributes: [A.Block3],
-        text:`Look at at and rearrange the top 3 cards of your deck. You may add 2 ${LINKS.Venom} Cards amongst them to your sources.`,
+        text:`Look at at and rearrange the top 3 cards of your deck. You may add 2 ${L.Venom} Cards amongst them to your sources.`,
         image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -427,7 +451,7 @@ var CARDS = {
         color:'Venom',
         zone: 'B', 
         attributes: [],
-        text:`<b>Afflict 1</b><br>Your opponents current and next attack loose Power equal to the number of ${LINKS.Venom} sources you own.`,
+        text:`<b>Afflict 1</b><br>Your opponents current and next attack loose Power equal to the number of ${L.Venom} sources you own.`,
         image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -439,7 +463,7 @@ var CARDS = {
         color:'Venom',
         zone: 'C', 
         attributes: [],
-        text:`${LINKS.A}<b> Link:</b> Gain ${LINKS.Speed}<br>${LINKS.B}<b> Link:</b> Gain +3${LINKS.Block}<br><b>Blocked: Afflict 3</b>`,
+        text:`${L.A}<b> Link:</b> Gain ${L.Speed}<br>${L.B}<b> Link:</b> Gain +3${L.Block}<br><b>Blocked: Afflict 3</b>`,
         image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -463,7 +487,7 @@ var CARDS = {
         color:'Venom',
         zone: 'D', 
         attributes: [A.Block4],
-        text:`Block 3+ Power: <b>Afflict 1</b><br>You may cancel this into a ${LINKS.A} card.`,
+        text:`Block 3+ Power: <b>Afflict 1</b><br>You may cancel this into a ${L.A} card.`,
         image: 'images/cards/dragon.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -488,7 +512,7 @@ var CARDS = {
         color:'Star',
         zone: 'AD', 
         attributes: [],
-        text:`Reveal the top card of your deck. If it is a ${LINKS.Aurora} card put it to your sources.`,
+        text:`Reveal the top card of your deck. If it is a ${L.Aurora} card put it to your sources.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -501,7 +525,7 @@ var CARDS = {
         color:'Star',
         zone: 'B', 
         attributes: [A.Block1],
-        text:`Restore 1 ${LINKS.Star} source<br>Gain +1 ${LINKS.Block} for each ${LINKS.Star} source you own`,
+        text:`Restore 1 ${L.Star} source<br>Gain +1 ${L.Block} for each ${L.Star} source you own`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -514,7 +538,7 @@ var CARDS = {
         color:'Star',
         zone: 'C', 
         attributes: [A.Block1],
-        text:`Swap 1 source you own with a card in hand.<br>${LINKS.A}<b> Link:</b> Align`,
+        text:`Swap 1 source you own with a card in hand.<br>${L.A}<b> Link:</b> Align`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -541,7 +565,7 @@ var CARDS = {
         color:'Star',
         zone: 'CD', 
         attributes: [A.Block1],
-        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${LINKS.Aurora} card to your sources.`,
+        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${L.Aurora} card to your sources.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -554,8 +578,8 @@ var CARDS = {
         color:'Star',
         zone: 'CD', 
         attributes: [A.Block3],
-        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${LINKS.Aurora} card to your sources.<br>
-                Cancel this card into a ${LINKS.A} attack.`,
+        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${L.Aurora} card to your sources.<br>
+                Cancel this card into a ${L.A} attack.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -568,7 +592,7 @@ var CARDS = {
         color:'Star',
         zone: 'C', 
         attributes: [A.Speed],
-        text:`Blocked: Add this to your sources.<br>${LINKS.Star}<b> Link:</b> Attach a ${LINKS.Star} source to this card.`,
+        text:`Blocked: Add this to your sources.<br>${L.Star}<b> Link:</b> Attach a ${L.Star} source to this card.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -581,7 +605,7 @@ var CARDS = {
         color:'Aurora',
         zone: 'C', 
         attributes: [A.Speed],
-        text:`Discard to give your attack ${LINKS.Speed}<br>Swap 1 source you own with a card in hand.`,
+        text:`Discard to give your attack ${L.Speed}<br>Swap 1 source you own with a card in hand.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -593,7 +617,7 @@ var CARDS = {
         color:'Aurora',
         zone: 'C', 
         attributes: [A.Speed],
-        text:`Reveal ${LINKS.Aurora} cards in your hand and gain +1 Power for each.<br>If this has 5+ Power destroy 1 source on the board.`,
+        text:`Reveal ${L.Aurora} cards in your hand and gain +1 Power for each.<br>If this has 5+ Power destroy 1 source on the board.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },

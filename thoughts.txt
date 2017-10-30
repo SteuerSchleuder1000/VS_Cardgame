@@ -1,0 +1,56 @@
+
+
+
+
+Todo 
+
+
+- Junk deck
+
+30 cards
+
+includes
+
+- finisher
+- card draw
+- energy production
+- discard
+- energy destruction
+
+Card Name
+Purpose
+
+
+Level 0
+
+- Scorching Blow                    x5
+Mid damage, add energy
+
+- Scrap Armor                       x4
+block stuff, add scrap to discard?
+
+
+- Shrapnel Blast                    x4
+evade, use scrap for +power
+
+
+- Spark Spray -> name change     x4
+counter stuff, use furnace for +
+
+
+Level 1
+
+- Furnace Strike                    x4
+use furnace -> high damage
+
+- Rust Kick                         x3
+counter, recycle/ use scrap
+
+
+- Searing Chains                    x3
+opponent lock down -> discard + slow
+
+Level 2
+
+- Slag Storm                        x2
+- Meltdown                          x1

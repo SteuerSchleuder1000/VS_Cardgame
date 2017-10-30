@@ -3,6 +3,7 @@
 class Player {
     constructor(options) {
         this.options = options
+        this.game = options.game
         this.name = options.idx ? 'Player2': 'Player1'
         this.idx = options.idx
         options.player = this
@@ -20,7 +21,7 @@ class Player {
         this.options.x = 0
         this.options.y = 0
         this.options.player = this
-        let dl = choice([DL_Thunder,DL_Snake,DL_Star,DL_Rust])
+        let dl = choice([DL_Rust])//[DL_Thunder,DL_Snake,DL_Star,DL_Rust])
 
         
         let count = 0
@@ -44,10 +45,10 @@ class Player {
 
 
 
-    play(card) {        
+    play(card) {
+        card.remove()    
         card.pile.remove(card)
         this.playPile.add(card)
-        card.play()
     }
 
     toDiscard(card) {
@@ -68,6 +69,7 @@ class Player {
     }
 
     toHand(card) {
+        card.remove()
         card.pile.remove(card)
         this.hand.add(card)
     }
@@ -89,15 +91,20 @@ class Player {
         if (nr>this.deck.count()) {nr = this.deck.count()}
         for (let i=0;i<nr;i++) {
             let c = this.deck.draw()
-            this.hand.add(c)
+            this.toHand(c)
         }
+    }
+
+    switchBtn(btnIdx) { 
+        this.hand.switchBtn(btnIdx)
+        this.playPile.switchBtn(btnIdx)
     }
 
     reset() {
         this.hand.reset()
         this.playPile.reset()
-        // this.deck.reset()
-        // this.sourcePile.reset()
-        // this.discardPile.reset()
+        this.deck.reset()
+        this.sourcePile.reset()
+        this.discardPile.reset()
     }
 }

@@ -14,9 +14,10 @@ class Card {
         this.x = options.x
         this.y = options.y
         this.z = options.z
-        this.scale = this.player.idx ? 0.5:1
-        this.flipped = this.player.idx ? true : false
+        this.scale = this.player.idx ? 0.8:1
+        this.flipped = this.player.idx ? false : false
         this.overlayMode = false
+        this.parentDiv = this.board
 
         if (!cardOptions) { cardOptions = keyChoice(CARDS); this.id = randInt(0,1000000) }
 
@@ -134,13 +135,13 @@ class Card {
         let arrowLeft = document.createElement('img')
         arrowLeft.className = 'arrow left'
         arrowLeft.id = 'left'
-        arrowLeft.src = 'images/speed_icon_white.png'
+        arrowLeft.src = 'images/symbols/speed_icon_white.png'
         arrowLeft.onclick = this.updateButtons.bind(this)
 
         let arrowRight = document.createElement('img')
         arrowRight.className = 'arrow right'
         arrowRight.id = 'right'
-        arrowRight.src = 'images/speed_icon_white.png'
+        arrowRight.src = 'images/symbols/speed_icon_white.png'
         arrowRight.onclick = this.updateButtons.bind(this)
 
         this.playDiv.appendChild(arrowLeft)
@@ -184,12 +185,12 @@ class Card {
     }
 
     updateScale() {
-        this.div.style.height = 22.5*this.scale + 'vw'
-        this.div.style.width = 15.75*this.scale + 'vw'
+        this.div.style.height = 31.5*this.scale + 'vh'
+        this.div.style.width = 22.05*this.scale + 'vh'
         this.div.style.zoom = this.scale
 
-        this.cardBack.style.height = 22.5*this.scale + 'vw'
-        this.cardBack.style.width = 15.75*this.scale + 'vw'
+        this.cardBack.style.height = 31.5*this.scale + 'vh'
+        this.cardBack.style.width = 22.05*this.scale + 'vh'
         this.cardBack.style.zoom = this.scale
     }
 
@@ -203,16 +204,19 @@ class Card {
         if (e) {id = e.target.id}
         if (id == 'left') { this.activeBtnIdx = (this.activeBtnIdx + this.buttons.length -1)%this.buttons.length }
         if (id == 'right') { this.activeBtnIdx = (this.activeBtnIdx + this.buttons.length +1)%this.buttons.length }
+
         for (let i=0;i<this.buttons.length;i++) {
             if (i==this.activeBtnIdx) { this.buttons[i].style.display = 'block' }
             else { this.buttons[i].style.display = 'none' }
         }
     }
 
+    switchBtn(btnIdx) { this.activeBtnIdx = btnIdx; this.updateButtons() }
+
     play() {
         if (this.flipped) {this.flip()}
         let rng = randInt(-5,5)
-        this.div.style.webkitTransform = `rotate(${rng}deg)`
+        //this.div.style.webkitTransform = `rotate(${rng}deg)`
         this.div.style.transform = `rotate(${rng}deg)`
         this.display()
     }
@@ -220,8 +224,8 @@ class Card {
     display() { 
         if (this.displayed) {return}
         this.displayed = true
-        if (this.flipped) { this.board.appendChild(this.cardBack) }
-        else { this.board.appendChild(this.div) }
+        if (this.flipped) { this.parentDiv.appendChild(this.cardBack) }
+        else { this.parentDiv.appendChild(this.div) }
     }
 
     overlay(bool) {
@@ -238,8 +242,8 @@ class Card {
     remove() { 
         if (!this.displayed) {return}
         this.displayed = false
-        if (this.flipped) { this.board.removeChild(this.cardBack) }
-        else { this.board.removeChild(this.div) }
+        if (this.flipped) { this.parentDiv.removeChild(this.cardBack) }
+        else { this.parentDiv.removeChild(this.div) }
     }
 
     flip() {

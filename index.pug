@@ -8,9 +8,13 @@ html(lang='en')
     body
         .buttons
             button#resetBtn Reset
-            button#drawP1 Draw P1
-            button#drawP2 Draw P2
         #board
+            img(id='bgImage' src='images/bgImage.jpg')
+            #opHand
+            #playPile
+                .heroPile
+                .opPile
+            #heroHand
             .overlay
                 button.close Close
             .heroPiles.pileDiv
