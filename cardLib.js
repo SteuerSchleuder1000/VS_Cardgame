@@ -10,6 +10,28 @@ const COLORS = {
     Aurora: 'violet',
 }
 
+const COLORS_FONT = {
+    Scrap: 'white',
+    Furnace: 'white',
+    Thunder: 'white',
+    Storm: 'white',
+    Venom: 'white',
+    Gold: 'white',
+    Star: 'black',
+    Aurora: 'white',    
+}
+
+const ELEMENTS = [
+    'Scrap',
+    'Furnace',
+    'Storm',
+    'Thunder',
+    'Venom',
+    'Gold',
+    'Star',
+    'Aurora',
+]
+
 const ZONES = {
     A: {name:'Strength',img:'images/symbols/symbol1_black.png', img_white:'images/symbols/symbol1_white.png'},
     B: {name:'Strength',img:'images/symbols/symbol5_black.png', img_white:'images/symbols/symbol5_white.png'},
@@ -35,38 +57,38 @@ const L = {
     D: `<img class='linkSymbol s1' src=${ZONES.D.img}></img>`,
     Speed: `<img class='linkSymbol' src=${A.Speed.img}></img>`,
     Block: `<img class='linkSymbol' src=${A.Block.img}></img>`,
-    Thunder: `<div class='colorSymbol' style='background-color:${COLORS.Thunder}; color: white;'>Thunder</div>`,
-    Storm:  `<div class='colorSymbol' style='background-color:${COLORS.Storm}; color: white;'>Storm</div>`,
-    Scrap:  `<div class='colorSymbol' style='background-color:${COLORS.Scrap}; color: white;'>Scrap</div>`,
-    Scrap_e:  `<div class='colorSymbol' style='background-color:${COLORS.Scrap}; color: white;'>S</div>`,
-    Furnace:  `<div class='colorSymbol' style='background-color:${COLORS.Furnace}; color: white;'>Furnace</div>`,
-    Furnace_e:  `<div class='colorSymbol' style='background-color:${COLORS.Furnace}; color: white;'>F</div>`,
-    Gold:  `<div class='colorSymbol' style='background-color:${COLORS.Gold}; color: black;'>Gold</div>`,
-    Venom:  `<div class='colorSymbol' style='background-color:${COLORS.Venom}; color: white;'>Venom</div>`,
-    Aurora:  `<div class='colorSymbol' style='background-color:${COLORS.Aurora}; color: white;'>Aurora</div>`,
-    Star:  `<div class='colorSymbol' style='background-color:${COLORS.Star}; color: white;'>Star</div>`,
 }
 
-const E = {
-    
-}
 
 for (var i=1;i<10;i++) {
     A['Block'+i] = {name:'Block',img:'images/symbols/shield_icon_black.png',img_white:'images/symbols/shield_icon_white.png',text:i}
 }
 
+for (let e of ELEMENTS) {
+    L[e] = `<div class='colorSymbol' style='background-color:${COLORS[e]}; color:${COLORS_FONT[e]};'>${e}</div>`
+    L[e+'_e'] = `<div class='colorSymbol' style='background-color:${COLORS[e]}; color:${COLORS_FONT[e]};'>${e[0]}</div>`
+}
+
 
 
 const DL_Thunder = [
+
+    // Level 0
     {name:'Thunder Fist',nr:5},
     {name:'Skyward Strike',nr:3},
     {name:'Vortex Punch',nr:3},
+    {name:'Whirlwinds',nr:4},
+
+    // Level 1
     {name:'Arclight Pulse',nr:4},
+    {name:'Jet Wind Strike',nr:4},
     {name:'Surge',nr:2},
     {name:'Sparkover',nr:3},
-    {name:'Whirlwinds',nr:4},
+    
+
+    // Level 2
     {name:'Storm Cell Shock',nr:2},
-    {name:'Jet Wind Strike',nr:4},
+    
 ]
 
 const DL_Snake = [
@@ -147,8 +169,8 @@ var CARDS = {
         energy: [],
         zone: 'B', 
         attributes: [A.Block1],
-        text:`${L.Furnace_e}: +1 Power<br>Ignore ${L.Speed} bonus on your opponents attack.<br>
-                Blocked: Look at your opponents hand and discard 1 card.`,
+        text:`Ignore ${L.Speed} bonus on your opponents attack.<br>
+                Blocked: Look at your opponents hand and discard 1 card.<br>${L.Furnace_e}: +1 Power`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
@@ -232,8 +254,8 @@ var CARDS = {
         energy:[],
         zone: 'C', 
         attributes: [A.Speed],
-        text:`<b>COUNTER ${L.A} and ${L.C}</b><br>Add 1 discarded ${L.Scrap} card to your hand or to your sources<br>
-            ${L.Scrap_e}: +2 Attack`,
+        text:`Add 1 discarded ${L.Scrap} card to your hand or to your sources<br>
+            ${L.Scrap_e}: <b>COUNTER ${L.A} or ${L.C}</b>`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -263,8 +285,8 @@ var CARDS = {
         color:'Thunder',
         zone: 'A', 
         attributes: [],
-        text:`Erase 2 cards.<br>
-                <b>Erased:</b> Put this card to your sources.`,
+        text:`Add 1 ${L.Thunder} card from hand to your sources<br>
+                ${L.A}<b> Link:</b> +1 Power`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -276,10 +298,9 @@ var CARDS = {
         name: 'Skyward Strike',
         power: 2, 
         color:'Storm',
-        zone: 'C', 
-        attributes: [A.Speed,A.Speed],
-        text:`<b>VS ${L.A}:</b> Destroy a source in the game.<br>
-                ${L.A}<b> Link:</b> Gain +2 Power`,
+        zone: 'B', 
+        attributes: [A.Speed],
+        text:`<b>COUNTER ${L.A}:</b> Your opponent discards 2 cards or 1 ${L.A} card.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -290,9 +311,9 @@ var CARDS = {
         name: 'Vortex Punch',
         power: 3, 
         color:'Storm',
-        zone: 'C', 
+        zone: 'AC', 
         attributes: [],
-        text:`Put 2 previous ${L.Storm} cards in your play pile under your deck: Gain ${L.Speed}`,
+        text:`Discard 1 ${L.Storm} card from your hand: Gain ${L.Speed}`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -302,10 +323,10 @@ var CARDS = {
         name: 'Arclight Pulse',
         power: 3, 
         color:'Thunder',
-        zone: 'D', 
-        attributes: [],
-        text:`Reveal the top card of your deck: Erase it or add it as a source.<br>
-            ${L.Thunder}<b> Link:</b> Gain +2 Power and ${L.Speed}`,
+        zone: 'CD', 
+        attributes: [A.Speed],
+        text:`Can not block<br>
+            ${L.Thunder_e} ${L.Thunder_e}: <b>COUNTER ${L.D}</b>`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -317,8 +338,7 @@ var CARDS = {
         color:'Thunder',
         zone: 'B', 
         attributes: [A.Speed],
-        text:`Restore 2 ${L.Thunder} Cards as Energy.<br>
-            <b>Erased:</b> Store this card as Energy`,
+        text:`Look at and rearrange the top 4 cards of your deck. Add 2 in your hand and the rest to your sources.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -330,9 +350,9 @@ var CARDS = {
         power: 3, 
         color:'Thunder',
         zone: 'AD', 
-        attributes: [A.Speed],
-        text:`${L.A}<b> Link:</b> Can not be blocked.<br>
-            <b>Erased:</b> Add this to your hand and add 1 card from your hand to your sources.`,
+        attributes: [],
+        text:`${L.B}<b> Link:</b> Can not be evaded.<br>
+            ${L.Thunder_e} ${L.Thunder_e}: +2 Power`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -345,7 +365,7 @@ var CARDS = {
         color:'Storm',
         zone: 'B', 
         attributes: [A.Speed],
-        text:`${L.C}<b> Link:</b> Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
+        text:`Blocked: Discard this card<br>Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -354,12 +374,12 @@ var CARDS = {
     'Storm Cell Shock':
     {
         name: 'Storm Cell Shock',
-        power: 3, 
+        power: 5, 
         color:'Storm',
         zone: 'D', 
-        attributes: [A.Speed],
-        text:`${L.D}<b> Link:</b> Scry 3<br>
-                Erase 1 card: If it was a ${L.Storm} card, gain its Power and its attributes`,
+        attributes: [],
+        text:`Draw 1 card for each ${L.Thunder} and ${L.Storm} source you own.<br>
+               <b>SUPER</b> ${L.Thunder_e} ${L.Storm_e} ${L.Thunder_e} ${L.Storm_e}: Can not be blocked or evaded`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -371,13 +391,17 @@ var CARDS = {
         power: 2, 
         color:'Storm',
         zone: 'A', 
-        attributes: [A.Speed],
-        text:`${L.B}<b> Link:</b> Draw 1 Card then discard 1 card.<br>
-                Show any number of ${L.Storm} Cards from hand, then <b>Erase</b> that many cards.`,
+        attributes: [A.Speed,A.Speed],
+        text:`<b>COUNTER</b> ${L.D}: Draw 2 card.<br>
+                Add 1 discarded ${L.Storm} card to your sources.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
 
+
+
+
+    // SNAKE DECK...
 
     'Piercing Bite':
     {

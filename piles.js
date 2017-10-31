@@ -149,6 +149,7 @@ class Deck extends Pile {
 
         this.div = document.querySelector(query+' .deck')
         this.showDeckBtn = document.querySelector(query+' .showDeck')
+        this.topDeckBtn = document.querySelector(query+' .topDeck')
         this.textDiv = document.querySelector(query+' .deckText')
 
         let draw_f = function () {this.player.draw(1); console.log('draw')}
@@ -157,6 +158,11 @@ class Deck extends Pile {
     }
     
     updateText() { this.textDiv.innerHTML = this.count() }
+    topDeck() {
+        
+        this.game.overlay.add()
+        this.game.overlay.display()
+    }
 }
 
 

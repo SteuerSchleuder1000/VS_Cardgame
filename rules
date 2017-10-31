@@ -1,0 +1,200 @@
+====================================================================================
+
+                    VERSUS LINKS
+
+====================================================================================
+
+
+VS is a competitve card game in which 2 players fight each other with cards representing attacks. Each player plays a unique deck of 30 cards of his character by pressuring and damaging his opponent while buffing and ammassing resources for himself.
+
+To setup your first game simply shuffle your deck and draw 5 cards.
+
+
+
+// GAME FIELD AND CARDS
+
+The game field consists the following zones:
+
+1 Deck
+2 Hand
+3 Combat Pile
+4 Discard Pile
+5 Resources
+6 Damage Pile
+
+
+Lets look at a card:
+
+
+.———————---.
+|Z         |
+|:         |
+|          |
+|>>        |
+| CardName |
+|   Text   |
+^——-(E )——-^
+
+
+
+1 Card Name
+2 Power -> how much damage it deals
+3 Zone  -> limits what your opponent can play
+4 Combat Attributes -> change when and how you play cards
+5 Energy -> important for playing more powerful attacks
+6 Text
+
+
+
+// GAMEPLAY
+
+The game is played  in turns where players may play 1 attack. In order to be played A card must be able to defend against your opponents attack by blocking, evading or countering it. After defending the same card has then be defended against by your opponent. 
+
+Each turn consists of the following 2 phases
+
+
+
+Phase I - Start
+
+Begin your turn by drawing 1 card from your deck. You may then add 1 card to his energy pile. These energy cards may later be spent for card effects such as SUPER attacks.
+
+
+
+Phase II - Defending
+
+Here is where you play your card. In order to be played it has to be able to defend against your opponents attack. If your opponent is not attacking you play whatever card you want (unless the card text says otherwise).
+
+If you are not able to defend or don’t want to, your opponents attack hits you and your turn ends.
+
+
+You can defend in 3 ways: 
+
+- Blocking
+- Dodge
+- Countering
+
+
+
+
+- BLOCKING:
+
+If you want to block an attack your card has to follow 2 rules the zone rule and the power rule:
+
+ZONE RULE
+- You can not play cards that share a „zone“ with your opponents attack. These zones are represented by the symbols in the top left corner of each card. Example if your opponent is attacking with a „AB“ card you can not play your A, AB or BC card.
+
+
+POWER RULE
+- Your attack has to have equal or more power than your opponents power. Your cards base power is represented by the square blocks on the left side of the frame. If your card has a block bonus (the shield symbol with a number on it) it gains additional power only during the defense phase.
+
+2 Examples
+
+Often there are additional effects that modify the power of attacks in the card text. So read the cards carefully.
+
+
+
+
+- DODGING
+
+If your card has the Speed attribute you may be able to dodge your opponents attack. In order to do this your card still has to adhere the zone rule but instead of having to have equal or higher power it has to be faster than your opponent. At base level all cards have speed 1. Each Speed bonus (represented by the double arrows) gives the attacks 1 additional speed.
+
+Examples 1&2
+
+
+- COUNTERING
+
+Special card effects let you counter certain attacks (as indicated by COUNTERS X cards). You can counter no matter the zones, power or speed of your opponents attack making it the most powerful and versitile defense (which often comes with a cost).
+
+Example
+
+
+
+
+Turn end
+
+Your turn ends and your opponent now has to defend against your attack.
+
+
+
+
+
+
+Dealing damage
+
+If a player is not defending against an attack the attack connects and deals damage equal to its base power. The card is put sideways onto the damage pile of its own player. 
+
+The first player who has a total of 15 power on his damage pile wins.
+
+
+
+
+
+COMBAT ATTRIBUTES
+
+Block
+
+Speed
+
+
+
+CARD TEXT
+
+Card text is very important and always more important than the base rules.
+There are 3 types of card effects:
+
+- Static
+Card text has to be executed except if it says otherwise (you may etc.). A lot of cards have conditions which have to be met in order to trigger its effects. These are indicated by :.
+
+
+- Conditional
+These conditions can be static (if you have 3 or less cards in hand) or be a cost associated with the effect 
+
+
+- Cost
+indicated by :: these effects are optional
+
+
+
+
+
+Paying energy
+
+
+
+
+KEYWORDS
+
+
+
+
+SUPERATTACKS
+
+
+
+
+FREQ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

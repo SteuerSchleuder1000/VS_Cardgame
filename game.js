@@ -27,7 +27,7 @@ class Game {
                     break
 
                 case '3':
-                    this.switchBtn(3)
+                    this.switchBtn(4)
                     break
 
                 case '4':
@@ -35,7 +35,7 @@ class Game {
                     break
 
                 case '5':
-                    this.switchBtn(4)
+                    this.switchBtn(3)
                     break
 
                 case '6':
