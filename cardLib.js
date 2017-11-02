@@ -121,7 +121,7 @@ const DL_Rust = [
     // Level 0
     {name:'Scorching Blow',nr:5},   // Scrap
     {name:'Scrap Armor',nr:4},      // Scrap
-    {name:'Spark Spray',nr:4},      // Furnace
+    {name:'Forge Sparks',nr:4},      // Furnace
     {name:'Shrapnel Blast',nr:4},   // Scrap
 
     // Level 1
@@ -169,7 +169,7 @@ var CARDS = {
         energy: [],
         zone: 'B', 
         attributes: [A.Block1],
-        text:`Ignore ${L.Speed} bonus on your opponents attack.<br>
+        text:`Your opponent can't play a ${L.Speed} attack next.<br>
                 Blocked: Look at your opponents hand and discard 1 card.<br>${L.Furnace_e}: +1 Power`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
@@ -218,9 +218,9 @@ var CARDS = {
     },   
 
 
-    'Spark Spray':                     
+    'Forge Sparks':                     
     {
-        name: 'Spark Spray',
+        name: 'Forge Sparks',
         power: 2, 
         color:'Furnace',
         energy: [],
@@ -240,7 +240,8 @@ var CARDS = {
         energy: [],
         zone: 'AD', 
         attributes: [A.Speed],
-        text:`<b>SUPER ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}:</b> Attach 2 discarded ${L.Scrap} cards to this attack.`,
+        text:`<b>SUPER - ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}</b><br>
+            Attach 2 discarded ${L.Scrap} cards to this attack.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -249,7 +250,7 @@ var CARDS = {
     'Rust Kick':                     
     {
         name: 'Rust Kick',
-        power: 3, 
+        power: 2, 
         color:'Scrap',
         energy:[],
         zone: 'C', 
@@ -269,7 +270,8 @@ var CARDS = {
         energy:[],
         zone: 'DD', 
         attributes: [A.Speed],
-        text:`<b>SUPER ${L.Furnace_e} ${L.Furnace_e} ${L.Furnace_e}:</b> Your opponent may not play ${L.A}, ${L.B} or ${L.C} attacks`,
+        text:`<b>SUPER - ${L.Furnace_e} ${L.Furnace_e} ${L.Furnace_e}</b><br>
+            Your opponent may not play ${L.A}, ${L.B} or ${L.C} attacks`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -364,8 +366,9 @@ var CARDS = {
         power: 2, 
         color:'Storm',
         zone: 'B', 
-        attributes: [A.Speed],
-        text:`Blocked: Discard this card<br>Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
+        attributes: [],
+        text:`If blocked you may discard this card<br>
+            Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -378,8 +381,9 @@ var CARDS = {
         color:'Storm',
         zone: 'D', 
         attributes: [],
-        text:`Draw 1 card for each ${L.Thunder} and ${L.Storm} source you own.<br>
-               <b>SUPER</b> ${L.Thunder_e} ${L.Storm_e} ${L.Thunder_e} ${L.Storm_e}: Can not be blocked or evaded`,
+        text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Storm_e} ${L.Storm_e}<br>
+                Can not be blocked or evaded<br>
+                Draw cards until you have 5 cards in hand.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },

@@ -10,8 +10,6 @@ class Pile {
         this.game = options.game
         this.player = options.player
         this.idx = options.idx
-        // this.x = 0
-        // this.y = 0
         this.div
     }
 
@@ -35,7 +33,7 @@ class Pile {
         this.cards = []
         this.updateText()
     }
-    draw() {let c = this.cards.pop(); this.updateText(); return c}
+    draw() {let c = this.cards.shift(); this.updateText(); return c}
     display() {}
     overlay() {
         if (this.game.overlayMode) {return}
@@ -48,17 +46,29 @@ class Pile {
 
 
 
+
+
+
+
 class Overlay extends Pile {
     constructor(options) {
         super(options)
         this.div = document.querySelector('#board .overlay')
-        this.closeBtn = document.querySelector('#board .overlay .close')
-        this.closeBtn.onclick = this.close.bind(this)
+        this.addCloseBtn()
+        
     }
 
-    add(card) { 
-        this.cards.push(card);
+    addCloseBtn() {
+        let btn = document.createElement('button')
+        btn.innerHTML = 'Close'
+        btn.className = 'close'
+        btn.onclick = this.close.bind(this)
+
+        this.closeBtn = btn
+        this.div.appendChild(btn)
     }
+
+    add(card) { this.cards.push(card); }
 
     display() {
         this.game.overlayMode = true
@@ -74,6 +84,8 @@ class Overlay extends Pile {
         this.div.style.display = 'none'
         for (var c of this.cards) { this.remove(c) }
         this.cards = []
+        this.div.innerHTML = ''
+        this.addCloseBtn()
     }
 
     remove(card) {
@@ -117,11 +129,17 @@ class PlayPile extends Pile {
 
 
 
+
+
 class Hand extends Pile {
     constructor(options) {
         super(options)
         let query = (this.idx==0) ? '#heroHand':'#opHand'
         this.div = document.querySelector('#board '+query)
+
+        let query2 = this.idx==1 ? '.opPiles':'.heroPiles'
+        this.sortBtn = document.querySelector(query2 +' .sortHand')
+        this.sortBtn.onclick = this.sort.bind(this)
     }
 
     draw(nr) { return false }
@@ -142,25 +160,54 @@ class Hand extends Pile {
     }
 }
 
+
+
+
+
+
 class Deck extends Pile {
     constructor(options) {
         super(options)
         let query = this.idx==1 ? '.opPiles':'.heroPiles'
+        //query += ' .topDeckDiv'
 
         this.div = document.querySelector(query+' .deck')
+        this.shuffleBtn = document.querySelector(query+' .shuffleDeck')
         this.showDeckBtn = document.querySelector(query+' .showDeck')
+        this.topDeckPlus = document.querySelector(query+' .plus')
+        this.topDeckMinus = document.querySelector(query+' .minus')
         this.topDeckBtn = document.querySelector(query+' .topDeck')
         this.textDiv = document.querySelector(query+' .deckText')
 
-        let draw_f = function () {this.player.draw(1); console.log('draw')}
+        this.topDeckIdx = 1
+
+        let draw_f = function () {this.player.draw(1)}
         this.div.onclick = draw_f.bind(this)
         this.showDeckBtn.onclick = this.overlay.bind(this)
+        this.shuffleBtn.onclick = this.shuffle.bind(this)
+
+
+        let plus_f = function() { this.updateTopDeck(1) }
+        let minus_f = function() { this.updateTopDeck(-1) }
+
+        this.topDeckPlus.onclick = plus_f.bind(this)
+        this.topDeckMinus.onclick = minus_f.bind(this)
+        this.topDeckBtn.onclick = this.topDeck.bind(this)
     }
     
-    updateText() { this.textDiv.innerHTML = this.count() }
+    updateText() { this.textDiv.innerHTML = this.count(); this.updateTopDeck() }
+    
+    updateTopDeck(idx) {
+        if (idx) {this.topDeckIdx += idx}
+        if (this.topDeckIdx < 0) {this.topDeckIdx = 0}
+        if (this.topDeckIdx > this.count()) {this.topDeckIdx = this.count()}
+        this.topDeckBtn.innerHTML = 'Top '+this.topDeckIdx
+    }
+
     topDeck() {
-        
-        this.game.overlay.add()
+        //if (this.game.overlayMode) {return}
+        this.updateTopDeck()
+        for (let i=0;i<this.topDeckIdx;i++) { this.game.overlay.add(this.cards[i]) }
         this.game.overlay.display()
     }
 }

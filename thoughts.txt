@@ -17,8 +17,37 @@ includes
 - discard
 - energy destruction
 
-Card Name
-Purpose
+
+Make characters UNIQUE -> visually, mechanically, gameplay wise
+Make characters COOL -> Feel the impact, have a coherent theme
+
+
+
+Thunder Fist
+
+Owner of the GAUNTLET OF STORMS. Can release immense amounts of energy -> harnessing
+
+
+
+Rust
+
+The living furnace. Recycles scrap metal to enhance his attacks. Hits really hard.
+
+
+
+Snake Prohet
+
+Prophet of the snake god. Summons snakes and spits venom. Is all about manipulation
+Turning energy up and down, evasion and little poison damage.
+
+
+
+Aurora
+
+Godess of dawn. Is all about fate and the hand. 
+
+
+
 
 
 Level 0
@@ -34,7 +63,7 @@ block stuff, add scrap to discard?
 evade, use scrap for +power
 
 
-- Spark Spray -> name change     x4
+- Forge Sparks                      x4
 counter stuff, use furnace for +
 
 

@@ -16,7 +16,7 @@ html(lang='en')
                 .opPile
             #heroHand
             .overlay
-                button.close Close
+                //button.close Close
             .heroPiles.pileDiv
                 .deck.pile
                     img(src='images/cardBack.png' class='deckImage')
@@ -31,7 +31,12 @@ html(lang='en')
                     img(src='images/cardBack.png' class='damageImage')
                     .damageText.pileText 
                 button.showDeck Show Deck
-                button.topDeck Top Deck
+                .topDeckDiv
+                    button.plus +
+                    button.topDeck Top Deck
+                    button.minus -
+                button.shuffleDeck Shuffle
+                button.sortHand Sort Hand
             .opPiles.pileDiv
                 .deck.pile
                     img(src='images/cardBack.png' class='deckImage')
@@ -46,7 +51,12 @@ html(lang='en')
                     img(src='images/cardBack.png' class='damageImage')
                     .damageText.pileText 
                 button.showDeck Show Deck
-                button.topDeck Top Deck
+                .topDeckDiv
+                    button.plus +
+                    button.topDeck Top Deck
+                    button.minus -
+                button.shuffleDeck Shuffle
+                button.sortHand Sort Hand
         
 
         script(src='script.js')

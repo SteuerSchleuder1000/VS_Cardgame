@@ -9,9 +9,19 @@ class Game {
 
 
         this.overlayMode = false
+        this.btnIdx = 0
 
 
         this.resetBtn.onclick = this.reset.bind(this)
+
+        document.addEventListener('wheel', (e) => {
+            let btnLen = 7
+            if (e.deltaY > 4) {this.btnIdx = (this.btnIdx +btnLen + 1)%btnLen}
+            else if (e.deltaY < -4) {this.btnIdx = (this.btnIdx +btnLen - 1)%btnLen}
+            this.switchBtn(this.btnIdx)
+        })
+    
+        //document.addEventListener('click', (e) => {console.log(e)})
 
         document.addEventListener('keypress', (event) => {
             const key = event.key;
