@@ -115,7 +115,7 @@ class PlayPile extends Pile {
     updatePosition() {
         var i = 0
         for (var c of this.cards) {
-            if (!c.div.classList.contains(this.class)) {
+            if (!c.div.classList.contains('playPile')) {
                 c.div.className = 'card '+this.class
                 c.cardBack.className = 'card '+this.class
             }
