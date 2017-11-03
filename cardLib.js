@@ -1,4 +1,4 @@
-
+const dsfaksdf = 10
 const COLORS = {
     Scrap: '#732f2f',
     Furnace: '#d88811',
