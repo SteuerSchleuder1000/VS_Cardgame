@@ -120,18 +120,18 @@ const DL_Star = [
 
 const DL_Rust = [
     // Level 0
-    {name:'Scorching Blow',nr:5},   // Scrap
+    {name:'Scorching Blow',nr:5},   // Furnace
     {name:'Scrap Armor',nr:4},      // Scrap
-    {name:'Corrosive Claws',nr:4},      // Furnace
+    {name:'Corrosive Claws',nr:4},      // Scrap
     {name:'Shrapnel Blast',nr:4},   // Scrap
 
     // Level 1
-    {name:'Furnace Strike',nr:4},   // Furnace
+    {name:'Furnace Strike',nr:5},   // Furnace
     {name:'Searing Chains',nr:3},   // Furnace
     {name:'Rust Kick',nr:3},        // Scrap
 
     // Level 2
-    {name:'Slag Storm',nr:2},       // Scrap
+    {name:'Slag Storm',nr:1},       // Scrap
     {name:'Meltdown',nr:1},         // Furnace
 ]
 
@@ -171,7 +171,7 @@ var CARDS = {
         energy: [],
         zone: 'B', 
         attributes: [A.Block1],
-        text:`If your opponent blocks, you may look at your opponents hand and discard 1 card.<br>
+        text:`Blocked: You may look at your opponents hand and discard 1 card.<br>
                 ${L.A}<b> Link:</b>Your opponent can't play ${L.Speed} attacks next turn.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
@@ -200,7 +200,7 @@ var CARDS = {
         energy: [],
         zone: 'B', 
         attributes: [A.Block4],
-        text:`Discard 1 ${L.Scrap} card: Discard this and play a ${L.Furnace} card`,
+        text:`Discard 1 ${L.Scrap} card: Discard this and play a ${L.Furnace} card<br>Block 3+ Power: Draw 1 card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -228,7 +228,7 @@ var CARDS = {
         energy: [],
         zone: 'C', 
         attributes: [],
-        text:`Discard 2 ${L.Scrap} cards:<b>COUNTERS ${L.A}</b><br>Blocked: Draw 2 cards`,
+        text:`Discard 2 ${L.Scrap} cards: <b>COUNTER ${L.A}</b><br>Blocked: Draw 2 cards`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -243,7 +243,7 @@ var CARDS = {
         zone: 'AD', 
         attributes: [A.Speed],
         text:`<b>SUPER - ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}</b><br>
-            Attach 3 discarded ${L.Scrap} cards to this attack.`,
+            Attach 3 discarded ${L.Scrap} cards to this attack.<br>Hit: Draw 3 cards.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -273,7 +273,7 @@ var CARDS = {
         zone: 'DD', 
         attributes: [A.Speed],
         text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
-            Can't be evaded<br>Shuffle up to 10 discarded cards into your deck.`,
+            Can't be evaded<br>Shuffle up to 10 discarded cards into your deck.<br>Draw until youhave 5 cards in hand.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
