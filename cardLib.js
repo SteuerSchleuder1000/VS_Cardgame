@@ -1,4 +1,3 @@
-const dsfaksdf = 10
 const COLORS = {
     Scrap: '#732f2f',
     Furnace: '#d88811',
@@ -59,6 +58,7 @@ const L = {
     Block: `<img class='linkSymbol' src=${A.Block.img}></img>`,
 }
 
+const E = {}
 
 for (var i=1;i<10;i++) {
     A['Block'+i] = {name:'Block',img:'images/symbols/shield_icon_black.png',img_white:'images/symbols/shield_icon_white.png',text:i}
@@ -67,6 +67,7 @@ for (var i=1;i<10;i++) {
 for (let e of ELEMENTS) {
     L[e] = `<div class='colorSymbol' style='background-color:${COLORS[e]}; color:${COLORS_FONT[e]};'>${e}</div>`
     L[e+'_e'] = `<div class='colorSymbol' style='background-color:${COLORS[e]}; color:${COLORS_FONT[e]};'>${e[0]}</div>`
+    E[e] = `<div class='colorSymbol' style='background-color:${COLORS[e]}; color:${COLORS_FONT[e]};'>${e[0]}</div>`
 }
 
 
@@ -121,7 +122,7 @@ const DL_Rust = [
     // Level 0
     {name:'Scorching Blow',nr:5},   // Scrap
     {name:'Scrap Armor',nr:4},      // Scrap
-    {name:'Forge Sparks',nr:4},      // Furnace
+    {name:'Corrosive Claws',nr:4},      // Furnace
     {name:'Shrapnel Blast',nr:4},   // Scrap
 
     // Level 1
@@ -155,7 +156,8 @@ var CARDS = {
         energy: [],
         zone: 'A', 
         attributes: [],
-        text:`Can not be evaded by ${L.Speed} moves.<br>${L.Furnace_e}: +2 Power.`,
+        text:`Can not be evaded by ${L.Speed} moves.<br>
+                ${E.Furnace}: +2 Power, draw 1 card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -169,8 +171,8 @@ var CARDS = {
         energy: [],
         zone: 'B', 
         attributes: [A.Block1],
-        text:`Your opponent can't play a ${L.Speed} attack next.<br>
-                Blocked: Look at your opponents hand and discard 1 card.<br>${L.Furnace_e}: +1 Power`,
+        text:`If your opponent blocks, you may look at your opponents hand and discard 1 card.<br>
+                ${L.A}<b> Link:</b>Your opponent can't play ${L.Speed} attacks next turn.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
@@ -184,7 +186,7 @@ var CARDS = {
         energy: [],
         zone: 'A', 
         attributes: [],
-        text:`Add 1 ${L.Furnace} card from your hand to your sources.<br>${L.Scrap}<b> Link:</b> Draw 1 card.`,
+        text:`${L.B}<b> Link:</b>Draw 2 cards.<br>Add 1 ${L.Furnace} card from your hand to your sources.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -198,7 +200,7 @@ var CARDS = {
         energy: [],
         zone: 'B', 
         attributes: [A.Block4],
-        text:`Block 3+ Power: Draw 3 cards then discard 2 cards.`,
+        text:`Discard 1 ${L.Scrap} card: Discard this and play a ${L.Furnace} card`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -207,26 +209,26 @@ var CARDS = {
     'Shrapnel Blast':
     {
         name: 'Shrapnel Blast',
-        power: 1, 
+        power: 2, 
         color:'Scrap',
         energy: [],
         zone: 'C', 
         attributes: [A.Speed],
-        text:`Put 2 discarded ${L.Scrap} cards under your deck: +2 Attack Power`,
+        text:`Can't block<br>Discard X ${L.Scrap} cards: Gain +2 Power for each.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },   
 
 
-    'Forge Sparks':                     
+    'Corrosive Claws':                     
     {
-        name: 'Forge Sparks',
+        name: 'Corrosive Claws',
         power: 2, 
-        color:'Furnace',
+        color:'Scrap',
         energy: [],
         zone: 'C', 
         attributes: [],
-        text:`<b>COUNTERS ${L.A}:</b> Draw 1 card<br>${L.Furnace_e} ${L.Furnace_e}: +2 Power`,
+        text:`Discard 2 ${L.Scrap} cards:<b>COUNTERS ${L.A}</b><br>Blocked: Draw 2 cards`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -235,13 +237,13 @@ var CARDS = {
     'Slag Storm':                     
     {
         name: 'Slag Storm',
-        power: 3, 
+        power: 2, 
         color:'Scrap',
         energy: [],
         zone: 'AD', 
         attributes: [A.Speed],
         text:`<b>SUPER - ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}</b><br>
-            Attach 2 discarded ${L.Scrap} cards to this attack.`,
+            Attach 3 discarded ${L.Scrap} cards to this attack.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -255,8 +257,8 @@ var CARDS = {
         energy:[],
         zone: 'C', 
         attributes: [A.Speed],
-        text:`Add 1 discarded ${L.Scrap} card to your hand or to your sources<br>
-            ${L.Scrap_e}: <b>COUNTER ${L.A} or ${L.C}</b>`,
+        text:`Blocked: Add 2 discarded ${L.Scrap} cards to your sources<br>
+            ${E.Scrap}: <b>COUNTER ${L.A} or ${L.C}</b>`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -270,8 +272,8 @@ var CARDS = {
         energy:[],
         zone: 'DD', 
         attributes: [A.Speed],
-        text:`<b>SUPER - ${L.Furnace_e} ${L.Furnace_e} ${L.Furnace_e}</b><br>
-            Your opponent may not play ${L.A}, ${L.B} or ${L.C} attacks`,
+        text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
+            Can't be evaded<br>Shuffle up to 10 discarded cards into your deck.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
