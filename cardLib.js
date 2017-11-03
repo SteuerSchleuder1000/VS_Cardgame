@@ -156,8 +156,8 @@ var CARDS = {
         energy: [],
         zone: 'A', 
         attributes: [],
-        text:`Can not be evaded by ${L.Speed} moves.<br>
-                ${E.Furnace}: +2 Power, draw 1 card.`,
+        text:`Can't be evaded.<br>
+                ${E.Furnace}${E.Furnace}: +2 Power, draw 1 card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -186,7 +186,7 @@ var CARDS = {
         energy: [],
         zone: 'A', 
         attributes: [],
-        text:`${L.B}<b> Link:</b>Draw 2 cards.<br>Add 1 ${L.Furnace} card from your hand to your sources.`,
+        text:`${L.C}<b> Link:</b>Draw 3 cards.<br>Add 1 discarded ${L.Furnace} card or 2 discarded ${L.Scrap} cards to your sources.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -200,7 +200,7 @@ var CARDS = {
         energy: [],
         zone: 'B', 
         attributes: [A.Block4],
-        text:`Discard 1 ${L.Scrap} card: Discard this and play a ${L.Furnace} card<br>Block 3+ Power: Draw 1 card.`,
+        text:`Block 3+ Power: Draw 1 card.<br>Discard 1 ${L.Scrap} card: Discard this and play a ${L.Furnace} card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
