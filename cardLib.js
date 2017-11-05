@@ -157,7 +157,7 @@ var CARDS = {
         zone: 'A', 
         attributes: [],
         text:`Can't be evaded.<br>
-                ${E.Furnace}${E.Furnace}: +2 Power, draw 1 card.`,
+                ${E.Furnace} ${E.Furnace}: +2 Power, draw 1 card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -172,7 +172,7 @@ var CARDS = {
         zone: 'B', 
         attributes: [A.Block1],
         text:`Blocked: You may look at your opponents hand and discard 1 card.<br>
-                ${L.A}<b> Link:</b>Your opponent can't play ${L.Speed} attacks next turn.`,
+                ${L.A}<b> Link:</b> Can't be evaded.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
