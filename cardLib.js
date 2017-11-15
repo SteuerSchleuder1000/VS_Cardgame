@@ -151,13 +151,12 @@ var CARDS = {
     'Furnace Strike': 
     {
         name: 'Furnace Strike',
-        power: 3, 
+        power: 5, 
         color: 'Furnace',
         energy: [],
         zone: 'A', 
         attributes: [A.LinkA],
-        text:`Can't be evaded.<br>
-                ${E.Furnace} ${E.Furnace}: +2 Power, draw 1 card.`,
+        text:`${E.Furnace} ${E.Furnace}: Can't be evaded.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
