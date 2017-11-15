@@ -42,7 +42,7 @@ const A = {
     Block:      {name:'Block',  img:'images/symbols/shield_icon_black.png', img_white:'images/symbols/shield_icon_white.png',   text:''},
     BlockX:     {name:'Block',  img:'images/symbols/shield_icon_black.png', img_white:'images/symbols/shield_icon_white.png',   text:'X'},
     Speed:      {name:'Speed',  img:'images/symbols/speed_icon_black.png',  img_white:'images/symbols/speed_icon_white.png',    text:null},
-    // LinkA:      {name:'LinkA',  img:ZONES.A.img,  img_white:ZONES.A.img_white,                                  text:null},
+    LinkA:      {name:'LinkA',  img:ZONES.A.img,  img_white:ZONES.A.img_white,                                  text:null},
     // LinkB:      {name:'LinkB',  img:ZONES.B.img,  img_white:ZONES.B.img_white,                                  text:null},
     // LinkC:      {name:'LinkC',  img:ZONES.C.img,  img_white:ZONES.C.img_white,                                  text:null},
     // LinkD:      {name:'LinkD',  img:ZONES.D.img,  img_white:ZONES.D.img_white,                                  text:null}
@@ -118,21 +118,21 @@ const DL_Star = [
 ]
 
 
-const DL_Rust = [
+const DL_Rust = [       // P: 14   B: 5 Q: 4 H: 7
     // Level 0
-    {name:'Scorching Blow',nr:5},   // Furnace
-    {name:'Scrap Armor',nr:4},      // Scrap
-    {name:'Corrosive Claws',nr:4},      // Scrap
-    {name:'Shrapnel Blast',nr:4},   // Scrap
+    {name:'Scorching Blow',nr:4},   // Furnace          Punch
+    {name:'Scrap Armor',nr:5},      // Scrap            Block
+    {name:'Corrosive Claws',nr:4},      // Scrap        Punch
+    {name:'Shrapnel Blast',nr:4},   // Scrap            Quick
 
     // Level 1
-    {name:'Furnace Strike',nr:5},   // Furnace
-    {name:'Searing Chains',nr:3},   // Furnace
-    {name:'Rust Kick',nr:3},        // Scrap
+    {name:'Furnace Strike',nr:5},   // Furnace          Heavy
+    {name:'Searing Chains',nr:3},   // Furnace          Punch
+    {name:'Rust Kick',nr:3},        // Scrap            Punch
 
     // Level 2
-    {name:'Slag Storm',nr:1},       // Scrap
-    {name:'Meltdown',nr:1},         // Furnace
+    {name:'Slag Storm',nr:1},       // Scrap            Heavy
+    {name:'Meltdown Punch',nr:1},   // Furnace          Heavy
 ]
 
 
@@ -155,7 +155,7 @@ var CARDS = {
         color: 'Furnace',
         energy: [],
         zone: 'A', 
-        attributes: [],
+        attributes: [A.LinkA],
         text:`Can't be evaded.<br>
                 ${E.Furnace} ${E.Furnace}: +2 Power, draw 1 card.`,
         image: 'images/cards/warlock.png',
@@ -199,7 +199,7 @@ var CARDS = {
         color:'Scrap',
         energy: [],
         zone: 'B', 
-        attributes: [A.Block4],
+        attributes: [A.Block3],
         text:`Block 3+ Power: Draw 1 card.<br>Discard 1 ${L.Scrap} card: Discard this and play a ${L.Furnace} card.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
@@ -241,7 +241,7 @@ var CARDS = {
         color:'Scrap',
         energy: [],
         zone: 'AD', 
-        attributes: [A.Speed],
+        attributes: [A.LinkA],
         text:`<b>SUPER - ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}</b><br>
             Attach 3 discarded ${L.Scrap} cards to this attack.<br>Hit: Draw 3 cards.`,
         image: 'images/cards/warlock.png',
@@ -256,7 +256,7 @@ var CARDS = {
         color:'Scrap',
         energy:[],
         zone: 'C', 
-        attributes: [A.Speed],
+        attributes: [],
         text:`Blocked: Add 2 discarded ${L.Scrap} cards to your sources<br>
             ${E.Scrap}: <b>COUNTER ${L.A} or ${L.C}</b>`,
         image: 'images/cards/warlock.png',
@@ -264,14 +264,14 @@ var CARDS = {
     },
 
 
-    'Meltdown':                     
+    'Meltdown Punch':                     
     {
-        name: 'Meltdown',
+        name: 'Meltdown Punch',
         power: 5, 
         color:'Furnace',
         energy:[],
         zone: 'DD', 
-        attributes: [A.Speed],
+        attributes: [A.LinkA],
         text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
             Can't be evaded<br>Shuffle up to 10 discarded cards into your deck.<br>Draw until youhave 5 cards in hand.`,
         image: 'images/cards/warlock.png',
