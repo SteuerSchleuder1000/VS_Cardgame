@@ -135,6 +135,19 @@ const DL_Rust = [
     {name:'Meltdown',nr:1},         // Furnace
 ]
 
+const DL_Std = [
+    {name:'Punch 1',nr:5},
+    {name:'Punch 2',nr:5},
+    {name:'Quick 1',nr:2},
+    {name:'Quick 2',nr:2},
+    {name:'Heavy 1',nr:2},
+    {name:'Heavy 2',nr:2},
+    {name:'Block',nr:4},
+
+]
+
+const DL_Word
+
 
 
 // ${L.A}<b> Link:</b>
@@ -144,6 +157,110 @@ const DL_Rust = [
 
 
 var CARDS = {
+
+    'Word':
+    {
+        name: 'Word',
+        power: 0, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Punch 1':
+    {
+        name: 'Punch 1',
+        power: 3, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
+        attributes: [],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Punch 2':
+    {
+        name: 'Punch 2',
+        power: 2, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
+        attributes: [],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Quick 1':
+    {
+        name: 'Quick 1',
+        power: 1, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
+        attributes: [A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Quick 2':
+    {
+        name: 'Quick 2',
+        power: 2, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
+        attributes: [A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Heavy 1':
+    {
+        name: 'Heavy 1',
+        power: 4, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
+        attributes: [],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Heavy 2':
+    {
+        name: 'Heavy 2',
+        power: 5, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
+        attributes: [],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Block':
+    {
+        name: 'Block',
+        power: 0, 
+        color: 'Furnace',
+        energy: [],
+        zone: 'A', 
+        attributes: [A.Block5,A.Speed],
+        text:`If you block 3 or less Power play another attack.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
 
 
     // SCRAP DECK ...

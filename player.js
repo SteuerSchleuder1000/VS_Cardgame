@@ -21,8 +21,8 @@ class Player {
         this.options.x = 0
         this.options.y = 0
         this.options.player = this
-        let dl = choice([DL_Rust])//[DL_Thunder,DL_Snake,DL_Star,DL_Rust])
-
+        let dl = choice([DL_Std])//[DL_Thunder,DL_Snake,DL_Star,DL_Rust])
+        //dl = DL_Word
         
         let count = 0
         for (let c of dl) {
