@@ -146,7 +146,7 @@ const DL_Std = [
 
 ]
 
-const DL_Word
+//const DL_Word = [{name:'Word 1',nr:5}]
 
 
 
