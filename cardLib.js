@@ -122,7 +122,7 @@ const DL_Rust = [       // P: 14   B: 5 Q: 4 H: 7
     // Level 0
     {name:'Scorching Blow',nr:4},   // Furnace          Punch
     {name:'Scrap Armor',nr:5},      // Scrap            Block
-    {name:'Corrosive Claws',nr:4},      // Scrap        Punch
+    {name:'Splinter Claws',nr:4},      // Scrap        Punch
     {name:'Shrapnel Blast',nr:4},   // Scrap            Quick
 
     // Level 1
@@ -136,13 +136,20 @@ const DL_Rust = [       // P: 14   B: 5 Q: 4 H: 7
 ]
 
 const DL_Std = [
-    {name:'Punch 1',nr:5},
-    {name:'Punch 2',nr:5},
-    {name:'Quick 1',nr:2},
-    {name:'Quick 2',nr:2},
-    {name:'Heavy 1',nr:2},
-    {name:'Heavy 2',nr:2},
-    {name:'Block',nr:4},
+    // {name:'Punch 1',nr:5},
+    // {name:'Punch 2',nr:5},
+    // {name:'Quick 1',nr:2},
+    // {name:'Quick 2',nr:2},
+    // {name:'Heavy 1',nr:2},
+    // {name:'Heavy 2',nr:2},
+    // {name:'Block',nr:4},
+    {name:'Quick Punch 1', nr:5},
+    {name:'Quick Punch 2', nr:5},
+    {name:'Neutral Punch 1', nr:7},
+    {name:'Neutral Punch 2', nr:7},
+    {name:'Strong Punch 1', nr:3},
+    {name:'Strong Punch 2', nr:3},
+    {name:'Strong Punch 3', nr:3},
 
 ]
 
@@ -171,40 +178,92 @@ var CARDS = {
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
-    'Punch 1':
+    'Quick Punch 1':
     {
-        name: 'Punch 1',
-        power: 3, 
-        color: 'Furnace',
-        energy: [],
-        zone: 'A', 
-        attributes: [],
-        text:``,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Punch 2':
-    {
-        name: 'Punch 2',
-        power: 2, 
-        color: 'Furnace',
-        energy: [],
-        zone: 'A', 
-        attributes: [],
-        text:``,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Quick 1':
-    {
-        name: 'Quick 1',
+        name: 'Quick Punch 1',
         power: 1, 
         color: 'Furnace',
         energy: [],
-        zone: 'A', 
+        zone: '', 
         attributes: [A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Quick Punch 2':
+    {
+        name: 'Quick Punch 2',
+        power: 2, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Neutral Punch 1':
+    {
+        name: 'Neutral Punch 1',
+        power: 2, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed,A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Neutral Punch 2':
+    {
+        name: 'Neutral Punch 2',
+        power: 3, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed,A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Strong Punch 1':
+    {
+        name: 'Strong Punch 1',
+        power: 3, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed,A.Speed,A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Strong Punch 2':
+    {
+        name: 'Strong Punch 2',
+        power: 4, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed,A.Speed,A.Speed],
+        text:``,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Strong Punch 3':
+    {
+        name: 'Strong Punch 3',
+        power: 5, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed,A.Speed,A.Speed],
         text:``,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
@@ -263,17 +322,88 @@ var CARDS = {
     },
 
 
+
+
+
     // SCRAP DECK ...
+
+    'Scorching Blow': 
+    {
+        name: 'Scorching Blow', 
+        power: 3, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [],
+        text:`<b>Level 1</b><br>
+                ${L.C}<b> Link:</b>+1 Power<br>
+                Add 1 charge from your deck.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Scrap Armor': 
+    {
+        name: 'Scrap Armor',
+        power: 0, 
+        color:'Scrap',
+        energy: [],
+        zone: 'B', 
+        attributes: [A.Block3],
+        text:`Draw 2 cards.<br>
+                Crit Block: Instant link. Add this as a charge.<br>
+                <b>1:</b> +${L.Block2}`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Splinter Claws':                     
+    {
+        name: 'Splinter Claws',
+        power: 2, 
+        color:'Scrap',
+        energy: [],
+        zone: '', 
+        attributes: [],
+        text:`<b>Level 1</b><br>
+                ${L.Scrap} Link: <b>Break</b><br>
+                <b>1</b>: +2 Power`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Shrapnel Blast':
+    {
+        name: 'Shrapnel Blast',
+        power: 2, 
+        color:'Scrap',
+        energy: [],
+        zone: 'C', 
+        attributes: [A.Speed],
+        text:`Counter an attack: Draw 2 cards<br>
+                Breaker`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    }, 
+
+
+
+
+
+
+
 
     'Furnace Strike': 
     {
         name: 'Furnace Strike',
-        power: 5, 
+        power: 4, 
         color: 'Furnace',
         energy: [],
         zone: 'A', 
         attributes: [A.LinkA],
-        text:`${E.Furnace} ${E.Furnace}: Can't be evaded.`,
+        text:`Level 2<br>
+                <b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
+                Level Link: +2B`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -285,69 +415,32 @@ var CARDS = {
         power: 2, 
         color: 'Furnace',
         energy: [],
-        zone: 'B', 
+        zone: '', 
         attributes: [A.Block1],
-        text:`Blocked: You may look at your opponents hand and discard 1 card.<br>
-                ${L.A}<b> Link:</b> Can't be evaded.`,
+        text:`Level 2<br>
+                Blocked or hit: Look at your opponents hand and discard 1 card from it.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
 
-
-    'Scorching Blow': 
+    'Rust Kick':                     
     {
-        name: 'Scorching Blow', 
-        power: 3, 
-        color: 'Furnace',
-        energy: [],
-        zone: 'A', 
-        attributes: [],
-        text:`${L.C}<b> Link:</b>Draw 3 cards.<br>Add 1 discarded ${L.Furnace} card or 2 discarded ${L.Scrap} cards to your sources.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-
-    'Scrap Armor': 
-    {
-        name: 'Scrap Armor',
-        power: 0, 
-        color:'Scrap',
-        energy: [],
-        zone: 'B', 
-        attributes: [A.Block3],
-        text:`Block 3+ Power: Draw 1 card.<br>Discard 1 ${L.Scrap} card: Discard this and play a ${L.Furnace} card.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-
-    'Shrapnel Blast':
-    {
-        name: 'Shrapnel Blast',
+        name: 'Rust Kick',
         power: 2, 
         color:'Scrap',
-        energy: [],
-        zone: 'C', 
-        attributes: [A.Speed],
-        text:`Can't block<br>Discard X ${L.Scrap} cards: Gain +2 Power for each.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },   
-
-
-    'Corrosive Claws':                     
-    {
-        name: 'Corrosive Claws',
-        power: 2, 
-        color:'Scrap',
-        energy: [],
+        energy:[],
         zone: 'C', 
         attributes: [],
-        text:`Discard 2 ${L.Scrap} cards: <b>COUNTER ${L.A}</b><br>Blocked: Draw 2 cards`,
+        text:`Level 3<br>
+                Level Link: Destroy 2 charges in game<br>
+                ${L.Furnace} Link: +2 charges from your deck<br>
+                ${L.Scrap} Link: draw 2 cards`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
+
+
+
 
 
     'Slag Storm':                     
@@ -358,23 +451,9 @@ var CARDS = {
         energy: [],
         zone: 'AD', 
         attributes: [A.LinkA],
-        text:`<b>SUPER - ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}</b><br>
-            Attach 3 discarded ${L.Scrap} cards to this attack.<br>Hit: Draw 3 cards.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-
-    'Rust Kick':                     
-    {
-        name: 'Rust Kick',
-        power: 2, 
-        color:'Scrap',
-        energy:[],
-        zone: 'C', 
-        attributes: [],
-        text:`Blocked: Add 2 discarded ${L.Scrap} cards to your sources<br>
-            ${E.Scrap}: <b>COUNTER ${L.A} or ${L.C}</b>`,
+        text:`<b>SUPER - ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}</b>, Level 3<br>
+            Level Link: Gain ${L.Speed}, draw 2 cards<br>
+            Attach up to 3 cards from your hand to this attack`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -386,10 +465,11 @@ var CARDS = {
         power: 5, 
         color:'Furnace',
         energy:[],
-        zone: 'DD', 
+        zone: 'AD', 
         attributes: [A.LinkA],
-        text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
-            Can't be evaded<br>Shuffle up to 10 discarded cards into your deck.<br>Draw until youhave 5 cards in hand.`,
+        text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b>, Level 3<br>
+                Level link: +3B<br>
+                Shuffle up to 10 discarded cards back into your deck.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
