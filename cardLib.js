@@ -143,6 +143,11 @@ const DL_Std = [
     // {name:'Heavy 1',nr:2},
     // {name:'Heavy 2',nr:2},
     // {name:'Block',nr:4},
+
+    {name:'Evasion', nr:2},
+    {name:'Speed Up!', nr:2},
+    {name:'Power Up!', nr:2},
+    {name:'Defend!', nr:1},
     {name:'Quick Punch 1', nr:5},
     {name:'Quick Punch 2', nr:5},
     {name:'Neutral Punch 1', nr:7},
@@ -165,15 +170,67 @@ const DL_Std = [
 
 var CARDS = {
 
-    'Word':
+    'Evasion':
     {
-        name: 'Word',
+        name: 'Speed Up!',
+        power: 0, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed],
+        text:`Draw 1 card. Dodge your opponents attack and end your turn.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Speed Up!':
+    {
+        name: 'Speed Up!',
         power: 0, 
         color: 'Furnace',
         energy: [],
         zone: '', 
         attributes: [],
-        text:``,
+        text:`Reduce TIME of your next attack by 1. Draw 1 Card.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Power Up!':
+    {
+        name: 'Power Up!',
+        power: 0, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [],
+        text:`Your next attack gains +1 Power. Draw 1 card.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Defend!':
+    {
+        name: 'Defend!',
+        power: 0, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [],
+        text:`Your next attack gains +3 Block.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Energy Surge':
+    {
+        name: 'Energy Surge',
+        power: 0, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [],
+        text:`Gain 2 Energy from your top.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -186,7 +243,7 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed],
-        text:``,
+        text:`Gain 2 Energy from your top.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -199,7 +256,20 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed],
-        text:``,
+        text:`1 E: +2 Power`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Quick Punch 3':
+    {
+        name: 'Quick Punch 2',
+        power: 2, 
+        color: 'Furnace',
+        energy: [],
+        zone: '', 
+        attributes: [A.Speed],
+        text:`2 E: Gain double strike`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -212,7 +282,7 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed,A.Speed],
-        text:``,
+        text:`Draw 2 cards`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -225,7 +295,7 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed,A.Speed],
-        text:``,
+        text:`Gain 2 Energy from your top.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -238,7 +308,7 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed,A.Speed,A.Speed],
-        text:``,
+        text:`Can't be blocked by combos`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -251,7 +321,7 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed,A.Speed,A.Speed],
-        text:``,
+        text:`2 E: Gain +2 Power`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -264,7 +334,7 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed,A.Speed,A.Speed],
-        text:``,
+        text:`Discard 2 cards`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -848,4 +918,13 @@ var CARDS = {
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
 
+}
+
+
+
+// controle that key == name
+for (let [key, card] of Object.entries(CARDS)) {
+    if (card.name != key) {
+        card.name = key
+    }
 }
