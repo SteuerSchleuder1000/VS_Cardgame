@@ -41,7 +41,7 @@ const ZONES = {
 const A = {
     Block:      {name:'Block',  img:'images/symbols/shield_icon_black.png', img_white:'images/symbols/shield_icon_white.png',   text:''},
     BlockX:     {name:'Block',  img:'images/symbols/shield_icon_black.png', img_white:'images/symbols/shield_icon_white.png',   text:'X'},
-    Speed:      {name:'Speed',  img:'images/symbols/speed_icon_black.png',  img_white:'images/symbols/speed_icon_white.png',    text:null},
+    Speed:      {name:'Speed',  img:'images/symbols/speed_icon_black.png',  img_white:'images/symbols/speed_icon_white.png',    text:''},
     LinkA:      {name:'LinkA',  img:ZONES.A.img,  img_white:ZONES.A.img_white,                                  text:null},
     // LinkB:      {name:'LinkB',  img:ZONES.B.img,  img_white:ZONES.B.img_white,                                  text:null},
     // LinkC:      {name:'LinkC',  img:ZONES.C.img,  img_white:ZONES.C.img_white,                                  text:null},
@@ -62,6 +62,7 @@ const E = {}
 
 for (var i=1;i<10;i++) {
     A['Block'+i] = {name:'Block',img:'images/symbols/shield_icon_black.png',img_white:'images/symbols/shield_icon_white.png',text:i}
+    A['Speed'+i] = {name:'Speed',img:'images/symbols/speed_icon_black.png',img_white:'images/symbols/speed_icon_white.png',text:i}
 }
 
 for (let e of ELEMENTS) {
@@ -551,12 +552,12 @@ var CARDS = {
     'Thunder Fist':
     {
         name: 'Thunder Fist',
-        power: 3, 
+        power: 4, 
         color:'Thunder',
-        zone: 'A', 
-        attributes: [],
-        text:`Add 1 ${L.Thunder} card from hand to your sources<br>
-                ${L.A}<b> Link:</b> +1 Power`,
+        zone: '', 
+        attributes: [A.Speed3],
+        text:`Add 1 ${L.Thunder_e} card from deck to your sources<br>
+                ${L.Thunder_e} ${L.Thunder_e}: Double strike`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -568,9 +569,10 @@ var CARDS = {
         name: 'Skyward Strike',
         power: 2, 
         color:'Storm',
-        zone: 'B', 
+        zone: '', 
         attributes: [A.Speed],
-        text:`<b>COUNTER ${L.A}:</b> Your opponent discards 2 cards or 1 ${L.A} card.`,
+        text:`Show 2 ${L.Storm_e} cards from your hand: Add 1 ${L.Storm_e} Energy from your discard pile.<br>
+                Your next ${L.Storm_e} attack this turn loses 1 ${L.Speed}`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -579,11 +581,11 @@ var CARDS = {
     'Vortex Punch':
     {
         name: 'Vortex Punch',
-        power: 3, 
+        power: 2, 
         color:'Storm',
-        zone: 'AC', 
-        attributes: [],
-        text:`Discard 1 ${L.Storm} card from your hand: Gain ${L.Speed}`,
+        zone: '', 
+        attributes: [A.Speed2],
+        text:`Add 1 ${L.Storm_e} Energy from your hand: Draw 1 card`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -591,12 +593,12 @@ var CARDS = {
     'Arclight Pulse':
     {
         name: 'Arclight Pulse',
-        power: 3, 
+        power: 1, 
         color:'Thunder',
         zone: 'CD', 
         attributes: [A.Speed],
-        text:`Can not block<br>
-            ${L.Thunder_e} ${L.Thunder_e}: <b>COUNTER ${L.D}</b>`,
+        text:`Mill 1 card<br>
+            If you last played a ${L.Thunder_e} gain + 2 power`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -604,11 +606,12 @@ var CARDS = {
     'Surge':
     {
         name: 'Surge',
-        power: 2, 
+        power: 0, 
         color:'Thunder',
-        zone: 'B', 
-        attributes: [A.Speed],
-        text:`Look at and rearrange the top 4 cards of your deck. Add 2 in your hand and the rest to your sources.`,
+        zone: '', 
+        attributes: [],
+        text:`Draw 1 card.<br>
+                Restor up to 2 cards in your discard pile as Energy`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -619,10 +622,10 @@ var CARDS = {
         name: 'Sparkover',
         power: 3, 
         color:'Thunder',
-        zone: 'AD', 
-        attributes: [],
-        text:`${L.B}<b> Link:</b> Can not be evaded.<br>
-            ${L.Thunder_e} ${L.Thunder_e}: +2 Power`,
+        zone: '', 
+        attributes: [A.Speed2],
+        text:`Choose one: Mill 2 or draw 2 cards<br>
+            2: Gain unblockable`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -633,10 +636,9 @@ var CARDS = {
         name: 'Whirlwinds',
         power: 2, 
         color:'Storm',
-        zone: 'B', 
-        attributes: [],
-        text:`If blocked you may discard this card<br>
-            Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
+        zone: '', 
+        attributes: [A.Speed2],
+        text:`Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -645,13 +647,12 @@ var CARDS = {
     'Storm Cell Shock':
     {
         name: 'Storm Cell Shock',
-        power: 5, 
+        power: 3, 
         color:'Storm',
         zone: 'D', 
-        attributes: [],
+        attributes: [A.Speed3],
         text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Storm_e} ${L.Storm_e}<br>
-                Can not be blocked or evaded<br>
-                Draw cards until you have 5 cards in hand.`,
+                Mill 3 cards and gain their combined power`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -662,10 +663,10 @@ var CARDS = {
         name: 'Jet Wind Strike',
         power: 2, 
         color:'Storm',
-        zone: 'A', 
-        attributes: [A.Speed,A.Speed],
-        text:`<b>COUNTER</b> ${L.D}: Draw 2 card.<br>
-                Add 1 discarded ${L.Storm} card to your sources.`,
+        zone: '', 
+        attributes: [A.Speed],
+        text:`Put 1 card form your discard pile onto your deck.<br>
+                1: draw 2 cards`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
