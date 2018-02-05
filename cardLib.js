@@ -282,7 +282,7 @@ var CARDS = {
         energy: [],
         zone: '', 
         attributes: [A.Speed,A.Speed],
-        text:`Draw 2 cards`,
+        text:`Draw 1 card`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
