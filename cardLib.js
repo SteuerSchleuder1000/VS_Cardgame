@@ -75,22 +75,24 @@ for (let e of ELEMENTS) {
 
 const DL_Thunder = [
 
-    // Level 0
+    // 3 TS
     {name:'Thunder Fist',nr:5},
+    {name:'Vortex Punch',nr:3}, // Super
+    {name:'Storm Cell Pulse',nr:1}, // Super
+
+    // 2 TS
+
     {name:'Skyward Strike',nr:3},
-    {name:'Vortex Punch',nr:3},
     {name:'Whirlwinds',nr:4},
+    {name:'Sparkover',nr:2}, // super
 
-    // Level 1
-    {name:'Arclight Pulse',nr:4},
+    // 1 TS
+    {name:'Arclight Shock',nr:4},
     {name:'Jet Wind Strike',nr:4},
-    {name:'Surge',nr:2},
-    {name:'Sparkover',nr:3},
-    
 
-    // Level 2
-    {name:'Storm Cell Shock',nr:2},
-    
+    // 0 TS
+    {name:'Surge',nr:2},
+    {name:'Stormbound',nr:2},
 ]
 
 const DL_Snake = [
@@ -170,6 +172,148 @@ const DL_Std = [
 
 
 var CARDS = {
+
+    // THUNDER DECK ...
+
+    'Thunder Fist':
+    {
+        name: 'Thunder Fist',
+        power: 4, 
+        color:'Thunder',
+        zone: 'A', 
+        attributes: [A.Speed3],
+        text:`From your top 3 cards: Add 2 ${L.Thunder_e} Energy. Put the rest back in any order.`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Whirlwinds':
+    {
+        name: 'Whirlwinds',
+        power: 2, 
+        color:'Storm',
+        zone: 'A', 
+        attributes: [A.Speed2],
+        text:`Add up to 2 ${L.Storm_e} Energy from your hand then redraw that many.`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+
+    'Skyward Strike':
+    {
+        name: 'Skyward Strike',
+        power: 2,
+        time: 1, 
+        color:'Storm',
+        zone: 'A', 
+        attributes: [A.Speed],
+        text:`VS Special: Look at your opponents hand and discard an attack with power 2 or less from it.`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Jet Wind Strike':
+    {
+        name: 'Jet Wind Strike',
+        power: 2, 
+        color:'Storm',
+        zone: 'A', 
+        attributes: [A.Speed],
+        text:`Combo: +2 Power<br>
+            ${L.Storm_e} ${L.Storm_e}: Cancel your opponents attack and end your turn<br>`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Vortex Punch':
+    {
+        name: 'Vortex Punch',
+        power: 8,
+        time: 3, 
+        color:'Storm',
+        zone: 'D', 
+        attributes: [A.Speed3],
+        text:`SUPER - ${L.Storm_e} ${L.Storm_e}<br>
+                You may shuffle up to 5 cards from your discard pile into your deck.`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Arclight Shock':
+    {
+        name: 'Arclight Shock',
+        power: 1, 
+        color:'Thunder',
+        zone: 'D', 
+        attributes: [A.Speed],
+        text:`If you own 2+ ${L.Thunder_e} Energy: gain + 2 power<br>
+                VS slower attacks: Destroy 1 Energy or Aura of your opponent`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Surge':
+    {
+        name: 'Surge',
+        power: 0, 
+        color:'Thunder',
+        zone: 'C', 
+        attributes: [],
+        text:`Add 2 Energy from your top 2 cards. Your next ${L.Thunder_e} attack this turn gains +1 power for each ${L.Thunder_e} Energy you own`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Stormbound':
+    {
+        name: 'Stormbound',
+        power: 0,
+        time: 0, 
+        color:'Storm',
+        zone: 'C', 
+        attributes: [],
+        text:`Choose 1: Gain an extra TS this turn. Add 2 ${L.Storm_e} Energy from your combat pile. Draw 2 cards.`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Sparkover':
+    {
+        name: 'Sparkover',
+        power: 5, 
+        time: 2,
+        color:'Thunder',
+        zone: 'D', 
+        attributes: [A.Speed2],
+        text:`SUPER - ${L.Thunder_e} ${L.Thunder_e} <br>
+            If you have 3 or less cards in hand draw 3 cards.`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    'Storm Cell Pulse':
+    {
+        name: 'Storm Cell Pulse',
+        power: 3, 
+        color:'Storm',
+        zone: 'D', 
+        attributes: [A.Speed3],
+        text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Storm_e} ${L.Storm_e}<br>
+                Mill 3 cards and gain their combined power`,
+        image: 'images/cards/sea.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+    
+
+
+
 
     'Evasion':
     {
@@ -458,12 +602,6 @@ var CARDS = {
     }, 
 
 
-
-
-
-
-
-
     'Furnace Strike': 
     {
         name: 'Furnace Strike',
@@ -512,8 +650,6 @@ var CARDS = {
 
 
 
-
-
     'Slag Storm':                     
     {
         name: 'Slag Storm',
@@ -547,132 +683,7 @@ var CARDS = {
 
 
 
-    // THUNDER DECK ...
-
-    'Thunder Fist':
-    {
-        name: 'Thunder Fist',
-        power: 4, 
-        color:'Thunder',
-        zone: '', 
-        attributes: [A.Speed3],
-        text:`Add 1 ${L.Thunder_e} card from deck to your sources<br>
-                ${L.Thunder_e} ${L.Thunder_e}: Double strike`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-
-    'Skyward Strike':
-    {
-        name: 'Skyward Strike',
-        power: 2, 
-        color:'Storm',
-        zone: '', 
-        attributes: [A.Speed],
-        text:`Show 2 ${L.Storm_e} cards from your hand: Add 1 ${L.Storm_e} Energy from your discard pile.<br>
-                Your next ${L.Storm_e} attack this turn loses 1 ${L.Speed}`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-    'Vortex Punch':
-    {
-        name: 'Vortex Punch',
-        power: 2, 
-        color:'Storm',
-        zone: '', 
-        attributes: [A.Speed2],
-        text:`Add 1 ${L.Storm_e} Energy from your hand: Draw 1 card`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-    'Arclight Pulse':
-    {
-        name: 'Arclight Pulse',
-        power: 1, 
-        color:'Thunder',
-        zone: 'CD', 
-        attributes: [A.Speed],
-        text:`Mill 1 card<br>
-            If you last played a ${L.Thunder_e} gain + 2 power`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-    'Surge':
-    {
-        name: 'Surge',
-        power: 0, 
-        color:'Thunder',
-        zone: '', 
-        attributes: [],
-        text:`Draw 1 card.<br>
-                Restor up to 2 cards in your discard pile as Energy`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-    'Sparkover':
-    {
-        name: 'Sparkover',
-        power: 3, 
-        color:'Thunder',
-        zone: '', 
-        attributes: [A.Speed2],
-        text:`Choose one: Mill 2 or draw 2 cards<br>
-            2: Gain unblockable`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-    'Whirlwinds':
-    {
-        name: 'Whirlwinds',
-        power: 2, 
-        color:'Storm',
-        zone: '', 
-        attributes: [A.Speed2],
-        text:`Put any number of discarded 'Whirlwinds' under your deck: Gain +2 Power for each`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-    'Storm Cell Shock':
-    {
-        name: 'Storm Cell Shock',
-        power: 3, 
-        color:'Storm',
-        zone: 'D', 
-        attributes: [A.Speed3],
-        text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Storm_e} ${L.Storm_e}<br>
-                Mill 3 cards and gain their combined power`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-    'Jet Wind Strike':
-    {
-        name: 'Jet Wind Strike',
-        power: 2, 
-        color:'Storm',
-        zone: '', 
-        attributes: [A.Speed],
-        text:`Put 1 card form your discard pile onto your deck.<br>
-                1: draw 2 cards`,
-        image: 'images/cards/sea.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-
+    
 
     // SNAKE DECK...
 

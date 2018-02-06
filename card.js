@@ -77,7 +77,7 @@ class Card {
         var cardPower = createDiv('cardPower')
         this.div.appendChild(cardPower)
         for (var i=0;i<this.power;i++) { 
-            let p = createDiv('block')
+            let p = createDiv('block row'+parseInt(i/5))
             if (this.img_o.power == 'white') {p.style.backgroundColor = 'white'}
             else {p.style.backgroundColor = 'black'}
             cardPower.appendChild(p) 
