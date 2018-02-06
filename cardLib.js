@@ -122,30 +122,29 @@ const DL_Star = [
 
 
 const DL_Rust = [       // P: 14   B: 5 Q: 4 H: 7
-    // Level 0
-    {name:'Scorching Blow',nr:4},   // Furnace          Punch
-    {name:'Scrap Armor',nr:5},      // Scrap            Block
-    {name:'Splinter Claws',nr:4},      // Scrap        Punch
-    {name:'Shrapnel Blast',nr:4},   // Scrap            Quick
+    // TS 3
+    {name:'Scorching Blow',nr:5}, 
+    {name:'Meltdown Punch',nr:2},   // Super
 
-    // Level 1
-    {name:'Furnace Strike',nr:5},   // Furnace          Heavy
-    {name:'Searing Chains',nr:3},   // Furnace          Punch
-    {name:'Rust Kick',nr:3},        // Scrap            Punch
+    // TS 2
+    {name:'Splinter Claws',nr:3},         
+    {name:'Searing Chains',nr:3},   
+    {name:'Furnace Strike',nr:3},   // Suepr
+    {name:'Scrap Armor',nr:3},    
 
-    // Level 2
-    {name:'Slag Storm',nr:1},       // Scrap            Heavy
-    {name:'Meltdown Punch',nr:1},   // Furnace          Heavy
+    // TS 1
+      
+    {name:'Rust Kick',nr:3},       
+    {name:'Shrapnel Blast',nr:4},
+    
+    // TS 0
+    {name:'Slag Storm',nr:2},       // Super
+    {name:'Flare',nr:2},
+    {name:'Corrosion',nr:2},
+    
 ]
 
 const DL_Std = [
-    // {name:'Punch 1',nr:5},
-    // {name:'Punch 2',nr:5},
-    // {name:'Quick 1',nr:2},
-    // {name:'Quick 2',nr:2},
-    // {name:'Heavy 1',nr:2},
-    // {name:'Heavy 2',nr:2},
-    // {name:'Block',nr:4},
 
     {name:'Evasion', nr:2},
     {name:'Speed Up!', nr:2},
@@ -179,9 +178,10 @@ var CARDS = {
     {
         name: 'Thunder Fist',
         power: 4, 
+        time: 3,
         color:'Thunder',
         zone: 'A', 
-        attributes: [A.Speed3],
+        attributes: [],
         text:`From your top 3 cards: Add 2 ${L.Thunder_e} Energy. Put the rest back in any order.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -191,9 +191,10 @@ var CARDS = {
     {
         name: 'Whirlwinds',
         power: 2, 
+        time: 2,
         color:'Storm',
         zone: 'A', 
-        attributes: [A.Speed2],
+        attributes: [],
         text:`Add up to 2 ${L.Storm_e} Energy from your hand then redraw that many.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -208,7 +209,7 @@ var CARDS = {
         time: 1, 
         color:'Storm',
         zone: 'A', 
-        attributes: [A.Speed],
+        attributes: [],
         text:`VS Special: Look at your opponents hand and discard an attack with power 2 or less from it.`,
         image: 'images/cards/sea.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -218,9 +219,10 @@ var CARDS = {
     {
         name: 'Jet Wind Strike',
         power: 2, 
+        time: 1,
         color:'Storm',
         zone: 'A', 
-        attributes: [A.Speed],
+        attributes: [],
         text:`Combo: +2 Power<br>
             ${L.Storm_e} ${L.Storm_e}: Cancel your opponents attack and end your turn<br>`,
         image: 'images/cards/sea.png',
@@ -235,7 +237,7 @@ var CARDS = {
         time: 3, 
         color:'Storm',
         zone: 'D', 
-        attributes: [A.Speed3],
+        attributes: [],
         text:`SUPER - ${L.Storm_e} ${L.Storm_e}<br>
                 You may shuffle up to 5 cards from your discard pile into your deck.`,
         image: 'images/cards/sea.png',
@@ -246,9 +248,10 @@ var CARDS = {
     {
         name: 'Arclight Shock',
         power: 1, 
+        time: 1,
         color:'Thunder',
         zone: 'D', 
-        attributes: [A.Speed],
+        attributes: [],
         text:`If you own 2+ ${L.Thunder_e} Energy: gain + 2 power<br>
                 VS slower attacks: Destroy 1 Energy or Aura of your opponent`,
         image: 'images/cards/sea.png',
@@ -259,6 +262,7 @@ var CARDS = {
     {
         name: 'Surge',
         power: 0, 
+        time: 0,
         color:'Thunder',
         zone: 'C', 
         attributes: [],
@@ -288,7 +292,7 @@ var CARDS = {
         time: 2,
         color:'Thunder',
         zone: 'D', 
-        attributes: [A.Speed2],
+        attributes: [],
         text:`SUPER - ${L.Thunder_e} ${L.Thunder_e} <br>
             If you have 3 or less cards in hand draw 3 cards.`,
         image: 'images/cards/sea.png',
@@ -300,9 +304,10 @@ var CARDS = {
     {
         name: 'Storm Cell Pulse',
         power: 3, 
+        time: 3,
         color:'Storm',
         zone: 'D', 
-        attributes: [A.Speed3],
+        attributes: [],
         text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Storm_e} ${L.Storm_e}<br>
                 Mill 3 cards and gain their combined power`,
         image: 'images/cards/sea.png',
@@ -542,47 +547,49 @@ var CARDS = {
 
     // SCRAP DECK ...
 
+    'Flare': 
+    {
+        name: 'Flare', 
+        power: 0, 
+        time: 0,
+        color: 'Furnace',
+        energy: [],
+        zone: 'C', 
+        attributes: [],
+        text:`Draw 2 cards<br>
+            Show 2 ${L.Furnace_e} cards from hand: Your next ${L.Furnace_e} attack gains +2 Power.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    'Corrosion': 
+    {
+        name: 'Corrosion', 
+        power: 0, 
+        time: 0,
+        color: 'Scrap',
+        energy: [],
+        zone: 'C', 
+        attributes: [],
+        text:`Discard your top 3 cards.<br>
+              Put 1 card from your discard pile onto your hand and add 1 as Energy`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    
+
     'Scorching Blow': 
     {
         name: 'Scorching Blow', 
-        power: 3, 
+        power: 4, 
+        time: 3,
         color: 'Furnace',
         energy: [],
-        zone: '', 
+        zone: 'A', 
         attributes: [],
-        text:`<b>Level 1</b><br>
-                ${L.C}<b> Link:</b>+1 Power<br>
-                Add 1 charge from your deck.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Scrap Armor': 
-    {
-        name: 'Scrap Armor',
-        power: 0, 
-        color:'Scrap',
-        energy: [],
-        zone: 'B', 
-        attributes: [A.Block3],
-        text:`Draw 2 cards.<br>
-                Crit Block: Instant link. Add this as a charge.<br>
-                <b>1:</b> +${L.Block2}`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Splinter Claws':                     
-    {
-        name: 'Splinter Claws',
-        power: 2, 
-        color:'Scrap',
-        energy: [],
-        zone: '', 
-        attributes: [],
-        text:`<b>Level 1</b><br>
-                ${L.Scrap} Link: <b>Break</b><br>
-                <b>1</b>: +2 Power`,
+        text:`Add up to 2 ${L.Furnace_e} Energy from your hand then draw that many cards<br>
+            `,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -591,43 +598,62 @@ var CARDS = {
     {
         name: 'Shrapnel Blast',
         power: 2, 
+        time: 1,
         color:'Scrap',
         energy: [],
-        zone: 'C', 
-        attributes: [A.Speed],
-        text:`Counter an attack: Draw 2 cards<br>
-                Breaker`,
+        zone: 'D', 
+        attributes: [],
+        text:`Discard your top 3 cards then add up to 2 ${L.Scrap_e} Energy from your discard pile.<br>
+                `,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
 
-
-    'Furnace Strike': 
+    'Scrap Armor': 
     {
-        name: 'Furnace Strike',
-        power: 4, 
-        color: 'Furnace',
+        name: 'Scrap Armor',
+        power: 0, 
+        time: 2,
+        color:'Scrap',
         energy: [],
         zone: 'A', 
-        attributes: [A.LinkA],
-        text:`Level 2<br>
-                <b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
-                Level Link: +2B`,
+        attributes: [A.Block5],
+        text:`Choose one: Draw 1 card or add this card as Energy.<br>
+                Discard 2 cards: Gain +10 Block`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
+
+    'Splinter Claws':                     
+    {
+        name: 'Splinter Claws',
+        power: 3, 
+        time: 1,
+        color:'Scrap',
+        energy: [],
+        zone: 'A', 
+        attributes: [],
+        text:`Can't be played as the first card in a turn.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
+
+    
+
+
+    
 
 
     'Searing Chains': 
     {
         name: 'Searing Chains',
         power: 2, 
+        time: 2,
         color: 'Furnace',
         energy: [],
-        zone: '', 
+        zone: 'D', 
         attributes: [A.Block1],
-        text:`Level 2<br>
-                Blocked or hit: Look at your opponents hand and discard 1 card from it.`,
+        text:`VS Special: Look at your opponents hand and discard 1 card from it.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
@@ -636,14 +662,13 @@ var CARDS = {
     {
         name: 'Rust Kick',
         power: 2, 
+        time: 1,
         color:'Scrap',
         energy:[],
-        zone: 'C', 
+        zone: 'A', 
         attributes: [],
-        text:`Level 3<br>
-                Level Link: Destroy 2 charges in game<br>
-                ${L.Furnace} Link: +2 charges from your deck<br>
-                ${L.Scrap} Link: draw 2 cards`,
+        text:`VS TS 1: Discard 1 Energy of your opponent.<br>
+                VS TS 3: Gain 1 extra TS this turn.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -653,14 +678,14 @@ var CARDS = {
     'Slag Storm':                     
     {
         name: 'Slag Storm',
-        power: 2, 
+        power: 0, 
+        time: 0,
         color:'Scrap',
         energy: [],
-        zone: 'AD', 
+        zone: 'D', 
         attributes: [A.LinkA],
-        text:`<b>SUPER - ${L.Scrap_e} ${L.Scrap_e} ${L.Scrap_e}</b>, Level 3<br>
-            Level Link: Gain ${L.Speed}, draw 2 cards<br>
-            Attach up to 3 cards from your hand to this attack`,
+        text:`<b>SUPER - X ${L.Scrap_e} </b><br>
+            Gain +4 Power and 1 >> for each ${L.Scrap_e} you paid.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -669,18 +694,33 @@ var CARDS = {
     'Meltdown Punch':                     
     {
         name: 'Meltdown Punch',
-        power: 5, 
+        power: 6, 
+        time: 3,
         color:'Furnace',
         energy:[],
-        zone: 'AD', 
+        zone: 'D', 
         attributes: [A.LinkA],
-        text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b>, Level 3<br>
-                Level link: +3B<br>
+        text:`<b>SUPER - ${E.Furnace} ${E.Scrap_e}</b><br>
+                Breakthrough<br>
                 Shuffle up to 10 discarded cards back into your deck.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
 
+    'Furnace Strike': 
+    {
+        name: 'Furnace Strike',
+        power: 8, 
+        time: 2,
+        color: 'Furnace',
+        energy: [],
+        zone: 'D', 
+        attributes: [],
+        text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
+                Add up to 2 cards from your discard pile to your hand.`,
+        image: 'images/cards/warlock.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},
+    },
 
 
     
@@ -938,5 +978,10 @@ var CARDS = {
 for (let [key, card] of Object.entries(CARDS)) {
     if (card.name != key) {
         card.name = key
+    }
+    if ('time' in card) {
+        let times = card.time
+        for (let i=0; i< times;i++) { card.attributes.push(A.Speed) }
+        //console.log(card)
     }
 }

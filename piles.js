@@ -16,7 +16,7 @@ class Pile {
     shuffle() { shuffle(this.cards) }
     count() {return this.cards.length}
 
-    add(card) { this.cards.unshift(card); card.pile = this; this.updateText()}
+    add(card) { this.cards.push(card); card.pile = this; this.updateText()}
     remove(card) {
         if (this.idx < 2) {this.game.overlay.remove(card)}
         var idx = this.indexOf(card)
