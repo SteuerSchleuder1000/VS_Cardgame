@@ -5,7 +5,7 @@ const COLORS = {
     Storm: '#3e3e3e',
     Venom: '#222',
     Gold: '#ccb85b',
-    Star: 'gold',
+    Star: '#ccb85b',
     Aurora: 'violet',
 }
 
@@ -118,6 +118,8 @@ const DL_Star = [
     {name:'Zodiac Spear',nr:5},
     {name:'Nebula Dash',nr:2},
     {name:'Aurora Breath',nr:3},
+    {name:'Morning Nova',nr:1},
+    {name:'Astral Jab',nr:4},
 ]
 
 
@@ -320,231 +322,6 @@ var CARDS = {
 
 
 
-    'Evasion':
-    {
-        name: 'Speed Up!',
-        power: 0, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed],
-        text:`Draw 1 card. Dodge your opponents attack and end your turn.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Speed Up!':
-    {
-        name: 'Speed Up!',
-        power: 0, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [],
-        text:`Reduce TIME of your next attack by 1. Draw 1 Card.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Power Up!':
-    {
-        name: 'Power Up!',
-        power: 0, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [],
-        text:`Your next attack gains +1 Power. Draw 1 card.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Defend!':
-    {
-        name: 'Defend!',
-        power: 0, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [],
-        text:`Your next attack gains +3 Block.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Energy Surge':
-    {
-        name: 'Energy Surge',
-        power: 0, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [],
-        text:`Gain 2 Energy from your top.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Quick Punch 1':
-    {
-        name: 'Quick Punch 1',
-        power: 1, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed],
-        text:`Gain 2 Energy from your top.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Quick Punch 2':
-    {
-        name: 'Quick Punch 2',
-        power: 2, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed],
-        text:`1 E: +2 Power`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Quick Punch 3':
-    {
-        name: 'Quick Punch 2',
-        power: 2, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed],
-        text:`2 E: Gain double strike`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Neutral Punch 1':
-    {
-        name: 'Neutral Punch 1',
-        power: 2, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed,A.Speed],
-        text:`Draw 1 card`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Neutral Punch 2':
-    {
-        name: 'Neutral Punch 2',
-        power: 3, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed,A.Speed],
-        text:`Gain 2 Energy from your top.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Strong Punch 1':
-    {
-        name: 'Strong Punch 1',
-        power: 3, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed,A.Speed,A.Speed],
-        text:`Can't be blocked by combos`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Strong Punch 2':
-    {
-        name: 'Strong Punch 2',
-        power: 4, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed,A.Speed,A.Speed],
-        text:`2 E: Gain +2 Power`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Strong Punch 3':
-    {
-        name: 'Strong Punch 3',
-        power: 5, 
-        color: 'Furnace',
-        energy: [],
-        zone: '', 
-        attributes: [A.Speed,A.Speed,A.Speed],
-        text:`Discard 2 cards`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Quick 2':
-    {
-        name: 'Quick 2',
-        power: 2, 
-        color: 'Furnace',
-        energy: [],
-        zone: 'A', 
-        attributes: [A.Speed],
-        text:``,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Heavy 1':
-    {
-        name: 'Heavy 1',
-        power: 4, 
-        color: 'Furnace',
-        energy: [],
-        zone: 'A', 
-        attributes: [],
-        text:``,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Heavy 2':
-    {
-        name: 'Heavy 2',
-        power: 5, 
-        color: 'Furnace',
-        energy: [],
-        zone: 'A', 
-        attributes: [],
-        text:``,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-    'Block':
-    {
-        name: 'Block',
-        power: 0, 
-        color: 'Furnace',
-        energy: [],
-        zone: 'A', 
-        attributes: [A.Block5,A.Speed],
-        text:`If you block 3 or less Power play another attack.`,
-        image: 'images/cards/warlock.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},
-    },
-
-
-
-
-
     // SCRAP DECK ...
 
     'Flare': 
@@ -627,13 +404,14 @@ var CARDS = {
     'Splinter Claws':                     
     {
         name: 'Splinter Claws',
-        power: 3, 
-        time: 1,
+        power: 2, 
+        time: 2,
         color:'Scrap',
         energy: [],
         zone: 'A', 
         attributes: [],
-        text:`Can't be played as the first card in a turn.`,
+        text:`RISK: +2 Power and can't be blocked by slower attacks<br>
+              Hit: Draw 3 cards.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -652,8 +430,9 @@ var CARDS = {
         color: 'Furnace',
         energy: [],
         zone: 'D', 
-        attributes: [A.Block1],
-        text:`VS Special: Look at your opponents hand and discard 1 card from it.`,
+        attributes: [],
+        text:`RISK: Can't be blocked by SPECIAL attacks.<br>
+                Hit: Look at your opponents hand and discard 1 card from it.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
@@ -667,8 +446,8 @@ var CARDS = {
         energy:[],
         zone: 'A', 
         attributes: [],
-        text:`VS TS 1: Discard 1 Energy of your opponent.<br>
-                VS TS 3: Gain 1 extra TS this turn.`,
+        text:`RISK: Can't be blocked by NORMAL attacks.<br>
+                Hit: Discard a Energy card of your opponent.`,
         image: 'images/cards/warlock.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -700,7 +479,7 @@ var CARDS = {
         energy:[],
         zone: 'D', 
         attributes: [A.LinkA],
-        text:`<b>SUPER - ${E.Furnace} ${E.Scrap_e}</b><br>
+        text:`<b>SUPER - ${L.Furnace_e} ${L.Scrap_e}</b><br>
                 Breakthrough<br>
                 Shuffle up to 10 discarded cards back into your deck.`,
         image: 'images/cards/warlock.png',
@@ -840,14 +619,24 @@ var CARDS = {
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
 
+
+
+
+
+
+
+    // STAR
+
     'Dawn Blade':
     {
         name: 'Dawn Blade',
-        power: 2, 
+        power: 2,
+        time: 2,
         color:'Aurora',
-        zone: 'AD', 
+        zone: 'A', 
         attributes: [],
-        text:`Reveal another 'Dawn Blade' from hand: +2 Power.`,
+        text:`Gain 1 ${L.Star_e} Energy from your hand.<br>
+            If you added a 'Dawn Blade' this way gain +2 Power.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -856,11 +645,12 @@ var CARDS = {
     'Celestial Punch':
     {
         name: 'Celestial Punch',
-        power: 3, 
+        power: 4, 
+        time: 3,
         color:'Star',
-        zone: 'AD', 
+        zone: 'A', 
         attributes: [],
-        text:`Reveal the top card of your deck. If it is a ${L.Aurora} card put it to your sources.`,
+        text:`Reveal the top card of your deck. If it is a ${L.Star_e} card put it to your sources.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -870,10 +660,11 @@ var CARDS = {
     {
         name: 'Constellation Shield',
         power: 0, 
+        time: 2,
         color:'Star',
-        zone: 'B', 
-        attributes: [A.Block1],
-        text:`Restore 1 ${L.Star} source<br>Gain +1 ${L.Block} for each ${L.Star} source you own`,
+        zone: 'A', 
+        attributes: [A.Block4],
+        text:`Block 4 Power: Add this as Energy and gain an extra TS this turn.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -882,11 +673,12 @@ var CARDS = {
     'Gemini Strike':
     {
         name: 'Gemini Strike',
-        power: 0, 
+        power: 5, 
+        time: 2,
         color:'Star',
-        zone: 'C', 
-        attributes: [A.Block1],
-        text:`Swap 1 source you own with a card in hand.<br>${L.A}<b> Link:</b> Align`,
+        zone: 'A', 
+        attributes: [],
+        text:`SUPER<br>Swap 1 source you own with a card in hand.<br>${L.A}<b> Link:</b> Align`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -895,12 +687,13 @@ var CARDS = {
     'Sunrise Blast':
     {
         name: 'Sunrise Blast',
-        power: 1, 
+        power: 3, 
+        time: 2,
         color:'Star',
-        zone: 'CD', 
-        attributes: [A.Block1],
-        text:`Look at and rearrange the top 3 cards of your deck.<br> 
-                Put the top card of your deck to your sources and gain that much Power`,
+        zone: 'D', 
+        attributes: [],
+        text:`Reveal the top 2 cards of your deck.<br> 
+                You may add 1 of these to your hand and another as Energy.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -910,24 +703,12 @@ var CARDS = {
     {
         name: 'Star Gaze',
         power: 1, 
+        time: 0,
         color:'Star',
-        zone: 'CD', 
-        attributes: [A.Block1],
-        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${L.Aurora} card to your sources.`,
-        image: 'images/cards/missiles.png',
-        img_o: {zone:'white', power:'white', attribute: 'white'},   
-    },
-
-
-    'Star Gaze':
-    {
-        name: 'Star Gaze',
-        power: 0, 
-        color:'Star',
-        zone: 'CD', 
-        attributes: [A.Block3],
-        text:`Look at and rearrange the top 4 cards of your deck. Restore a ${L.Aurora} card to your sources.<br>
-                Cancel this card into a ${L.A} attack.`,
+        zone: 'C', 
+        attributes: [],
+        text:`Look at and rearrange the top 4 cards of your deck.<br>
+            Choose 1: Draw 1 card or add 2 Energy from your Deck`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -936,11 +717,12 @@ var CARDS = {
     'Zodiac Spear':
     {
         name: 'Zodiac Spear',
-        power: 2, 
+        power: 3, 
+        time: 1,
         color:'Star',
-        zone: 'C', 
-        attributes: [A.Speed],
-        text:`Blocked: Add this to your sources.<br>${L.Star}<b> Link:</b> Attach a ${L.Star} source to this card.`,
+        zone: 'A', 
+        attributes: [],
+        text:`Can't block.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -949,11 +731,12 @@ var CARDS = {
     'Nebula Dash':
     {
         name: 'Nebula Dash',
-        power: 2, 
+        power: 0, 
+        time: 0,
         color:'Aurora',
-        zone: 'C', 
-        attributes: [A.Speed],
-        text:`Discard to give your attack ${L.Speed}<br>Swap 1 source you own with a card in hand.`,
+        zone: 'D', 
+        attributes: [],
+        text:`RISK: Gain 1 extra TS this turn.<br>Swap up to 1 source you own with a card in hand.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -961,11 +744,41 @@ var CARDS = {
     'Aurora Breath':
     {
         name: 'Aurora Breath',
-        power: 2, 
+        power: 2,
+        time: 3, 
         color:'Aurora',
-        zone: 'C', 
-        attributes: [A.Speed],
-        text:`Reveal ${L.Aurora} cards in your hand and gain +1 Power for each.<br>If this has 5+ Power destroy 1 source on the board.`,
+        zone: 'D', 
+        attributes: [],
+        text:`SUPER - ${L.Aurora_e} ${L.Aurora_e} ${L.Aurora_e}<br>
+            Discard your hand and shuffle your discard pile into your deck.<br>
+            Hit: Draw 5 cards`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Morning Nova':
+    {
+        name: 'Morning Nova',
+        power: 10,
+        time: 2, 
+        color:'Aurora',
+        zone: 'D', 
+        attributes: [],
+        text:`Reveal ${L.Aurora_e} cards in your hand and gain +1 Power for each.<br>If this has 5+ Power destroy 1 source on the board.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Astral Jab':
+    {
+        name: 'Astral Jab',
+        power: 2,
+        time: 1, 
+        color:'Star',
+        zone: 'D', 
+        attributes: [],
+        text:`Add 1 ${L.Star_e} Energy from your hand.<br>
+            VS NORMAL: Draw 1 card.`,
         image: 'images/cards/missiles.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },

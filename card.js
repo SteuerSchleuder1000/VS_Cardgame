@@ -74,13 +74,16 @@ class Card {
         }
 
         // Power
-        var cardPower = createDiv('cardPower')
-        this.div.appendChild(cardPower)
-        for (var i=0;i<this.power;i++) { 
-            let p = createDiv('block row'+parseInt(i/5))
-            if (this.img_o.power == 'white') {p.style.backgroundColor = 'white'}
-            else {p.style.backgroundColor = 'black'}
-            cardPower.appendChild(p) 
+        for (let col=0; col<parseInt((this.power+5)/5);col++) {
+
+            let cardPower = createDiv('cardPower col'+col)
+            this.div.appendChild(cardPower)
+            for (let i=0;i< Math.min(this.power-col*5, 5);i++) { 
+                let p = createDiv('block')
+                if (this.img_o.power == 'white') {p.style.backgroundColor = 'white'}
+                else {p.style.backgroundColor = 'black'}
+                cardPower.appendChild(p) 
+            }
         }
 
 

@@ -222,6 +222,10 @@ body
         position absolute
         top $zoneHeight+1.1*_unit
         left 0.2*_unit
+        &.col1
+            left 0.4*_unit+$powerHeight !important
+        &.col2
+            left 0.6*_unit+$powerHeight !important
         .block
             display block
             width $powerHeight
@@ -229,8 +233,7 @@ body
             background white
             margin-bottom 0.3*_unit
             border-radius 20%
-            &.row1
-                left 0.4*_unit+$powerHeight !important
+            
     .cardAttribute
         color white
         margin-left 0.3*_unit
