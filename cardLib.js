@@ -182,7 +182,7 @@ var CARDS = {
         power: 4, 
         time: 3,
         color:'Thunder',
-        zone: 'A', 
+        zone: '', 
         attributes: [],
         text:`Reveal the top card of your deck: If it has color ${L.Thunder_e} you may add it as Energy.`,
         image: 'images/cards/thunder.png',
@@ -192,13 +192,13 @@ var CARDS = {
     'Whirlwinds':
     {
         name: 'Whirlwinds',
-        power: 2, 
+        power: 1, 
         time: 2,
         color:'Storm',
-        zone: 'A', 
+        zone: 'CD', 
         attributes: [],
-        text:`Gains +1 Pseudopower for each ${L.Storm_e} card in your combat pile.<br>
-                Add a ${L.Storm_e} Energy from your hand: Draw 1 card`,
+        text:`Gains +1 Breakthrough for each ${L.Storm_e} card in your combat pile.<br>
+                Can't be blocked by attacks with less power`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -211,9 +211,9 @@ var CARDS = {
         power: 2,
         time: 1, 
         color:'Storm',
-        zone: 'A', 
+        zone: 'B', 
         attributes: [],
-        text:`RISK: Can't be blocked by slower attacks.<br>
+        text:`Counters TS 1 melee attacks.<br>
               Hit: Look at your opponents hand and discard an attack with power 2 or less from it.`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -225,9 +225,9 @@ var CARDS = {
         power: 2, 
         time: 1,
         color:'Storm',
-        zone: 'A', 
+        zone: 'BC', 
         attributes: [],
-        text:`HIT Combo: +2 Power<br>
+        text:`Counters Ranged attacks<br>
             Counters SUPER<br>`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -240,7 +240,7 @@ var CARDS = {
         power: 6,
         time: 3, 
         color:'Storm',
-        zone: 'D', 
+        zone: '', 
         attributes: [],
         text:`SUPER - ${L.Storm_e} ${L.Storm_e}<br>
                 You may shuffle up to 5 cards from your discard pile into your deck.`,
@@ -254,7 +254,7 @@ var CARDS = {
         power: 1, 
         time: 1,
         color:'Thunder',
-        zone: 'D', 
+        zone: 'AC', 
         attributes: [],
         text:`${L.Thunder_e} ${L.Thunder_e}: +2 Power<br>
                 Hit: Destroy 1 Energy or aura on the field.`,
@@ -268,10 +268,10 @@ var CARDS = {
         power: 0, 
         time: 0,
         color:'Thunder',
-        zone: 'C', 
+        zone: '', 
         attributes: [],
         text:`Choose 1:<br>
-                &#8226 Add the top 2 cards from your deck as Energy.<br>
+                &#8226 Gain up to 2 ${L.Thunder_e} Energy from your hand then draw that many cards.<br>
                 &#8226 Your next ${L.Thunder_e} attack this turn gains +1 power for each ${L.Thunder_e} Energy you own`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -283,7 +283,7 @@ var CARDS = {
         power: 0,
         time: 0, 
         color:'Storm',
-        zone: 'C', 
+        zone: '', 
         attributes: [],
         text:`Choose 1: &#8226 Draw 2 cards<br>
                 &#8226 Gain an extra TS this turn<br>
@@ -299,10 +299,10 @@ var CARDS = {
         power: 5, 
         time: 2,
         color:'Thunder',
-        zone: 'D', 
+        zone: 'AD', 
         attributes: [],
         text:`SUPER - ${L.Thunder_e} ${L.Thunder_e} <br>
-            If you have 3 or less cards in hand draw 3 cards.`,
+            If you have 2 or less cards in hand draw 3 cards.`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -314,7 +314,7 @@ var CARDS = {
         power: 3, 
         time: 3,
         color:'Storm',
-        zone: 'D', 
+        zone: 'AD', 
         attributes: [],
         text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Storm_e} ${L.Storm_e}<br>
                 Mill 3 cards and gain their combined power`,
@@ -337,7 +337,7 @@ var CARDS = {
         time: 0,
         color: 'Furnace',
         energy: [],
-        zone: 'C', 
+        zone: '', 
         attributes: [],
         text:`Choose 1:<br>
             &#8226 Draw 2 cards<br>
@@ -353,7 +353,7 @@ var CARDS = {
         time: 0,
         color: 'Scrap',
         energy: [],
-        zone: 'C', 
+        zone: '', 
         attributes: [],
         text:`Choose 2:<br>
                 &#8226 Discard your top 3 cards.<br>
@@ -372,7 +372,7 @@ var CARDS = {
         time: 3,
         color: 'Furnace',
         energy: [],
-        zone: 'A', 
+        zone: '', 
         attributes: [],
         text:`Add a ${L.Furnace_e} Energy from your hand then draw a card<br>
             `,
@@ -383,11 +383,11 @@ var CARDS = {
     'Shrapnel Blast':
     {
         name: 'Shrapnel Blast',
-        power: 2, 
+        power: 1, 
         time: 1,
         color:'Scrap',
         energy: [],
-        zone: 'D', 
+        zone: 'C', 
         attributes: [],
         text:`Choose 1:<br>
                 &#8226 Discard your top 2 cards<br>
@@ -403,7 +403,7 @@ var CARDS = {
         time: 2,
         color:'Scrap',
         energy: [],
-        zone: 'A', 
+        zone: '', 
         attributes: [A.Block3],
         text:`Choose one:<br>
                 &#8226 Draw 1 card<br>
@@ -420,7 +420,7 @@ var CARDS = {
         time: 2,
         color:'Scrap',
         energy: [],
-        zone: 'A', 
+        zone: '', 
         attributes: [],
         text:`Can't Block<br>
                 RISK: +2 Power and can't be blocked by slower attacks<br>
@@ -442,9 +442,9 @@ var CARDS = {
         time: 2,
         color: 'Furnace',
         energy: [],
-        zone: 'D', 
+        zone: 'C', 
         attributes: [],
-        text:`RISK: Can't be blocked by SPECIAL attacks.<br>
+        text:`Can only be blocked by faster attacks.<br>
                 Hit: Look at your opponents hand and discard 1 card from it.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
@@ -458,9 +458,9 @@ var CARDS = {
         time: 1,
         color:'Scrap',
         energy:[],
-        zone: 'A', 
+        zone: 'B', 
         attributes: [],
-        text:`VS TS 2+: +1 Power<br>
+        text:`VS slower melee attacks: +1 Power<br>
                 Hit: Discard a Energy card of your opponent.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
@@ -472,13 +472,13 @@ var CARDS = {
     {
         name: 'Slag Storm',
         power: 0, 
-        time: 0,
+        time: 4,
         color:'Scrap',
         energy: [],
         zone: 'D', 
-        attributes: [A.LinkA],
+        attributes: [],
         text:`<b>SUPER - X ${L.Scrap_e} </b><br>
-            Gain +4 Power and 1 >> for each ${L.Scrap_e} you paid.`,
+            Gain +4 Power for each ${L.Scrap_e} you paid.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -491,8 +491,8 @@ var CARDS = {
         time: 3,
         color:'Furnace',
         energy:[],
-        zone: 'D', 
-        attributes: [A.LinkA],
+        zone: '', 
+        attributes: [],
         text:`<b>SUPER - ${L.Furnace_e} ${L.Scrap_e}</b><br>
                 Breakthrough<br>
                 Shuffle up to 10 discarded cards back into your deck.`,
@@ -507,7 +507,7 @@ var CARDS = {
         time: 2,
         color: 'Furnace',
         energy: [],
-        zone: 'D', 
+        zone: '', 
         attributes: [],
         text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
                 Add up to 2 cards from your discard pile to your hand.`,

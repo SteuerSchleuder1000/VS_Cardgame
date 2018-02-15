@@ -82,10 +82,15 @@ class Overlay extends Pile {
     close() {
         this.game.overlayMode = false
         this.div.style.display = 'none'
-        for (var c of this.cards) { this.remove(c) }
+        // console.log(this.cards)
+        for (var c of this.cards) { c.overlay(false) } //this.remove(c) }
+        // console.log(this.cards)
+
         this.cards = []
         this.div.innerHTML = ''
         this.addCloseBtn()
+        this.game.player1.playPile.display()
+        this.game.player2.playPile.display()
     }
 
     remove(card) {
@@ -109,9 +114,18 @@ class PlayPile extends Pile {
         this.class = 'playPile idx'+this.idx
         let query = (this.idx==0) ? '.heroPile':'.opPile'
         this.div = document.querySelector('#board #playPile '+query)
+        this.showPileBtn = document.querySelector('#board '+query+'s .showCombatPile')
+        this.showPileBtn.onclick = this.overlay.bind(this)
     }
 
     add(card) { super.add(card); card.parentDiv = this.div ;this.updatePosition(); card.play() }
+
+    overlay() {
+        if (this.game.overlayMode) {return}
+        for (let c of this.cards) { this.game.overlay.add(c) }
+        this.game.overlay.display()
+    }
+
     updatePosition() {
         var i = 0
         for (var c of this.cards) {
@@ -119,11 +133,14 @@ class PlayPile extends Pile {
                 c.div.className = 'card '+this.class
                 c.cardBack.className = 'card '+this.class
             }
-            c.z = zPositions.play+i
-            c.updatePosition()
+            // c.updatePosition()
             if (c.scale != 1) {c.scale = 1; c.updateScale()}
             i += 1
         }
+    }
+
+    display() {
+        for (let c of this.cards) { c.display() }
     }
 }
 
@@ -144,20 +161,37 @@ class Hand extends Pile {
 
     draw(nr) { return false }
 
-    add(card) { super.add(card); card.parentDiv = this.div; this.updatePosition(); card.display() }
-    remove(card) { var c = super.remove(card); this.updatePosition(); return c }
-    sort() { this.cards.sort(function(a,b) {return (a.zones > b.zones) ? 1 : ((b.zones > a.zones) ? -1 : 0);} ) }
-
-    updatePosition() {
-        var count = this.count()
-        this.sort()
-        for (var i=0;i<count;i++) {
-            var c = this.cards[i]
-            c.div.className = 'card hand idx'+this.idx
-            c.cardBack.className = 'card hand idx'+this.idx
-            c.updatePosition()
-        }
+    add(card) { 
+        super.add(card); 
+        card.parentDiv = this.div; 
+        //this.updatePosition(); 
+        card.div.className = 'card hand idx'+this.idx
+        card.cardBack.className = 'card hand idx'+this.idx
+        card.display() 
     }
+
+    remove(card) { 
+        var c = super.remove(card); 
+        //this.updatePosition(); 
+        return c 
+    }
+
+    sort() { 
+        this.cards.sort(function(a,b) {return (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0);} ) 
+        for (let c of this.cards ) { c.remove() }
+        for (let c of this.cards ) { c.display() }
+    }
+
+    // updatePosition() {
+    //     var count = this.count()
+    //     this.sort()
+    //     for (var i=0;i<count;i++) {
+    //         var c = this.cards[i]
+    //         c.div.className = 'card hand idx'+this.idx
+    //         c.cardBack.className = 'card hand idx'+this.idx
+    //         // c.updatePosition()
+    //     }
+    // }
 }
 
 
@@ -174,12 +208,12 @@ class Deck extends Pile {
         this.div = document.querySelector(query+' .deck')
         this.shuffleBtn = document.querySelector(query+' .shuffleDeck')
         this.showDeckBtn = document.querySelector(query+' .showDeck')
-        this.topDeckPlus = document.querySelector(query+' .plus')
-        this.topDeckMinus = document.querySelector(query+' .minus')
+        //this.topDeckPlus = document.querySelector(query+' .plus')
+        //this.topDeckMinus = document.querySelector(query+' .minus')
         this.topDeckBtn = document.querySelector(query+' .topDeck')
         this.textDiv = document.querySelector(query+' .deckText')
 
-        this.topDeckIdx = 1
+        this.topDeckIdx = 0
 
         let draw_f = function () {this.player.draw(1)}
         this.div.onclick = draw_f.bind(this)
@@ -187,27 +221,57 @@ class Deck extends Pile {
         this.shuffleBtn.onclick = this.shuffle.bind(this)
 
 
-        let plus_f = function() { this.updateTopDeck(1) }
-        let minus_f = function() { this.updateTopDeck(-1) }
+        // let plus_f = function() { this.updateTopDeck(1) }
+        // let minus_f = function() { this.updateTopDeck(-1) }
 
-        this.topDeckPlus.onclick = plus_f.bind(this)
-        this.topDeckMinus.onclick = minus_f.bind(this)
+        //this.topDeckPlus.onclick = plus_f.bind(this)
+        //this.topDeckMinus.onclick = minus_f.bind(this)
         this.topDeckBtn.onclick = this.topDeck.bind(this)
     }
     
-    updateText() { this.textDiv.innerHTML = this.count(); this.updateTopDeck() }
+    updateText() { this.textDiv.innerHTML = this.count() }// ; this.updateTopDeck() }
     
-    updateTopDeck(idx) {
-        if (idx) {this.topDeckIdx += idx}
-        if (this.topDeckIdx < 0) {this.topDeckIdx = 0}
-        if (this.topDeckIdx > this.count()) {this.topDeckIdx = this.count()}
-        this.topDeckBtn.innerHTML = 'Top '+this.topDeckIdx
+    // updateTopDeck(idx) {
+    //     if (idx) {this.topDeckIdx += idx}
+    //     if (this.topDeckIdx < 0) {this.topDeckIdx = 0}
+    //     if (this.topDeckIdx > this.count()) {this.topDeckIdx = this.count()}
+    //     this.topDeckBtn.innerHTML = 'Top '+this.topDeckIdx
+    // }
+
+    add(card) {
+        this.cards.unshift(card)
+        card.remove()
+        card.pile = this
+        this.updateText()
+    }
+
+    addCardToTopDeck() {
+
+        if (this.topDeckIdx >= this.cards.length-1) { return }
+        this.topDeckIdx += 1
+
+        let c = this.cards[this.topDeckIdx]
+        c.overlay(true)
+        this.game.overlay.div.appendChild(c.div)
+        this.game.overlay.add(c)
     }
 
     topDeck() {
         //if (this.game.overlayMode) {return}
-        this.updateTopDeck()
-        for (let i=0;i<this.topDeckIdx;i++) { this.game.overlay.add(this.cards[i]) }
+        //this.updateTopDeck()
+        //
+        //for (let i=0;i<this.topDeckIdx;i++) { this.game.overlay.add(this.cards[l-i-1]) }
+
+        this.topDeckIdx = 0 // this.cards.length -1
+        this.game.overlay.add(this.cards[0])
+
+        let btn = document.createElement('button')
+        btn.innerHTML = 'Add Card'
+        btn.className = 'addCard'
+        btn.onclick = this.addCardToTopDeck.bind(this)
+        this.closeBtn = btn
+        this.game.overlay.div.appendChild(btn)
+
         this.game.overlay.display()
     }
 }

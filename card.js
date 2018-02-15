@@ -24,6 +24,7 @@ class Card {
         this.name =         cardOptions.name
         this.zones =        cardOptions.zone
         this.power =        cardOptions.power
+        this.time =         cardOptions.time
         this.attributes =   cardOptions.attributes
         this.text =         cardOptions.text
         this.image =        cardOptions.image
@@ -31,7 +32,7 @@ class Card {
         this.color =        cardOptions.color
                 
         this.draw()
-        this.updatePosition()
+        // this.updatePosition()
     }
 
 
@@ -182,19 +183,19 @@ class Card {
         if (this.player.idx) { this.updateScale() }
     }
 
-    updatePosition() {
-        this.div.style.zIndex = this.z
-        this.cardBack.style.zIndex = this.z
-    }
+    // updatePosition() {
+    //     this.div.style.zIndex = this.z
+    //     this.cardBack.style.zIndex = this.z
+    // }
 
     updateScale() {
-        this.div.style.height = 31.5*this.scale + 'vh'
-        this.div.style.width = 22.05*this.scale + 'vh'
-        this.div.style.zoom = this.scale
+        // this.div.style.height = 31.5*this.scale + 'vh'
+        // this.div.style.width = 22.05*this.scale + 'vh'
+        // this.div.style.zoom = this.scale
 
-        this.cardBack.style.height = 31.5*this.scale + 'vh'
-        this.cardBack.style.width = 22.05*this.scale + 'vh'
-        this.cardBack.style.zoom = this.scale
+        // this.cardBack.style.height = 31.5*this.scale + 'vh'
+        // this.cardBack.style.width = 22.05*this.scale + 'vh'
+        // this.cardBack.style.zoom = this.scale
     }
 
     toggleSelection() {
@@ -219,7 +220,6 @@ class Card {
     play() {
         if (this.flipped) {this.flip()}
         let rng = randInt(-5,5)
-        //this.div.style.webkitTransform = `rotate(${rng}deg)`
         this.div.style.transform = `rotate(${rng}deg)`
         this.display()
     }
@@ -235,11 +235,12 @@ class Card {
         if (bool && !this.overlayMode) {
             this.div.classList.add('overlayMode')
             this.overlayMode = true
-            this.remove()
+            //this.remove()
         } else {
             this.div.classList.remove('overlayMode')
             this.overlayMode = false
         }
+        //console.log(this)
     }
 
     remove() { 

@@ -13,6 +13,7 @@ class Player {
         this.discardPile = new DiscardPile(options)
         this.sourcePile = new SourcePile(options)
         this.damagePile = new DamagePile(options)
+
         this.setup()
     }
 
