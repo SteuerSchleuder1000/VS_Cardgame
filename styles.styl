@@ -301,9 +301,9 @@ body
     .title
         background white
         $_margin = 0.2*_unit
-        width $cardWidth - $_margin*2
+        width 96% //$cardWidth - $_margin*2
         height 1*_unit
-        margin 0 $_margin
+        margin 0 2% //0 $_margin
         position absolute
         bottom $cardHeight*pos2
         font-weight bold
@@ -325,12 +325,12 @@ body
     .textBox
         background white
         $_margin = 0.2*_unit
-        width $cardWidth - $_margin*2
+        width 96% //$cardWidth - $_margin*2
         height $cardHeight*pos1
-        margin 0 $_margin
+        margin 0 2% //0 $_margin
         bottom 0.3*_unit
         position absolute
-        font-size 0.6*_unit
+        font-size 0.5*_unit
         font-family Tahoma
         border-radius 3%
         letter-spacing 0.01*_unit
@@ -353,7 +353,7 @@ body
         
         &:hover
             height $cardHeight*0.6
-            font-size _unit
+            font-size 0.7*_unit
             .linkSymbol
                 height 1.2*_unit !important
         
