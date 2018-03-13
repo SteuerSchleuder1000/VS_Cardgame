@@ -1,0 +1,589 @@
+
+
+
+
+Rules
+
+
+
+
+
+1. Overview
+
+VS is a two player card game in which two heroes try to defeat each other in martial combat.
+Attacks and actions are represented as cards which are drawn from the players deck. A player wins
+if the total amount of damage received by his opponent is equal or higher than his life total.
+
+
+2. Components and Setup
+
+Each player has 
+    - a deck consisting of 30 or more action cards.
+    - 1 hero card
+
+2.1 Playfield
+
+
+The playfield consists of 6 zones:
+
+    - deck              Main pile where you draw cards from
+    - Discard pile      Discarded cards go here
+    - Damage pile       Damage received goes here 
+    - Combat pile       Played actions go here 
+    - Energy zone       Energy cards go here 
+    - Aura and hero zone 
+
+Note that once a card is placed into one of these zones you can not change the order of the cards there.
+
+
+2.2 Setup
+
+At the start of a game each player places their hero card in their hero zone and shuffles their deck.
+
+Each player draws 5 cards.
+
+Randomly decide who goes first and start their turn.
+
+
+
+
+
+
+2.3 Card
+
+2.3.1 Frame
+
+Cards represent actions your character can peform.
+
+Name: Name of the action
+Power: How powerful your attack is
+Time Units: Time it takes to perform this attack
+Attributes: Describe the kind of attack (see 2.2.2 for more information)
+Effects: Describe what this attack does.
+Color: Describes the "element" of the attack (varies from character to character)
+
+
+2.3.2 Attributes
+
+Attributes do nothing by themselves but are often refered to in card effects.
+
+Common Card attributes:
+
+- Block     defensive card that blocks damage
+- ranged    attacks from a distance
+- Focus     very precise attack
+- Energy    deals magical or other non-physical forms of damage
+- Area      deals damage in region
+- Grasp     grabbing attack where opponents movement is limited
+
+Cards without any attributes are reffered to as "normal" attacks
+Cards which are NOT ranged are refered to as "melee" attacks
+Certain characters may have additional attributes
+
+
+2.3.3 Card effects
+
+Card effects activate when you play the card.
+Card effects can alter the rules of the game.
+They are executed from top to bottom.
+Card effects MUST be executed if possible unless they have a "-" before the effect. 
+
+Example:
+
+> Draw 2 Cards      | must be executed if possible
+> - Burn 2 cards    | you may choose to execute
+
+Conditions are noted with a ":" for exmaple
+Block 3+ Damage: Gain 1 Energy
+Discard 1 card: [ ]
+
+Many cards have choice effects indicated by the "//" symbol. You MUST choose only one option.
+
+Example:
+
+// Gain +2 Power
+// Gain +4 Block
+
+Words that need explaining 
+
+- Base power/ speed: Power or speed as printed on the card unaltered by effects.
+- Block, Focus, Energy attacks: Attacks that have one of the mentioned attributes.
+- Last card: Your top card on your combat pile
+- Burn X cards: Move the top X cards from your deck onto your discard pile.
+- Combo: You gain the noted bonus effect if your last card fulfills the requirements.
+Example Blue Combo: Gain +1 power -> you gain +1 power if the last card you played was blue
+- Critical Hit: Activates if your opponent takes damage through this attack.
+- Secret: ____
+- Super X: Must be played onto a X card. Else can not be played.
+- Counter X: If your opponents attack has attributes X you automatically block it, turn it face down.
+- Counter Block X: Your opponents attacks with attributes X don't contribute their power to defending 
+against this attack.
+- Adding energy
+
+
+
+
+
+3. Gameplay
+
+The game is played in alternating turns.
+Each turn you try to defend against your opponents attack and then attack yourself.
+
+You have a limited amount of Time each turn
+    - If your opponent is attacking your time is equal to their attack time
+    - Else you have 3 Time units
+
+The TOTAL amount of Time Units of your played cards must not exceed the amount of time you have.
+You can not play cards with higher Time than is available to you.
+
+
+Each turn consists of 4 phases:
+
+    - 1. Start phase
+
+    When your turn starts you draw 1 card from your deck. 
+    All "start of your turn" effects trigger on your cards in play (Auras, heor etc.)
+    You move to the "ability phase"
+
+
+    - 2. Ability phase
+
+    You may perform 1 base ability.
+    Base abilities:
+
+        - a) Rest: If you have 5+ cards in your combat pile, put all cards in your combat pile in the order 
+        as they are face down under your deck. Then draw a card.
+
+        - b) Block up: Discard any number of face down cards in your combat pile: Gain +1 Block for each.
+
+        - c) Speed up: Gain 1 extra Time Unit this turn but you can only play 1 card.
+
+        - d) Ultra Energy: Put an Ultra card from your hand into your energy zone. Then draw 1 card.
+
+        - e) Ultra attack: Discard 3 cards in your energy zone. Then search your hand or deck for an Ultra attack
+        with Time equal or less than is available to you and play it. 
+        Then shuffle your deck (even if you didn't search your deck)
+
+
+    Alternatively you may choose ot activate base abilties of your hero or certain cards in your hand or the field.
+
+    You move to the "Combat phase"
+
+
+    - 3. Combat phase
+
+    In this phase you can play as many cards as you want as long as the total amount of Time is not 
+    higher than is available to you.
+
+    If your opponent is attacking with power 1 or higher you must either block or take damage.
+    
+    Block
+
+    You successfully block if the total amount of power played is equal or higher than your opponents.
+        - If your power is higher you now attack your opponent with the last card you played 
+        (the top card of your combat pile)
+
+        - If your power is exactly equal turn the last card you played onto the combat pile face down to
+        indicate that you are not attacking your opponent (flinching)
+
+    Note: Certain card effects give you bonus block power. This power only applies during your blocking phase and
+    does not translate into attacking power.
+
+
+    Take Damage    
+
+    If you can not or do not want to defend you take damage equal to your opponents power.
+    Taking a hit causes you to flinch -> Turn the last card you played face down.
+    To take damage you reveal the top card of your deck.
+
+        - 1.Reveal the top card of your deck
+        - If is a Ultra card or a card with 0 power discard it
+        - Else move it onto your damage pile. 
+        - Repeate this process until you have taken damage equal or higher than the power of your opponents attack power.
+
+    The power of cards in your damage pile indicate the damage you have taken this game.
+
+    Note: "Hit" and "Critical Hit" effects of your opponents attack activate immediatly after you have taken damage. 
+
+    Move to the end phase.
+
+
+    - 4. End phase
+
+    "End of turn" effects on your cards trigger.
+    You pass the turn to your opponent.
+
+
+
+
+
+Game end
+
+The game immediatly ends if:
+    - A player has damage in his damage pile equal or higher than the life total noted on his hero card.
+    - A player must draw a card but there are no cards in his deck.
+
+
+
+
+
+
+
+Questions:
+
+    - Better word for "immune to" // -> counters, can't be blocked, protection from, break through, ignore
+    neutralizes, unaffected, negate, 
+
+    > Breaks through "Energy attacks"
+
+    - 1 damage -> hidden damage?
+
+    - include range? tap hero, hero position, base ability move, 
+
+    - Keyword: Take damage without stun?            -> Brave, unflinching
+
+    - Keyword: Opponent needs to over block by X?   -> break through, savy, skill, force, pierce
+
+    - Improve chances of critical hit? -> fateseal? Put cards ontop of deck?
+
+    - Physical // energy    Ranged // Melee
+
+    - Effects when played vs effects when attacking (example: your opponents attacks have -1 Power)
+
+    - Bonus for playing many cards a turn -> combo?
+
+Problems
+
+    - Core gameply boring? -> focus on splashy character mechanics
+
+
+
+
+
+
+Attacks
+
+    Quick Punch         1/1
+                        2/1
+
+                        1/2
+                        2/2
+    Normal Punch        3/2
+
+                        2/3
+                        3/3
+                        4/3
+    Hard Punch          5/3
+    Super Punch         6/3
+
+
+
+
+
+
+Capture
+
+    slow moving         Slow attacks high damage, many cards in hand, not much draw -> suffer high crits
+
+    high agility        lots of redraw, fast attacks, combo, time manipulation, suffer low crits
+
+    acrobatic           fast evasion
+
+    Movement            effects on meele or ranged
+
+    tank                Armor
+
+    glass canon         HIGH damage, low life total, rng defensive mechanics, cards can not block
+
+    Ranged              No counter attack unless range? -> move? If OP want to attack has to pay 1 Time?
+
+    Area                No evasion possible? Can't be countered? Can't blocked except by shield or area.
+                        Can't be blocked by weak melee attacks.
+
+    Focus               Super effective against slow -> counter? Critical Hit?
+
+    Grab                Restrict opponent attacks -> discard from their hand?
+
+    Energy              Not blockable by phsyical attacks?
+
+    Multi-Hit           Has to be blocked by X attacks.
+
+    Teleport            Evasion? Change range
+
+    Flinch              Turn their top card face down
+
+    Channeling          Power proportional to time? Unblockable Unflinching damage
+
+    Dot                 Curse with X stolen cards -> deal 1 hidden damage each turn
+
+
+
+
+
+Design Space
+
+
+
+    Poison counter
+
+    Reveal from hand
+
+    Tentacles       - Auras you can play as a basic ability with "discard: +2 Power"
+
+    Energy switching/ Boosting
+
+    Burn  // self   - Mill with top discard card being relevant
+
+    Secret Attacks  - Setup -> play face down with reveal bonus?
+
+    Auras/ Curses
+
+    Hidden damage
+
+    Hidden Energy
+
+    Hero Forms
+
+    Modes
+
+    Levels
+
+    Clash
+
+    Super slow// fast
+
+    Dice            - Roll for attack or effect
+
+    Freeze          - OUt of hand face down
+
+    Fast Heal
+
+    Wild attacks    - From top of deck
+
+    Predict top card
+
+    Super charge    - Activate all bonus effects this round
+
+    Twin cards
+
+    # Attributes // normal
+
+    Quests
+
+    Zero Power
+
+    Energy puzzle   - how to arrange 3 energy cards
+
+    Ninjutsu        - On Hit: Swap with card from hand
+
+    Items // totems // statues
+
+    Repeatable attacks
+
+    Steal deck cards -> mana shield
+
+    Armor
+
+    Combination -> alchemy (mixing 2 potions)
+ 
+    Ally -> alternative attacker? Change active hero?
+
+    Phantom ability -> Opp has to guess the hero of 3 face down cards -> attack and defense
+
+    Tree token -> Play 1 Energy as a 2/2 attack upside down
+
+    Buff your hero by placing your deck cards under him -> Threshold flip
+
+    Weapon master -> equip swords, blades, shields etc.
+
+    Self damage threshold -> speed -> heal through damage
+
+    ghost power -> can only play energy attacks, can't be hit by physical attacks
+
+    Infestation -> Shuffle eggs into your deck.
+
+    Summoning -> gather much energy -> flip hero into demon
+
+    Construct -> start with armor -> discard, no heal
+
+    Puzzle box -> start with 3 energy -> condition take play -> no energy -> Ultra
+
+    prophecy -> place ??? 3 cards from top
+
+    snowballing -> charge up one attack/ item over multiple turns
+
+    garden -> blossoms as energy
+
+    spears -> retrieve spear wounds for damage
+
+    Tribute -> opp discards a card or [effect]
+
+    status -> midair, burrowed,
+
+    self damage -> regain it
+
+    frenzy -> gain +1 power for each card played
+
+    Aura swap -> exchange an aura with one in hand
+
+    recycle -> if blocked return this to your hand/ onto your deck
+
+    extra deck -> put cards into your deck
+
+    evolve hero -> lv 0 / 1 / 2 / 3
+
+    convoke -> use up face down cards in combat pile.
+
+
+
+
+Character concepts
+
+
+Thunderboy
+
+    Possesses the gauntlet of storms, a ancient maya artifact thought to be possessed by a storm god.
+    Has trouble controlling it -> uncontrollable outbursts.
+
+    Cascade like mechanic, chaining cards from the top of the deck.
+
+
+Electro Boy (https://pin.it/jgsszffcfxgs3k)
+
+    Has 2 super charged electro gauntlets. Charges Energy -> BOOM! Slow & small that hits real hard.
+    Can teleport. Charge shield, machine tools, difference in hand size? grab
+
+    Yellow Energy. Chain Burn, difference in hand size? 
+
+    1000 volt, Mega/ Giga Volt, charge, chain lightning, flash, archlight, shock, overload, dicharge
+    ball lightning, watt, bolt, fry, impact, 
+
+
+Snake Witch
+
+    Servant to the holy snake spirit Can summon golden snakes and black poison.
+    Physically weak.
+
+    Wins through dots and evasion. Death of a thousand cuts. Hidden damage. Hidden energy.
+
+
+Tentacle Smoke
+
+    Born out of a lovecraftian nightmare this guy pursues his victims in broad daylight.
+    Can summon tentacles. can teleport and mutate. Summon BIG kraken.
+
+    Add tentacle auras -> sacc to improve attacks. Secret attacks. Eye energy. 
+
+
+Aurora (https://pin.it/c5tgwiqaqcwt5l)
+
+    Demigod of dawn. Can summon constructs made of constellations.
+
+    Hand cards matter. Constellation -> energy base order. Constellation auras
+
+
+Horror Plant
+
+    Plant from little shop of horrors. Constantly growing and consuming. Makes flowers and vines.
+    Potentially poisonous. Embodiment of nature and power.
+
+    Wild cards (play from top deck without looking). Flower Energy. Grow deck over time. Can summon
+    fruit minions, Poison curses, grabs, 
+
+
+Elemental Hero
+
+    Super hero with 2 mechanical arms made of stretchable material. Has different modes
+    -> electric 4 armed, stretchy gooey, strong spikey, cyber digital
+
+    Mode cards, upgrade attacks from hand (level), different heroes?, anticipation? elemental
+
+
+
+Spring Spirit
+
+    Spirit of life can anything it touches blossom. Swift. Sprouting hair. claws, weak attacks,
+    lots of counters, horns, bad at blocking -> tricks
+
+    Blossom energy. Sprout minions -> growing. tree tokens, 
+
+
+Bird catcher
+
+    Has giant golden bird cage on his back. Can summon spirit birds and trap his victims in cages.
+
+    Feather Energy. Bird companion.
+
+
+
+Knight of the fallen star (armello) (https://en.wikipedia.org/wiki/Glossary_of_fencing)
+
+    Romanctic knight. Small in size. purple color scheme with star motive. Curagous and honour bound. Sigil and
+    heritage. Holy smoke. Banner dragon. Ultimate Banner. Starfall. 
+
+    Sigil energy. Duel (clash). Auras (banners), 
+
+    Star dust, star fall, sun, ray, beam, rainbow, sigil, banner, golden, glimmer, eye, night sky, glow, comet,
+    wish, shooting star, light, sparkle, lunge, stroke, strike, parry, attack, remise, guard, invitation, en garde
+    velvet, violet, royale, crimson, 
+
+
+
+Jade Flame Monk (https://pin.it/vbsr4caak5xmec, Asura, )
+
+    Sturdy monk with flaming punches. Body & soul. third eye. defensive. 4 armed. 
+
+    Chakra orbs -> number (even). Choose defense or offense.
+
+
+cyber punk
+    
+    Has code tatooed on her arms. Can summon a cyber dragon (https://pin.it/ci47lur4rpurk2)
+
+    Enemy deck manipulation (burn?), summon cyber constructs. Buffs, put cards face up 3 from top -> execute code
+    Discard pile search,
+
+
+Ash Demon
+    
+    Boy/ Man possessed by shadowy demon. Ruin blades floating around
+
+
+
+Spirit Ninja
+
+    Ninja with ghost abilities. Can double, has 4 arms, ghost shuriken, mask, long scarf, 
+
+    shadow attacks (face down), mirage, 
+
+
+
+fish brawler (https://pin.it/g4uxd2afqoyayl) -> water/ fish bender
+
+construction robot (https://pin.it/y3resxuw3fwlun)
+
+lion boy (https://pin.it/jgsszffcfxgs3k) -> yellow thunder?
+
+Ninja with a 1000 masks smoke bombs -> storm ninja, fire ninja,
+
+Forge guy
+
+Desert
+
+Snow druid
+
+rust
+
+djinn
+
+2 part hero
+
+burrow
+
+spider -> evolve
+
+arm stretching
+
+Moth -> folded wings and mask
+
+

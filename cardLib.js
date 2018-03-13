@@ -32,11 +32,21 @@ const ELEMENTS = [
 ]
 
 const ZONES = {
+    block: {name:'Strength',img:'images/symbols/symbol0_black.png', img_white:'images/symbols/symbol0_white.png'},
+    grasp: {name:'Strength',img:'images/symbols/symbol8_black.png', img_white:'images/symbols/symbol8_white.png'},
     A: {name:'Strength',img:'images/symbols/symbol1_black.png', img_white:'images/symbols/symbol1_white.png'},
     B: {name:'Strength',img:'images/symbols/symbol5_black.png', img_white:'images/symbols/symbol5_white.png'},
     C: {name:'Strength',img:'images/symbols/symbol6_black.png', img_white:'images/symbols/symbol6_white.png'},
     D: {name:'Strength',img:'images/symbols/symbol9_black.png', img_white:'images/symbols/symbol9_white.png'},
 }
+
+ZONES.ranged = ZONES.C
+ZONES.focus = ZONES.B
+ZONES.energy = ZONES.A
+ZONES.area = ZONES.D
+
+
+
 
 const A = {
     Block:      {name:'Block',  img:'images/symbols/shield_icon_black.png', img_white:'images/symbols/shield_icon_white.png',   text:''},
@@ -81,7 +91,6 @@ const DL_Thunder = [
     {name:'Storm Cell Pulse',nr:1}, // Super
 
     // 2 TS
-
     {name:'Skyward Strike',nr:3},
     {name:'Whirlwinds',nr:4},
     {name:'Sparkover',nr:2}, // super
@@ -141,7 +150,7 @@ const DL_Rust = [       // P: 14   B: 5 Q: 4 H: 7
     
     // TS 0
     {name:'Slag Storm',nr:2},       // Super
-    {name:'Flare',nr:2},
+    {name:'Spark Flare',nr:2},
     {name:'Corrosion',nr:2},
     
 ]
@@ -162,7 +171,44 @@ const DL_Std = [
 
 ]
 
-//const DL_Word = [{name:'Word 1',nr:5}]
+
+const DL_knight = [
+
+    {name:'Star Fall Strike', nr:5},
+    {name:'Glowing Swing', nr:3},
+    {name:'Double Strike', nr:2},
+    {name:'Remis', nr:2},
+    {name:'Blade Flick', nr:2},
+    {name:'Star Dust Lunge', nr:3},
+    {name:'Glimmer Whirl', nr:2},
+    {name:'Golden Parry', nr:2},
+    {name:'En Garde!', nr:3},
+    {name:'Royale Invitation', nr:2},
+    {name:'Banner Shield', nr:2},
+    {name:'Blade Barrage', nr:2},
+    {name:'Star Ray Burst', nr:3},
+    {name:'Star Fall', nr:1},
+
+]
+
+const DL_surge = [
+
+    {name:'Electro Punch', nr:6},
+    {name:'Dynamo Strike', nr:3},
+    {name:'Super Charge Impact', nr:2},
+    {name:'Counter Punch', nr:3},
+    {name:'Thunder Clap', nr:2},
+    {name:'Charge Bolt', nr:2},
+    {name:'Electric Grasp', nr:3},
+    {name:'Mega Volt Hit', nr:4},
+    {name:'Overload', nr:2},
+    {name:'Charge Shield', nr:3},
+    {name:'Chain Lightning', nr:2},
+    {name:'Electric Nova', nr:3},
+    {name:'Magnetic Pull', nr:2},
+    {name:'Giga Volt Havock', nr:1},
+
+]
 
 
 
@@ -174,7 +220,387 @@ const DL_Std = [
 
 var CARDS = {
 
-    // THUNDER DECK ...
+    // Electro Boy
+
+    'Electro Punch':
+    {
+        name: 'Electro Punch',
+        power: 4, 
+        time: 3,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Surge<br>If you own 3+ Energy: +2 Power`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Dynamo Strike':
+    {
+        name: 'Dynamo Strike',
+        power: 4, 
+        time: 2,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Super (2)`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Super Charge Impact':
+    {
+        name: 'Super Charge Impact',
+        power: 5, 
+        time: 3,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Surge Draw 2 cards`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Counter Punch':
+    {
+        name: 'Counter Punch',
+        power: 2, 
+        time: 2,
+        color:'Gold',
+        zone: ['focus'], 
+        attributes: [],
+        text:`Counter a melee attack with Time 1 or less`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Thunder Clap':
+    {
+        name: 'Thunder Clap',
+        power: 7, 
+        time: 4,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Can't be countered. Draw 2 cards`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Charge Bolt':
+    {
+        name: 'Charge Bolt',
+        power: 2, 
+        time: 2,
+        color:'Gold',
+        zone: ['ranged'], 
+        attributes: [],
+        text:`Counter a ranged attack. Surge`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Electric Grasp':
+    {
+        name: 'Electric Grasp',
+        power: 0, 
+        time: 2,
+        color:'Gold',
+        zone: ['grasp'], 
+        attributes: [],
+        text:`2 Block<br>
+        Your opponentn can't attack unless he discards 2 cards from his hand.<br>Next turn add this as energy.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Mega Volt Hit':
+    {
+        name: 'Mega Volt Hit',
+        power: 6, 
+        time: 4,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Super (3)`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Overload':
+    {
+        name: 'Overload',
+        power: 0, 
+        time: 0,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Choose one:<br>&#8226 Draw 2 cards<br>&#8226 +2 Energy from your deck.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Charge Shield':
+    {
+        name: 'Charge Shield',
+        power: 0, 
+        time: 1,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Aura Super (1)<br>Discard: gain +2 Block and add this as Energy`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Chain Lightning':
+    {
+        name: 'Chain Lightning',
+        power: 2, 
+        time: 3,
+        color:'Gold',
+        zone: ['ranged'], 
+        attributes: [],
+        text:`Surge<br>Gain +1 Power for each Energy you own.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Electric Nova':
+    {
+        name: 'Electric Nova',
+        power: 2, 
+        time: 3,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Super (X)<br>Gain +X Power. Can't be blocked by weaker attacks.`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Magnetic Pull':
+    {
+        name: 'Magnetic Pull',
+        power: 0, 
+        time: 1,
+        color:'Gold',
+        zone: ['ranged'], 
+        attributes: [],
+        text:`Draw 1 card<br>Counter a ranged attack: Gain +1 Time`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Giga Volt Havock':
+    {
+        name: 'Giga Volt Havock',
+        power: 9, 
+        time: 4,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`ULTRA`,
+        image: 'images/cards/dragon.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+
+
+
+
+
+    // Fallen star
+
+    'Star Fall Strike':
+    {
+        name: 'Star Fall Strike',
+        power: 3, 
+        time: 2,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Draw 2 cards then put 2 cards from your hand on top of your deck.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Glowing Swing':
+    {
+        name: 'Glowing Swing',
+        power: 2, 
+        time: 2,
+        color:'Gold',
+        zone: ['area'], 
+        attributes: [],
+        text:`Melee attacks of your opponent have -2 Power until your next turn.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Double Strike':
+    {
+        name: 'Double Strike',
+        power: 4, 
+        time: 3,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Has to be blocked by 2 attacks`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Remis':
+    {
+        name: 'Remis',
+        power: 0, 
+        time: 1,
+        color:'Gold',
+        zone: ['focus'], 
+        attributes: [],
+        text:`Focus Combo: +3 Power.<br>Hit: Duel`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Blade Flick':
+    {
+        name: 'Blade Flick',
+        power: 1, 
+        time: 1,
+        color:'Gold',
+        zone: ['focus'], 
+        attributes: [],
+        text:`Can't be blocked by slower attacks.<br>
+        Hit: Look at your opponents hand: discard 1 card or put 2 cards onto his deck.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Star Dust Lunge':
+    {
+        name: 'Remis',
+        power: 1, 
+        time: 1,
+        color:'Gold',
+        zone: ['ranged'], 
+        attributes: [],
+        text:`Gain +1 Time. Add 1 card from your hand onto your deck.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Glimmer Whirl':
+    {
+        name: 'Glimmer Whirl',
+        power: 3, 
+        time: 3,
+        color:'Gold',
+        zone: ['area'], 
+        attributes: [],
+        text:`Block 3<br>Can't be blocked by weaker attacks.<br>Duel`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Golden Parry':
+    {
+        name: 'Golden Parry',
+        power: 1, 
+        time: 1,
+        color:'Gold',
+        zone: ['focus'], 
+        attributes: [],
+        text:`Duel: If you win counter an attack with power 2 or less<br>Draw 1 card`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'En Garde!':
+    {
+        name: 'En Garde!',
+        power: 0, 
+        time: 0,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Your opponents attacks gain -2 Power and +2 Block until your next turn.<br>Duel`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Royale Invitation':
+    {
+        name: 'Royale Invitation',
+        power: 0, 
+        time: 1,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Both players draw 2 cards.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Banner Shield':
+    {
+        name: 'Banner Shield',
+        power: 0, 
+        time: 2,
+        color:'Gold',
+        zone: [], 
+        attributes: [],
+        text:`Counter an area attack. Block 4<br>Draw 2 cards. Duel`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Blade Barrage':
+    {
+        name: 'Blade Barrage',
+        power: 6, 
+        time: 3,
+        color:'Gold',
+        zone: ['focus','area'], 
+        attributes: [],
+        text:`Combo<br>Must be blocked by 3+ attacks.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Star Ray Burst':
+    {
+        name: 'Royale Invitation',
+        power: 2, 
+        time: 2,
+        color:'Gold',
+        zone: ['focus','area'], 
+        attributes: [],
+        text:`Combo: +1 Pierce for each Sigil you own.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+    'Star Fall':
+    {
+        name: 'Royale Invitation',
+        power: 8, 
+        time: 3,
+        color:'Gold',
+        zone: ['energy','area','ranged'], 
+        attributes: [],
+        text:`ULTRA<br>Look at your opponents hand and put it onto his deck in any order you choose.`,
+        image: 'images/cards/missiles.png',
+        img_o: {zone:'white', power:'white', attribute: 'white'},   
+    },
+
+
+
+
+
+    // THUNDER DECK .................................................................................
 
     'Thunder Fist':
     {
@@ -182,9 +608,10 @@ var CARDS = {
         power: 4, 
         time: 3,
         color:'Thunder',
-        zone: '', 
+        zone: [], 
         attributes: [],
-        text:`Reveal the top card of your deck: If it has color ${L.Thunder_e} you may add it as Energy.`,
+        text:`+1 ${L.Thunder_e} Energy from deck<br>
+                If you own 3+ ${L.Thunder_e} Energy: +2 Power.`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -192,13 +619,15 @@ var CARDS = {
     'Whirlwinds':
     {
         name: 'Whirlwinds',
-        power: 1, 
+        power: 2, 
         time: 2,
-        color:'Storm',
-        zone: 'CD', 
+        color:'Thunder',
+        zone: ['C','D'], 
         attributes: [],
-        text:`Gains +1 Breakthrough for each ${L.Storm_e} card in your combat pile.<br>
-                Can't be blocked by attacks with less power`,
+        text:`Choose 1:<br>
+            &#8226 +1 ${L.Thunder_e} Energy from hand<br>
+            &#8226 +1 Block<br>
+            If you own 3+ ${L.Thunder_e} Energy: +2 Power`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -210,11 +639,11 @@ var CARDS = {
         name: 'Skyward Strike',
         power: 2,
         time: 1, 
-        color:'Storm',
-        zone: 'B', 
+        color:'Thunder',
+        zone: ['B'], 
         attributes: [],
-        text:`Counters TS 1 melee attacks.<br>
-              Hit: Look at your opponents hand and discard an attack with power 2 or less from it.`,
+        text:`Counters melee attacks with Time 1 or less<br>
+              - ${L.Thunder_e}: Look at your opponents hand and discard an attack with power 2 or less from it.`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -224,11 +653,11 @@ var CARDS = {
         name: 'Jet Wind Strike',
         power: 2, 
         time: 1,
-        color:'Storm',
-        zone: 'BC', 
+        color:'Thunder',
+        zone: ['B','C'], 
         attributes: [],
         text:`Counters Ranged attacks<br>
-            Counters SUPER<br>`,
+                Can't be blocked by slower attacks`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -237,13 +666,12 @@ var CARDS = {
     'Vortex Punch':
     {
         name: 'Vortex Punch',
-        power: 6,
+        power: 3,
         time: 3, 
-        color:'Storm',
-        zone: '', 
+        color:'Thunder',
+        zone: [], 
         attributes: [],
-        text:`SUPER - ${L.Storm_e} ${L.Storm_e}<br>
-                You may shuffle up to 5 cards from your discard pile into your deck.`,
+        text:`Melee link: +3 Power`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -251,12 +679,12 @@ var CARDS = {
     'Arclight Shock':
     {
         name: 'Arclight Shock',
-        power: 1, 
+        power: 3, 
         time: 1,
         color:'Thunder',
-        zone: 'AC', 
+        zone: ['A','C'], 
         attributes: [],
-        text:`${L.Thunder_e} ${L.Thunder_e}: +2 Power<br>
+        text:`SUPER - ${L.Thunder_e}<br>
                 Hit: Destroy 1 Energy or aura on the field.`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -268,10 +696,10 @@ var CARDS = {
         power: 0, 
         time: 0,
         color:'Thunder',
-        zone: '', 
+        zone: [], 
         attributes: [],
         text:`Choose 1:<br>
-                &#8226 Gain up to 2 ${L.Thunder_e} Energy from your hand then draw that many cards.<br>
+                &#8226 +2 ${L.Thunder_e} Energy from deck<br>
                 &#8226 Your next ${L.Thunder_e} attack this turn gains +1 power for each ${L.Thunder_e} Energy you own`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
@@ -282,12 +710,12 @@ var CARDS = {
         name: 'Stormbound',
         power: 0,
         time: 0, 
-        color:'Storm',
-        zone: '', 
+        color:'Thunder',
+        zone: [], 
         attributes: [],
         text:`Choose 1: &#8226 Draw 2 cards<br>
                 &#8226 Gain an extra TS this turn<br>
-                &#8226 Add a ${L.Storm_e} Energy from your combat pile`,
+                &#8226 +1 ${L.Thunder_e} Energy from deck.`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -299,7 +727,7 @@ var CARDS = {
         power: 5, 
         time: 2,
         color:'Thunder',
-        zone: 'AD', 
+        zone: ['A','D'], 
         attributes: [],
         text:`SUPER - ${L.Thunder_e} ${L.Thunder_e} <br>
             If you have 2 or less cards in hand draw 3 cards.`,
@@ -313,11 +741,11 @@ var CARDS = {
         name: 'Storm Cell Pulse',
         power: 3, 
         time: 3,
-        color:'Storm',
-        zone: 'AD', 
+        color:'Thunder',
+        zone: ['A','D'], 
         attributes: [],
-        text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Storm_e} ${L.Storm_e}<br>
-                Mill 3 cards and gain their combined power`,
+        text:`<b>SUPER -</b> ${L.Thunder_e} ${L.Thunder_e} ${L.Thunder_e}<br>
+                Burn 3 cards and gain their combined power`,
         image: 'images/cards/thunder.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},   
     },
@@ -330,18 +758,18 @@ var CARDS = {
 
     // SCRAP DECK ...
 
-    'Flare': 
+    'Spark Flare': 
     {
-        name: 'Flare', 
+        name: 'Spark Flare', 
         power: 0, 
         time: 0,
         color: 'Furnace',
         energy: [],
-        zone: '', 
+        zone: [], 
         attributes: [],
-        text:`Choose 1:<br>
-            &#8226 Draw 2 cards<br>
-            &#8226 Your next ${L.Furnace_e} attack gains +2 Power.`,
+        text:`
+            &#8226 Attack: Counter a focus attack and put this into your Energy zone<br>
+            &#8226 Defense: Your next ${L.Furnace_e} attack gains +2 Power`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -353,12 +781,12 @@ var CARDS = {
         time: 0,
         color: 'Scrap',
         energy: [],
-        zone: '', 
+        zone: [], 
         attributes: [],
         text:`Choose 2:<br>
                 &#8226 Discard your top 3 cards.<br>
                 &#8226 Add a card from your discard pile to your hand.<br>
-                &#8226 Add a ${L.Scrap_e} Energy from your discard pile`,
+                &#8226 +1 Energy from your discard pile`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -372,10 +800,10 @@ var CARDS = {
         time: 3,
         color: 'Furnace',
         energy: [],
-        zone: '', 
+        zone: [], 
         attributes: [],
-        text:`Add a ${L.Furnace_e} Energy from your hand then draw a card<br>
-            `,
+        text:`Draw 2.<br>
+            Combo ${L.Scrap_e}: +1 Power`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -387,11 +815,11 @@ var CARDS = {
         time: 1,
         color:'Scrap',
         energy: [],
-        zone: 'C', 
+        zone: ['C'], 
         attributes: [],
-        text:`Choose 1:<br>
-                &#8226 Discard your top 2 cards<br>
-                &#8226 Add up to 1 ${L.Scrap_e} Energy from your discard pile.<br>`,
+        text:`Discard your top 2 cards<br>
+                Gain +1 Power for each ${L.Scrap_e} card discarded this way.<br>
+                Critical Hit: If this deals 5+ damage, your opponent discards 1 card.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
@@ -403,34 +831,31 @@ var CARDS = {
         time: 2,
         color:'Scrap',
         energy: [],
-        zone: '', 
+        zone: [], 
         attributes: [A.Block3],
-        text:`Choose one:<br>
-                &#8226 Draw 1 card<br>
-                &#8226 Add your last attack as Energy<br>
-                &#8226 +1 Block`,
+        text:`Draw 1 card<br>
+            Block 3+ Power: Put this into your Energy zone.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
+
+
 
     'Splinter Claws':                     
     {
         name: 'Splinter Claws',
-        power: 2, 
+        power: 3, 
         time: 2,
         color:'Scrap',
         energy: [],
-        zone: '', 
+        zone: [], 
         attributes: [],
         text:`Can't Block<br>
-                RISK: +2 Power and can't be blocked by slower attacks<br>
-                Hit: Draw 3 cards.`,
+                Can't be blocked by attacks with less Power<br>
+                Critical Hit: If this deals 5+ damage, burn 3 cards.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
-
-    
-
 
     
 
@@ -442,10 +867,10 @@ var CARDS = {
         time: 2,
         color: 'Furnace',
         energy: [],
-        zone: 'C', 
+        zone: ['C'], 
         attributes: [],
-        text:`Can only be blocked by faster attacks.<br>
-                Hit: Look at your opponents hand and discard 1 card from it.`,
+        text:`&#8226 Attack: Look at your opponents hand and discard 1 card from it.<br>
+                &#8226 Block: Counter a ranged attack and put this into your Energy zone.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     }, 
@@ -454,14 +879,14 @@ var CARDS = {
     'Rust Kick':                     
     {
         name: 'Rust Kick',
-        power: 2, 
+        power: 1, 
         time: 1,
         color:'Scrap',
         energy:[],
-        zone: 'B', 
+        zone: ['B'], 
         attributes: [],
-        text:`VS slower melee attacks: +1 Power<br>
-                Hit: Discard a Energy card of your opponent.`,
+        text:`&#8226 Attack: +2 Power<br>
+                &#8226 Block: Discard a Energy card of your opponent.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -475,10 +900,10 @@ var CARDS = {
         time: 4,
         color:'Scrap',
         energy: [],
-        zone: 'D', 
+        zone: ['D'], 
         attributes: [],
-        text:`<b>SUPER - X ${L.Scrap_e} </b><br>
-            Gain +4 Power for each ${L.Scrap_e} you paid.`,
+        text:`<b>ULTRA</b><br>
+            Gain +4 Power for each ${L.Scrap_e} in your hand.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -491,11 +916,10 @@ var CARDS = {
         time: 3,
         color:'Furnace',
         energy:[],
-        zone: '', 
+        zone: [], 
         attributes: [],
-        text:`<b>SUPER - ${L.Furnace_e} ${L.Scrap_e}</b><br>
-                Breakthrough<br>
-                Shuffle up to 10 discarded cards back into your deck.`,
+        text:`<b>SUPER - ${L.Furnace_e}</b><br>
+                Can't be blocked by normal attacks.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },
@@ -507,10 +931,10 @@ var CARDS = {
         time: 2,
         color: 'Furnace',
         energy: [],
-        zone: '', 
+        zone: [], 
         attributes: [],
-        text:`<b>SUPER - ${E.Furnace} ${E.Furnace} ${E.Furnace}</b><br>
-                Add up to 2 cards from your discard pile to your hand.`,
+        text:`<b>SUPER - ${E.Furnace}</b><br>
+                Add the top 2 cards of your discard pile to your hand.`,
         image: 'images/cards/furnace.png',
         img_o: {zone:'white', power:'white', attribute: 'white'},
     },

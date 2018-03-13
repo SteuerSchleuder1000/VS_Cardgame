@@ -1,0 +1,51 @@
+
+
+
+Introduction
+
+
+Machine learning is one of the core subjects in artificial intelligence. Since
+the dawn of the computer era, many researchers have tried not only to devise
+efficient and effective machine learning algorithms, but also to explore computational
+boundaries. Can a machine learn anything? Can it eventually
+become indistinguishable from a human being in its capabilities? But also:
+can the limits of what can be taught to a computer shed light on the limits
+of human cognition?
+
+One particular skill that separates humans from other organisms is our
+remarkable ability to learn and use languages. A child receives very incomplete
+data about the language it is learning. It is hardly ever explicitly told
+what grammatical rules underlie the language, or which sentences are correct
+and which are not [8]. It has to learn the language based solely on some positive
+examples, and even this data can be very noisy. But somehow this does
+not matter: eventually the child is able to produce correct new sentences of
+the language, even though it has been presented with a limited amount of
+examples of sentences.
+
+In the light of this phenomenon, algorithmic learning theory was developed
+by Gold [6] in 1967. Roughly, Gold’s abstract model of language
+learning comes down to the following: a machine is supplied with a stream
+of positive instances of some (formal) language, one at a time, possibly with
+repetition, but in such a way that every grammatical sentence in that language
+will be presented to the machine at some point. Every time it is being
+presented with an instance, the machine replies with a guess about the nature
+of the language. Initially, these guesses will probably be incorrect, but
+as the machine is presented with an increasing number of examples, it may
+gather enough information about the language to infer its exact contents. If,
+from some point on, the machine’s guess is correct and never changes any
+more, the machine is said to have identified the language ‘in the limit’ from
+this particular stream of positive instances. A machine is said to learn a
+language if it can identify it from any possible data stream, regardless of the
+order in which those instances are presented. A language family, which is
+simply a set of languages, is learnable if there exists a single machine that is
+able to learn all languages in that family.
+
+In the past years, some natural variations on the identification criterion
+defined by Gold have been developed [4]. For example, one could require from
+the machine not only that it converges to a correct guess after some time,
+but also that it knows when it has done so. This is a stronger requirement,
+and one may expect that some language families that were learnable under
+Gold’s criterion may not be under this new criterion. On the other hand,
+one could be more lenient and allow the machine to make small mistakes:
+as long as the language it settles on is close enough to the language being
+presented, the machine’s answer could still be considered correct. As one

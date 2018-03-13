@@ -130,10 +130,11 @@ class Card {
         this.playBtn =      createDiv('playBtn','Play')
         this.discardBtn =   createDiv('playBtn','Discard')
         this.sourceBtn =    createDiv('playBtn','Source')
-        this.topDeckBtn =   createDiv('playBtn','Top Deck')
-        this.exileBtn =     createDiv('playBtn','Exile')
         this.handBtn =      createDiv('playBtn','Hand')
         this.damageBtn =    createDiv('playBtn','Damage')
+        this.topDeckBtn =   createDiv('playBtn','Top Deck')
+        this.exileBtn =     createDiv('playBtn','Exile')
+        this.flipBtn =      createDiv('playBtn','Flip')
 
 
         let arrowLeft = document.createElement('img')
@@ -151,7 +152,7 @@ class Card {
         this.playDiv.appendChild(arrowLeft)
         this.playDiv.appendChild(arrowRight)
 
-        this.buttons = [this.playBtn,this.discardBtn,this.sourceBtn,this.topDeckBtn,this.handBtn,this.damageBtn,this.exileBtn]
+        this.buttons = [this.playBtn,this.discardBtn,this.sourceBtn,this.topDeckBtn,this.handBtn,this.damageBtn,this.exileBtn,this.flipBtn]
         for (let b of this.buttons) { this.playDiv.appendChild(b); b.style.display = 'none' }
         this.playBtn.style.display = 'block'
         this.div.appendChild(this.playDiv)
@@ -164,6 +165,7 @@ class Card {
         let exile_f = function () {this.player.toExile(this)}
         let hand_f = function () {this.player.toHand(this)}
         let dmg_f = function() {this.player.toDamage(this)}
+        let flip_f = function() { this.flip() }
         
 
         this.playBtn.onclick = play_f.bind(this)
@@ -173,6 +175,7 @@ class Card {
         this.exileBtn.onclick = exile_f.bind(this)
         this.handBtn.onclick = hand_f.bind(this)
         this.damageBtn.onclick = dmg_f.bind(this)
+        this.flipBtn.onclick = flip_f.bind(this)
 
         this.cardBackArt.onclick = play_f.bind(this)
 
@@ -183,19 +186,9 @@ class Card {
         if (this.player.idx) { this.updateScale() }
     }
 
-    // updatePosition() {
-    //     this.div.style.zIndex = this.z
-    //     this.cardBack.style.zIndex = this.z
-    // }
+    
 
     updateScale() {
-        // this.div.style.height = 31.5*this.scale + 'vh'
-        // this.div.style.width = 22.05*this.scale + 'vh'
-        // this.div.style.zoom = this.scale
-
-        // this.cardBack.style.height = 31.5*this.scale + 'vh'
-        // this.cardBack.style.width = 22.05*this.scale + 'vh'
-        // this.cardBack.style.zoom = this.scale
     }
 
     toggleSelection() {

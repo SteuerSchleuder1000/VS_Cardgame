@@ -15,7 +15,7 @@ class Game {
         this.resetBtn.onclick = this.reset.bind(this)
 
         document.addEventListener('wheel', (e) => {
-            let btnLen = 7
+            let btnLen = 8
             if (e.deltaY > 4) {this.btnIdx = (this.btnIdx +btnLen + 1)%btnLen}
             else if (e.deltaY < -4) {this.btnIdx = (this.btnIdx +btnLen - 1)%btnLen}
             this.switchBtn(this.btnIdx)
@@ -28,8 +28,12 @@ class Game {
 
             switch(key) {
 
+                case 'f':
+                    this.switchBtn(7)
+                    break
+
                 case '1':
-                    this.switchBtn(0);
+                    this.switchBtn(0)
                     break
 
                 case '2':
